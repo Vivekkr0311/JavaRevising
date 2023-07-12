@@ -26,17 +26,16 @@ public class DynamicArrays {
             arr.add(in.nextInt());
         }
 
-
-        while(stillWantToFillElements){
+        do{
             System.out.print("[?] Do you still want to fill elements?: (true or false) ");
             stillWantToFillElements = flag.nextBoolean();
             if(stillWantToFillElements){
-                System.out.print("[+] Adding some more elements: ");
+                System.out.print("[+] Adding some more element: ");
                 arr.add(in.nextInt());
-            }else{
+            }else if(!stillWantToFillElements){
                 break;
             }
-        }
+        }while(stillWantToFillElements);
 
         return arr;
     }
