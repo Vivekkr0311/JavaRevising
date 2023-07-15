@@ -43,6 +43,7 @@ public class SearchInTwoDArray {
             for(int c = 0; c < arr[r].length; c++){
                 if(arr[r][c] == target){
                     System.out.println("[+] Element found at row " + r + "  and column " + c);
+                    //You can also return like "return new int[]{r, c};"
                     return;
                 }
             }
