@@ -11,8 +11,7 @@ public class NtoOne {
     }
 
     static void printNtoOne(int n){
-        if(n == 1){
-            System.out.println(n);
+        if(n == 0){
             return;
         }
 

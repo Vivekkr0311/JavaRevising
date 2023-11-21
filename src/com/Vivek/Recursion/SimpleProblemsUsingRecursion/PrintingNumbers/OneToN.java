@@ -11,8 +11,7 @@ public class OneToN {
     }
 
     static void printOnetoN(int n){
-        if(n == 1){
-            System.out.println(n);
+        if(n == 0){
             return;
         }
 
