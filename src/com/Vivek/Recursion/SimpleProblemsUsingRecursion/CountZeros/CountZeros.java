@@ -3,19 +3,15 @@ package com.Vivek.Recursion.SimpleProblemsUsingRecursion.CountZeros;
 import java.util.Scanner;
 
 public class CountZeros {
-    
-    static long countZeros(long n, long count){
-        if(n%10 == n){
-            return count;
-        }
 
+    static long countZeros(long n, long count){
         if(n == 0){
-            count++;
+            return count;
         }
 
         long rem = n%10;
         if(rem == 0){
-            count++;
+            return countZeros(n/10, count + 1);
         }
 
         return countZeros(n/10, count);
