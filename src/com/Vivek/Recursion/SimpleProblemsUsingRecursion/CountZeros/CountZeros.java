@@ -3,11 +3,10 @@ package com.Vivek.Recursion.SimpleProblemsUsingRecursion.CountZeros;
 import java.util.Scanner;
 
 public class CountZeros {
-
-    static long count = 0;
-    static void countZeros(long n){
+    
+    static long countZeros(long n, long count){
         if(n%10 == n){
-            return;
+            return count;
         }
 
         if(n == 0){
@@ -19,13 +18,13 @@ public class CountZeros {
             count++;
         }
 
-        countZeros(n/10);
+        return countZeros(n/10, count);
     }
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         long number = input.nextLong();
 
-        countZeros(number);
-        System.out.println("Number of zeros in " + number + " is " + count);
+        long initialCount = 0;
+        System.out.println("Number of zeros in " + number + " is " + countZeros(number, initialCount));
     }
 }
