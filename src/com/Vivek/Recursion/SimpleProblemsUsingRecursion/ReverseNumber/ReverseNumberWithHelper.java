@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ReverseNumberWithHelper {
 
-    static long reverseNumber(long n){
+    static public long reverseNumber(long n){
         long digits = (long)(Math.log10(n)) + 1;
 
         return reverseHelper(n, digits);
