@@ -12,11 +12,10 @@ public class LinearSearchFindAllIdx {
 
         if(arr[idx] == target){
             ans.add(idx);
-            return findAllIdx(arr, ans, target, idx  +1);
-        }else{
-            return findAllIdx(arr, ans, target, idx  +1);
         }
+        return findAllIdx(arr, ans, target, idx  +1);
     }
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
@@ -32,6 +31,6 @@ public class LinearSearchFindAllIdx {
         System.out.println("Give target: ");
         long target = input.nextLong();
 
-        System.out.println("All idx of target: " +  findAllIdx(arr, new ArrayList<Integer>(), target, 0));
+        System.out.println("All idx of target: " +  findAllIdx(arr, new ArrayList<>(), target, 0));
     }
 }
