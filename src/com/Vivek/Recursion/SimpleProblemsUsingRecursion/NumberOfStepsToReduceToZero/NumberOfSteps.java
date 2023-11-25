@@ -11,10 +11,8 @@ public class NumberOfSteps {
 
         if((n&1) == 0){
             return numberOfSteps(n/2, step + 1);
-        }else{
-            return numberOfSteps(n -1, step + 1);
         }
-
+        return numberOfSteps(n -1, step + 1);
     }
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
