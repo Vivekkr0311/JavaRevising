@@ -6,6 +6,7 @@ public class PatternProblem {
 
     static void upperTriangle(int row, int col){
         if(row == 0){
+            System.out.println(" <--- Upper Triangle above printed ---> ");
             return;
         }
 
@@ -18,8 +19,26 @@ public class PatternProblem {
             upperTriangle(row - 1, 0);
         }
     }
+
+    static void lowerTriangle(int row, int col){
+        if(row == 0){
+            System.out.println(" <--- Lower Triangle above printed ---> ");
+            return;
+        }
+
+        if(row > col){
+            upperTriangle(row, col  + 1);
+            System.out.print("* ");
+        }else{
+            //row == col
+            upperTriangle(row - 1, 0);
+            System.out.println();
+        }
+    }
+
     static void printPattern(int n){
         upperTriangle(n, 0);
+        lowerTriangle(n, 0);
     }
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
