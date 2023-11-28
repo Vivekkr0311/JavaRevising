@@ -27,11 +27,11 @@ public class PatternProblem {
         }
 
         if(row > col){
-            upperTriangle(row, col  + 1);
+            lowerTriangle(row, col  + 1);
             System.out.print("* ");
         }else{
             //row == col
-            upperTriangle(row - 1, 0);
+            lowerTriangle(row - 1, 0);
             System.out.println();
         }
     }
