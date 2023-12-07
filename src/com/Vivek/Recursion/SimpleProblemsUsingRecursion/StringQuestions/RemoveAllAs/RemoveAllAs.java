@@ -18,6 +18,19 @@ public class RemoveAllAs {
         }
     }
 
+    static String skipASolutionTwo(String unprocessed){
+        if(unprocessed.length() == 0){
+            return "";
+        }
+
+        char ch = unprocessed.charAt(0);
+        if(ch == 'a'){
+            return skipASolutionTwo(unprocessed.substring(1));
+        }else{
+            return ch + skipASolutionTwo(unprocessed.substring(1));
+        }
+    }
+
     static void skipAWhilePrinting(String str, int len){
         if(len < 0){
             return;
@@ -35,7 +48,12 @@ public class RemoveAllAs {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter your string containing 'a': ");
         String inputString = input.nextLine();
-//        skipAWhilePrinting(inputString, inputString.length() -1);
+
+        skipAWhilePrinting(inputString, inputString.length() -1);
+
         skipASolutionOne("", inputString);
+
+        String ans = skipASolutionTwo(inputString);
+        System.out.println(ans);
     }
 }
