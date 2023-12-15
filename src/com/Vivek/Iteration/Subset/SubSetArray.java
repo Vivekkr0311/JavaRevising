@@ -1,4 +1,4 @@
-package com.Vivek.Recursion.SimpleProblemsUsingRecursion.SubSetProblem;
+package com.Vivek.Iteration.Subset;
 
 import java.util.ArrayList;
 import java.util.List;
