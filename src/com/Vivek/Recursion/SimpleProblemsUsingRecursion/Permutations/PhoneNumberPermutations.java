@@ -4,6 +4,19 @@ import java.util.Scanner;
 
 public class PhoneNumberPermutations {
 
+    private static final String[] phonePadMapping = {
+            "", //0
+            "", //1
+            "abc", //2
+            "def", //3
+            "ghi", //4
+            "jkl", //5
+            "mno", //6
+            "pqrs", //7
+            "tux", //8
+            "wxyz" //9
+    };
+
     static void phonePad(String p, String up){
         if(up.isEmpty()){
             System.out.println(p);
@@ -18,12 +31,27 @@ public class PhoneNumberPermutations {
         }
     }
 
+    static void phonePadTwo(String p, String up){
+        if(up.isEmpty()){
+            System.out.println(p);
+            return;
+        }
+
+        int digit = up.charAt(0) - '0';
+        String letters = phonePadMapping[digit];
+
+        for(int i = 0; i < letters.length(); i++){
+            char letter = letters.charAt(i);
+            phonePad(p + letter, up.substring(1));
+        }
+    }
+
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter key combination: ");
         String keyCombination = input.nextLine();
 
-        phonePad("", keyCombination);
+        phonePadTwo("", keyCombination);
     }
 }
