@@ -6,7 +6,7 @@ public class CountingPath {
 
     static int path = 0;
     static void countingPath(int r, int c){
-        if(c <= 1 || r <= 1) {
+        if(c == 1 || r == 1) {
             path += 1;
             return;
         }
