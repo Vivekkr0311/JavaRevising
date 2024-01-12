@@ -1,5 +1,7 @@
 package com.Vivek.BackTracking;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class PrintingPathOfMatrix {
@@ -24,6 +26,28 @@ public class PrintingPathOfMatrix {
         if(r > 1) printPath(path + "V", r - 1, c);
         if(c > 1) printPath(path + "H", r, c - 1);
     }
+
+    static ArrayList<String> listPathWithDiag(String path, int r, int c){
+        if(r == 1 && c == 1){
+            ArrayList<String> ans = new ArrayList<>();
+            ans.add(path);
+            return ans;
+        }
+
+        ArrayList<String> list = new ArrayList<>();
+
+        if(r > 1 && c >1){
+            list.addAll(listPathWithDiag(path + "D", r - 1, c -1));
+        }
+        if(r > 1){
+            list.addAll(listPathWithDiag(path + "V", r - 1, c));
+        }
+        if(c > 1){
+            list.addAll(listPathWithDiag(path + "H", r, c - 1));
+        }
+        return list;
+    }
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int r, c;
@@ -32,5 +56,6 @@ public class PrintingPathOfMatrix {
 
         printPath("", r, c);
         printPathDiagonal("", r, c);
+        System.out.println(listPathWithDiag("", r, c));
     }
 }

@@ -15,6 +15,17 @@ public class CountingPathReturn {
         return left + right;
     }
 
+    static int countPathWithDiag(int r, int c){
+        if(r == 1 || c == 1){
+            return 1;
+        }
+
+        int left = countPathWithDiag(r - 1, c);
+        int right = countPathWithDiag(r, c - 1);
+        int middle = countPathWithDiag(r - 1, c - 1);
+
+        return left + right + middle;
+    }
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int r, c;
@@ -22,5 +33,6 @@ public class CountingPathReturn {
         r = input.nextInt(); c = input.nextInt();
 
         System.out.println("Number of path: " + countPath(r, c));
+        System.out.println("Number of paths including diagonal: " + countPathWithDiag(r, c));
     }
 }
