@@ -14,6 +14,7 @@ public class CountingPathReturn {
 
         return left + right;
     }
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int r, c;
