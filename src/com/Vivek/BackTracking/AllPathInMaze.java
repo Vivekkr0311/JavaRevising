@@ -55,6 +55,34 @@ public class AllPathInMaze {
         maze[r][c] = true;
     }
 
+    static int countPath = 0;
+    static void countAllPathSolution(boolean[][] maze, int r, int c){
+        if(r == maze.length - 1 && c == maze[0].length - 1){
+            countPath = countPath + 1;
+            return;
+        }
+
+        if(!maze[r][c]){ //When it is false, we have already visited this co-ordinate.
+            return;
+        }
+
+        maze[r][c] = false; //Making co-ordinate as visited.
+        if(r < maze.length - 1) {
+            countAllPathSolution(maze, r + 1, c);
+        }
+        if(c < maze[0].length - 1) {
+            countAllPathSolution(maze, r, c + 1);
+        }
+        if(r > 0) {
+            countAllPathSolution(maze, r - 1, c);
+        }
+        if(c > 0) {
+            countAllPathSolution(maze, r, c - 1);
+        }
+        //Making co-ordinate as not visited as recursion call is over.
+        maze[r][c] = true;
+    }
+
     public static void main(String[] args) {
         boolean [][] board = {
                 {true, true, true},
@@ -63,5 +91,7 @@ public class AllPathInMaze {
         };
 
         allPathSolution("", board, 0, 0);
+        countAllPathSolution(board, 0, 0);
+        System.out.println("Count of all paths: " + countPath);
     }
 }
