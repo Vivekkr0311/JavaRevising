@@ -26,12 +26,12 @@ public class NQueens {
     }
 
     static void display(boolean[][] board){
-        for(boolean[] arr: board){
-            for(boolean element: arr){
+        for(boolean[] row: board){
+            for(boolean element: row){
                 if(element){
                     System.out.print("Q ");
                 }else{
-                    System.out.println("X ");
+                    System.out.print("X ");
                 }
             }
             System.out.println();
@@ -66,11 +66,10 @@ public class NQueens {
     }
 
     public static void main(String[] args) {
-//        Scanner input = new Scanner(System.in);
-//        System.out.println("Enter dimension of your board: ");
-//        int n =  input.nextInt();
-        int n = 4;
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter dimension of your board: ");
+        int n =  input.nextInt();
         boolean[][] board = new boolean[n][n];
-        queens(board, 0);
+        System.out.println(queens(board, 0));
     }
 }
