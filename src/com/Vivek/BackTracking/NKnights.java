@@ -56,14 +56,15 @@ public class NKnights {
         if(knights == 0){
             printBoard(board);
             System.out.println();
+            return;
         }
 
-        if(row == board.length && col == board.length){
+        if(row == board.length - 1 && col == board.length - 1){
             return;
         }
 
         if(col == board.length){
-            nKnights(board, row + 1, col, knights);
+            nKnights(board, row + 1, 0, knights);
             return;
         }
         if(isSafe(board, row, col)){
