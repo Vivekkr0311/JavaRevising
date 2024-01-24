@@ -15,7 +15,7 @@ public class SudokoSolver {
         // check the row
         for(int i = 0; i < board.length; i++){
             // check if the number is already in the row or not.
-            if(board[row][col] == num){
+            if(board[row][i] == num){
                 return false;
             }
         }
@@ -25,7 +25,7 @@ public class SudokoSolver {
             // check if the number is already in the col or not.
             if(nums[col] == num){
                 return false;
-            } 
+            }
         }
 
         int sqrt = (int)(Math.sqrt(board.length));
@@ -48,13 +48,13 @@ public class SudokoSolver {
         int row = -1;
         int col = -1;
 
-        boolean emptyLeft = false;
-        for(int i = 0; i < row; i++){
-            for(int j = 0; j < col; j++){
+        boolean emptyLeft = true;
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n; j++){
                 if(board[i][j] == 0){
                     row = i;
                     col = j;
-                     emptyLeft = true;
+                     emptyLeft = false;
                      break;
                 }
             }
@@ -75,7 +75,6 @@ public class SudokoSolver {
                 board[row][col] = numbers;
                 if(solve(board)){
                     // found the answer
-                    displayBoard(board);
                     return true;
                 }else{
                     // Backtrack
@@ -101,6 +100,10 @@ public class SudokoSolver {
                 {0, 0, 5, 2, 0, 6, 3, 0, 0}
         };
 
-        System.out.println(solve(board));
+        if(solve(board)){
+            displayBoard(board);
+        }else{
+            System.out.println("Cannot be solved");
+        }
     }
 }
