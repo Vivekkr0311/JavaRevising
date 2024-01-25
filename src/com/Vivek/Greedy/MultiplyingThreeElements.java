@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class MultiplyingThreeElements {
 
+    // Most optimized
     static int solutionThree(int[] arr){
         Arrays.sort(arr);
         int threeHighestProd = arr[arr.length - 3] *  arr[arr.length - 2] *  arr[arr.length - 1];
