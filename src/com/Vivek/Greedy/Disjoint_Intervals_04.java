@@ -26,7 +26,7 @@ public class Disjoint_Intervals_04 {
     }
 
     static int mutuallyDisjointInterval(Pair[] list){
-        int count = 0;
+        int count = 1;
         Collections.sort(Arrays.asList(list));
 
         System.out.println("( " + list[0].first + ", " + list[0].second + ")");
@@ -41,7 +41,7 @@ public class Disjoint_Intervals_04 {
         }
         return count;
     }
-    
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("How many pairs??");
@@ -54,6 +54,6 @@ public class Disjoint_Intervals_04 {
             Pair p = new Pair(f, s);
             intervals[i] = p;
         }
-        mutuallyDisjointInterval(intervals);
+        System.out.println(mutuallyDisjointInterval(intervals));
     }
 }
