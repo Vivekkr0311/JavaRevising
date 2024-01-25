@@ -3,7 +3,7 @@ package com.Vivek.Greedy;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class MultiplyingThreeElements {
+public class MultiplyingThreeElements_03 {
 
     // Most optimized
     static int solutionThree(int[] arr){
