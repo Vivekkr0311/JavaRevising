@@ -1,5 +1,6 @@
 package com.Vivek.Greedy;
 
+// Wrong solution
 public class TurningAllBulbsOn_02 {
 
     static int bulbs(int[] arr){
