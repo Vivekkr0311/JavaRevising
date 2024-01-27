@@ -13,21 +13,31 @@ public class DistributingCandy {
         return total;
     }
     static int distributingCandy(int[] childrens){
-        Arrays.sort(childrens);
-        System.out.println(Arrays.toString(childrens));
-        int[] total_candy = new int[childrens.length];
-        total_candy[0] = 1;
-        for(int i = 1; i < childrens.length; i++){
-            if(childrens[i - 1] < childrens[i]){
-                total_candy[i] = total_candy[i - 1] + 1;
-            }else{
-                total_candy[i] = total_candy[i - 1];
+        int[] candies = new int[childrens.length];
+
+        for(int i = 0; i < childrens.length; i++){
+            candies[i] = 1;
+        }
+
+        // Left side checking
+        for(int i = 0; i < childrens.length - 1; i++){
+            if(childrens[i] < childrens[i + 1]){
+                candies[i + 1] = candies[i] + 1;
             }
         }
-        return sumOfCandy(total_candy);
+
+        // Right side checking
+        for(int i = childrens.length - 2; i >= 0; i--){
+            if(childrens[i] >  childrens[i + 1] && candies[i] <= candies[i + 1]){
+                candies[i] = candies[i + 1] + 1;
+            }
+        }
+
+        return sumOfCandy(candies);
     }
 
     public static void main(String[] args) {
+        //Test case: 1, 1, 2, 2, 10, 10, 10
         Scanner input = new Scanner(System.in);
         System.out.println("Total number of students ??");
         int n = input.nextInt();
