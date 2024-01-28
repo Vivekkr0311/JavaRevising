@@ -13,9 +13,9 @@ public class Mice_In_The_Hole_08 {
         for(int i = 0; i < mice.length; i++){
             ans[i] = Math.abs(holes[i] - mice[i]);
         }
-        int max = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
         for(int x : ans){
-            if(x < max){
+            if(x > max){
                 max = x;
             }
         }
