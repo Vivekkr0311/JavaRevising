@@ -6,6 +6,27 @@ import java.util.Scanner;
 
 public class Find_Majority_09 {
 
+    public int majorityElement(int[] numbers) {
+        int n = numbers.length;
+        int ans = 0;
+
+        for (int b = 0; b < 32; b++) {
+            int ones = 0;
+
+            for (int num : numbers) {
+                if ((1 << b & num) != 0) {
+                    ones++;
+                }
+            }
+
+            if (ones > n / 2) {
+                ans += (1 << b);
+            }
+        }
+
+        return ans;
+    }
+
     static int majority(int[] arr){
         Map<Integer, Integer> map = new HashMap<>();
         int n = arr.length / 2;
