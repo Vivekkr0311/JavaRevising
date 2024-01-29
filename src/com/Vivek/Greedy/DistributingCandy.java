@@ -60,7 +60,7 @@ public class DistributingCandy {
             return r.length-1;
         }
     }
-    
+
     static int sumOfCandy(int[] candies){
         System.out.println(Arrays.toString(candies));
         int total = 0;
