@@ -37,18 +37,16 @@ public class Fuel_10 {
         int n = gas.length;
         int curr = 0;
         int ansIdx = 0;
-        List<Integer> allAns = new ArrayList<>();
         for(int startSegment = 0; startSegment + n < doubleCostArray.length; startSegment++){
             int[] ansArr = calculateCost(doubleGasArray, doubleCostArray, startSegment, startSegment + n, curr);
              curr = ansArr[0];
              if(curr < 0){
                  curr = 0;
-             }else{
-                 allAns.add(curr);
+                 continue;
              }
-             ansIdx = ansArr[1];
+             ansIdx = ansArr[1] % n + 1;
         }
-        System.out.println(curr + " " + ansIdx);
+        System.out.println("Cost is " + curr + " and starting idx will be " + ansIdx);
     }
 
     public static int canCompleteCircuit(int[] A, int[] B) {
