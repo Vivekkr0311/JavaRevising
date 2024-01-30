@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Seats_07 {
+public class Seats {
 
     // Most optimal solution
     public static void seatsThree(String input){
