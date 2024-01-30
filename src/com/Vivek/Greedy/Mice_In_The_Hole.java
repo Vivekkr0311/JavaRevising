@@ -3,7 +3,7 @@ package com.Vivek.Greedy;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Mice_In_The_Hole_08 {
+public class Mice_In_The_Hole {
 
     static int miceInTheHole(int[] mice, int[] holes){
         Arrays.sort(mice);

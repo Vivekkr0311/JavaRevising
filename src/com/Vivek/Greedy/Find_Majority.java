@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Find_Majority_09 {
+public class Find_Majority {
 
     public int majorityElement(int[] numbers) {
         int n = numbers.length;

@@ -1,11 +1,8 @@
 package com.Vivek.Greedy;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
-public class Fuel_10 {
+public class Fuel {
 
     static int[] doubleTheArray(int[] arr){
         int n = arr.length;

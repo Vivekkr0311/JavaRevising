@@ -2,7 +2,7 @@ package com.Vivek.Greedy;
 
 import java.util.Scanner;
 
-public class MeetingRoomRequired_06 {
+public class MeetingRoomRequired {
 
     static class Pair{
         int start; int end;

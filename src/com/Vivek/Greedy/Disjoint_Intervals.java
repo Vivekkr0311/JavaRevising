@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class Disjoint_Intervals_04 {
+public class Disjoint_Intervals {
 
     static class Pair implements Comparable<Pair>{
         int first, second;

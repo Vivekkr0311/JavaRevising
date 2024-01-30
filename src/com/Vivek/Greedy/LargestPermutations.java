@@ -3,7 +3,7 @@ package com.Vivek.Greedy;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class LargestPermutations_05 {
+public class LargestPermutations {
 
     static int findMax(int[] arr, int start, int end){
         int maxIdx = start;
