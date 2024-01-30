@@ -1,6 +1,8 @@
 package com.Vivek.Greedy;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Fuel_10 {
@@ -35,11 +37,14 @@ public class Fuel_10 {
         int n = gas.length;
         int curr = 0;
         int ansIdx = 0;
+        List<Integer> allAns = new ArrayList<>();
         for(int startSegment = 0; startSegment + n < doubleCostArray.length; startSegment++){
             int[] ansArr = calculateCost(doubleGasArray, doubleCostArray, startSegment, startSegment + n, curr);
              curr = ansArr[0];
              if(curr < 0){
                  curr = 0;
+             }else{
+                 allAns.add(curr);
              }
              ansIdx = ansArr[1];
         }
@@ -69,6 +74,23 @@ public class Fuel_10 {
 
         return -1;
     }
+
+    static int canCompleteCircuitEfficient(int[] gas, int[] cost){
+        int total = 0;
+        int curr = 0;
+        int station = 0;
+        for(int i = 0; i < cost.length; i++) {
+            int diff = gas[i] - cost[i];
+            curr += diff;
+            total += diff;
+            if(curr < 0) {
+                curr = 0;
+                station = (i + 1) % cost.length;
+            }
+        }
+        return total >= 0 ? station : -1;
+    }
+
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
