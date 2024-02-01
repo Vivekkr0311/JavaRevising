@@ -52,6 +52,6 @@ public class AssignCookies {
             cookies[i] = input.nextInt();
         }
 
-        System.out.println("Maximum kids that can be feed: " + findContentChildrens(kids, cookies, 0, 0));
+        System.out.println("Maximum kids that can be feed: " + findContentChildren(kids, cookies));
     }
 }
