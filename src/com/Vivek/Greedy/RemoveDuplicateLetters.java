@@ -7,39 +7,39 @@ import java.util.Stack;
 public class RemoveDuplicateLetters {
 
     // Faster solution
-//    public static String removeDuplicate(String s) {
-//        int[] lastOccurrence = new int[26];
-//        boolean[] seen = new boolean[26];
-//        Stack<Character> stack = new Stack<>();
-//        for (int i = 0; i < s.length(); i++) {
-//            lastOccurrence[s.charAt(i) - 'a'] = i;
-//        }
-//
-//        for (int i = 0; i < s.length(); i++) {
-//            char currentChar = s.charAt(i);
-//
-//
-//            if (seen[currentChar - 'a']) {
-//                continue;
-//            }
-//
-//
-//            while (!stack.isEmpty() && currentChar < stack.peek() && i < lastOccurrence[stack.peek() - 'a']) {
-//                seen[stack.pop() - 'a'] = false;
-//            }
-//
-//            stack.push(currentChar);
-//            seen[currentChar - 'a'] = true;
-//        }
-//
-//
-//        StringBuilder result = new StringBuilder();
-//        for (char c : stack) {
-//            result.append(c);
-//        }
-//
-//        return result.toString();
-//    }
+    public static String removeDuplicate(String s) {
+        int[] lastOccurrence = new int[26];
+        boolean[] seen = new boolean[26];
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            lastOccurrence[s.charAt(i) - 'a'] = i;
+        }
+
+        for (int i = 0; i < s.length(); i++) {
+            char currentChar = s.charAt(i);
+
+
+            if (seen[currentChar - 'a']) {
+                continue;
+            }
+
+
+            while (!stack.isEmpty() && currentChar < stack.peek() && i < lastOccurrence[stack.peek() - 'a']) {
+                seen[stack.pop() - 'a'] = false;
+            }
+
+            stack.push(currentChar);
+            seen[currentChar - 'a'] = true;
+        }
+
+
+        StringBuilder result = new StringBuilder();
+        for (char c : stack) {
+            result.append(c);
+        }
+
+        return result.toString();
+    }
 
     static String removeDuplicateLetter(String up, String p){
     // Not finding lexicographical smallest
