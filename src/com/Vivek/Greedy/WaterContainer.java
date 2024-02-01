@@ -21,16 +21,20 @@ public class WaterContainer {
 
     static int waterContainer(int[] arr){
         int area = 0;
-        int frontWall = 0;
-        int rearWall = arr.length -1;
+        int frontWallIdx = 0;
+        int rearWallIdx = arr.length -1;
 
-        while(frontWall < rearWall){
-            if(arr[frontWall] < arr[rearWall]){
-                area = Math.max(area, arr[frontWall] * (rearWall - frontWall));
-                frontWall++;
+        while(frontWallIdx < rearWallIdx){
+            int frontWallSize = arr[frontWallIdx];
+            int rearWallSize = arr[rearWallIdx];
+            if(frontWallSize < rearWallSize){
+                int baseDiff = rearWallIdx - frontWallIdx;
+                area = Math.max(area, frontWallSize * baseDiff);
+                frontWallIdx++;
             }else{
-                area = Math.max(area, arr[rearWall] * (rearWall - frontWall));
-                rearWall--;
+                int baseDiff = rearWallIdx - frontWallIdx;
+                area = Math.max(area, rearWallSize * baseDiff);
+                rearWallIdx--;
             }
         }
         return area;
