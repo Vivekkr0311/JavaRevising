@@ -2,6 +2,7 @@ package com.Vivek.Greedy;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class ActivitySolutionProblem {
@@ -32,24 +33,31 @@ public class ActivitySolutionProblem {
         }
     }
 
+    static class MyCmp implements Comparator<Activity> {
+        @Override
+        public int compare(Activity a1, Activity a2) {
+            return a1.end - a2.end;
+        }
+    }
+
     public static int maxActivity(Activity[] activities){
         int count = 1;
-        Collections.sort(Arrays.asList(activities));
-        System.out.println(activities[0].start + " " + activities[0].end);
-
-        int endOfInterval = activities[0].end;
-
+//        Collections.sort(Arrays.asList(activities));
+        Arrays.sort(activities, new MyCmp());
+        int prev = 0;
         for(int i = 1; i < activities.length; i++){
-            if(activities[i].start > endOfInterval){
+            if(activities[i].start >= activities[prev].end){
                 count++;
-                System.out.println(activities[i].start + " " + activities[i].end);
-                endOfInterval = activities[i].end;
+                prev = i;
             }
         }
         return count;
     }
 
     public static void main(String[] args) {
+//        12 25
+//        10 20
+//        20 30
         Scanner input = new Scanner(System.in);
         System.out.println("How many activity do you have ?");
         int n = input.nextInt();
