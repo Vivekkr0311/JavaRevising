@@ -48,7 +48,6 @@ public class FractionalKnapSack {
         System.out.println(Arrays.toString(items));
         int totalProfit = items[0].value;
         capacity -= items[0].weight;
-        int lastIdx = 0;
         for(int i = 1; i < items.length; i++){
             if(capacity >= 0 && capacity >= items[i].weight){
                 totalProfit += items[i].value;
@@ -68,7 +67,6 @@ public class FractionalKnapSack {
         double count = 1;
         Arrays.sort(items, new MyCmpWeight());
         System.out.println(Arrays.toString(items));
-        int lastIdx = 0;
         int totalProfit = items[0].value;
         capacity -= items[0].weight;
         for(int i = 1; i < items.length; i++){
@@ -91,7 +89,6 @@ public class FractionalKnapSack {
         Arrays.sort(items, new MyCmpProfitOverWeight());
 
         System.out.println(Arrays.toString(items));
-        int lastIdx = 0;
         int totalProfit = items[0].value;
         capacity -= items[0].weight;
         for(int i = 1; i < items.length; i++){
