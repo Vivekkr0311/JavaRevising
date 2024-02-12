@@ -88,8 +88,8 @@ public class JobSequencingProblem {
         int countJob = 0; int profit = 0;
         for(int i = 0; i < jobs.length; i++){
             for(int j = jobs[i].deadline; j > 0; j--){
-                if(takenJob[i] == -1){
-                    takenJob[i] = i;
+                if(takenJob[j] == -1){
+                    takenJob[j] = i;
                     countJob++;
                     profit += jobs[i].profit;
                     break;
