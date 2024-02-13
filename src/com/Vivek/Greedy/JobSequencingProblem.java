@@ -81,7 +81,7 @@ public class JobSequencingProblem {
         }
 
         int[] takenJob = new int[maxDeadline + 1];
-        for(int i = 1; i <= jobs.length; i++){
+        for(int i = 1; i <= maxDeadline; i++){
             takenJob[i] = -1;
         }
 
