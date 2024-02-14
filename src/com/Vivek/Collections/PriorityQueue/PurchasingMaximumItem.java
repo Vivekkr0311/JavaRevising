@@ -5,6 +5,16 @@ import java.util.Scanner;
 
 public class PurchasingMaximumItem {
 
+    // Less code
+    static int maximumtItemTwo(PriorityQueue<Integer> items, int sum){
+        int count = 0;
+        while(sum >= 0 && !items.isEmpty() && items.peek() <= sum){
+            sum -= items.poll();
+            count++;
+        }
+        return count;
+    }
+
     static int maximumtItem(PriorityQueue<Integer> items, int sum){
         int count = 0;
         while(sum >= 0 && !items.isEmpty()){
@@ -18,6 +28,7 @@ public class PurchasingMaximumItem {
         }
         return count;
     }
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("How many item do you have ? ");
@@ -30,6 +41,9 @@ public class PurchasingMaximumItem {
 
         System.out.println("Enter sum of amount you have: ");
         int sum = input.nextInt();
+        PriorityQueue<Integer> items2 = new PriorityQueue<>();
+        items2.addAll(items);
         System.out.println("Maximum item that can be purchased with the sum " + sum + " is: " + maximumtItem(items, sum));
+        System.out.println("Maximum item that can be purchased with the sum " + sum + " is: " + maximumtItemTwo(items2, sum));
     }
 }
