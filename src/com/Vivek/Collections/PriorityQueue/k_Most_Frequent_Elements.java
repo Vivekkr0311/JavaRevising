@@ -51,6 +51,33 @@ public class k_Most_Frequent_Elements {
         }
     }
 
+    static void kMostFrequenctEfficientLinearTime(Integer[] arr, int k){
+        Map<Integer, Integer> map = new HashMap<>();
+        for(int i = 0; i < arr.length; i++){
+            map.put(arr[i], map.getOrDefault(arr[i], 1) + 1);
+        }
+
+        List<List<Integer>> freq = new ArrayList<>();
+        for(int i = 0; i < arr.length; i++){
+            freq.add(new ArrayList<>());
+        }
+
+        for(Map.Entry<Integer, Integer> m : map.entrySet()){
+            freq.get(m.getValue()).add(m.getKey());
+        }
+
+        int count = 0;
+        for(int i = arr.length - 1; i > 0; i--){
+            for(int x : freq.get(i)){
+                System.out.print(x + " ");
+                count++;
+                if(count == k){
+                    return;
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
         // input: 10 5 20 5 10 10 30, n = 7, k=2
         // output: 10=4, 5=3
@@ -67,5 +94,7 @@ public class k_Most_Frequent_Elements {
         kMostFrequentElement(arr, k);
         System.out.println();
         kMostFrequenctEfficient(arr, k);
+        System.out.println();
+        kMostFrequenctEfficientLinearTime(arr, k);
     }
 }
