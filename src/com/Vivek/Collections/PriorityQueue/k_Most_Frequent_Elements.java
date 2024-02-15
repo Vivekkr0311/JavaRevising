@@ -1,9 +1,6 @@
 package com.Vivek.Collections.PriorityQueue;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class k_Most_Frequent_Elements {
 
@@ -13,25 +10,30 @@ public class k_Most_Frequent_Elements {
             map.put(arr[i], map.getOrDefault(arr[i], 1) + 1);
         }
 
-        for(Map.Entry<Integer, Integer> item: map.entrySet()){
-            System.out.println(item.getKey() + " " + item.getValue());
-        }
-
         PriorityQueue<Map.Entry<Integer, Integer>> maxHeap = new PriorityQueue<>(
-                (Map.Entry<Integer, Integer> m1, Map.Entry<Integer, Integer> m2) -> m1.getValue() - m2.getValue();
+                Comparator.comparing(Map.Entry :: getValue, Collections.reverseOrder())
         );
         for(Map.Entry<Integer, Integer> item : map.entrySet()){
             maxHeap.add(item);
         }
 
-        while(!maxHeap.isEmpty()) {
+        while(!maxHeap.isEmpty() && k > 0) {
             System.out.println(maxHeap.peek().getKey() + " " + maxHeap.peek().getValue());
             maxHeap.poll();
+            k--;
         }
     }
     public static void main(String[] args) {
-        Integer[] arr = { 10, 5, 20, 5, 10, 10, 30};
-        int k = 2;
+        Scanner input = new Scanner(System.in);
+        System.out.println("How many element do you have? ");
+        int n = input.nextInt();
+        System.out.println("Enter each elements: ");
+        Integer[] arr = new Integer[n];
+        for(int i = 0; i < n; i++){
+            arr[i] = input.nextInt();
+        }
+        System.out.println("Enter value of 'k', to take k most frequent elements: ");
+        int k = input.nextInt();
         kMostFrequentElement(arr, k);
     }
 }
