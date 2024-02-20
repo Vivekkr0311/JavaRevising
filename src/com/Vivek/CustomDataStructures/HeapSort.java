@@ -15,8 +15,7 @@ public class HeapSort {
         for(int i = 1; i + 1 <= arr.size(); i++){
             int maxItemIdx = 0;
             swap(arr, maxItemIdx, arr.size() - i);
-            heapify(arr, arr.size() - (i+1));
-            System.out.println(arr);
+            heapify(arr, arr.size() - (i + 1));
         }
     }
 
@@ -34,7 +33,7 @@ public class HeapSort {
                 arr.set(i, arr.get(parentIdx));
                 arr.set(parentIdx, temp);
             }
-            i = parentIdx;
+            i--;
         }
         return arr;
     }
@@ -46,6 +45,7 @@ public class HeapSort {
     }
     public static void main(String[] args) {
         // 7 5 6 20
+        // 7 8 2 4 100
         Scanner input = new Scanner(System.in);
         System.out.println("How many elements? ");
         int n = input.nextInt();

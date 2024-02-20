@@ -20,7 +20,7 @@ public class Heaps {
                 arr.set(i, arr.get(parentIdx));
                 arr.set(parentIdx, temp);
             }
-            i = parentIdx;
+            i--;
         }
         return arr;
     }
@@ -31,6 +31,15 @@ public class Heaps {
         return arr;
     }
     public static void main(String[] args) {
+//        How many elements?
+//                5
+//        Enter each elements:
+//        7 8 2 4 100
+//        [100, 8, 2, 4, 7]
+//        [8, 7, 2, 4, 100]
+//        [4, 7, 2, 8, 100]
+//        [7, 2, 4, 8, 100]
+//        [2, 7, 4, 8, 100]
         Scanner input = new Scanner(System.in);
         System.out.println("How many elements? ");
         int n = input.nextInt();
