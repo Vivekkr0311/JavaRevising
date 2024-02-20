@@ -12,10 +12,12 @@ public class HeapSort {
     }
 
     static void heapsort(ArrayList<Integer> arr){
-        int maxItemIdx = 0;
-        swap(arr, maxItemIdx, arr.size() -1);
-        heapify(arr, arr.size() - 2);
-        System.out.println(arr);
+        for(int i = 1; i + 1 <= arr.size(); i++){
+            int maxItemIdx = 0;
+            swap(arr, maxItemIdx, arr.size() - i);
+            heapify(arr, arr.size() - (i+1));
+            System.out.println(arr);
+        }
     }
 
     static ArrayList<Integer> heapify(ArrayList<Integer> arr, int n){
@@ -55,6 +57,6 @@ public class HeapSort {
         }
         System.out.println(arr);
         heapsort(arr);
-//        System.out.println(arr);
+        System.out.println(arr);
     }
 }
