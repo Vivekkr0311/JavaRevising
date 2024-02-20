@@ -7,11 +7,11 @@ import java.util.Scanner;
 public class Heaps {
 
     static ArrayList<Integer> heapify(ArrayList<Integer> arr, int n){
-        for(int i = n; i > 0; i--){
-            if(arr.get(i) > arr.get(i/2)){
+        for(int i = n; i >  0; i--){
+            if(arr.get(i) > arr.get((i - 1)/2)){
                 int temp = arr.get(i);
-                arr.set(i, arr.get(i/2));
-                arr.set(i/2, temp);
+                arr.set(i, arr.get((i- 1)/2));
+                arr.set((i - 1)/2, temp);
             }else{
                 break;
             }
