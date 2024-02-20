@@ -19,10 +19,8 @@ public class Heaps {
                 int temp = arr.get(i);
                 arr.set(i, arr.get(parentIdx));
                 arr.set(parentIdx, temp);
-                i = parentIdx;
-            } else {
-                break;
             }
+            i = parentIdx;
         }
         return arr;
     }
