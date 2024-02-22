@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Fibonacci_Memoization {
 
-    // Memoization Approach (Memoization)
+    // Memoization Approach (Top down approach)
 
     static int fibonacciMemoization(int[] memo, int n){
         if(memo[n] == -1){
