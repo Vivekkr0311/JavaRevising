@@ -1,7 +1,5 @@
 package com.Vivek.Greedy.HuffmanCoderr;
 
-import com.Vivek.Greedy.HuffmanCoderr.Heap;
-
 import java.util.HashMap;
 import java.util.Map;
 

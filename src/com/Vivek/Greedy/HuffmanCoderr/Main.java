@@ -1,6 +1,5 @@
 package com.Vivek.Greedy.HuffmanCoderr;
 
-import com.Vivek.Greedy.HuffmanCoderr.*;
 public class Main {
     public static void main(String[] args) throws Exception{
         String str = "abbccda";
