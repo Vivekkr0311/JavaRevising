@@ -6,6 +6,22 @@ import java.util.Scanner;
 
 public class LCSRecursion {
 
+    static int LCS_Two(String s1, String s2, int m, int n){
+        // This approach does not need to generate all combination of common subsequence.
+        if(m == 0 || n == 0){
+            return 0;
+        }
+
+        if(s1.charAt(m-1) == s2.charAt(n-1)){
+            return 1 + LCS_Two(s1, s2, m - 1, n -1);
+        }else{
+            return Math.max(
+              LCS_Two(s1, s2, m, n - 1),
+              LCS_Two(s1, s2, m - 1, n)
+            );
+        }
+    }
+
     static int LCS(ArrayList<String> first, ArrayList<String> second){
         int lcs = 0;
         for(int i = 0; i < first.size(); i++){
@@ -44,5 +60,6 @@ public class LCSRecursion {
         ArrayList<String> listOne = allSubsequence("", ip);
         ArrayList<String> listTwo = allSubsequence("", ip2);
         System.out.println(LCS(listOne, listTwo));
+        System.out.println(LCS_Two(ip, ip2, ip.length(), ip.length()));
     }
 }
