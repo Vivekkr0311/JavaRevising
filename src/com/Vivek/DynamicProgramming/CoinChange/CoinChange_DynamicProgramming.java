@@ -9,10 +9,15 @@ public class CoinChange_DynamicProgramming {
         int[][] table =  new int[coins.length + 1][sum +1];
 
         for(int i = 0; i < coins.length + 1; i++){
+            // This represents, how many ways are there to make sum '0' using coins[i], i = 0, 1, 2 ... all coins.
+            // 1 way right ?? We will not take any coin then we will be able to make sum '0'.
+            // This is why, we are assigning 1 here.
             table[i][0] = 1;
         }
 
         for(int i = 1; i < sum + 1; i++){
+            // This represents, having '0' coins, how many ways are there to make sum i = 0, 1, 2, 3, 4, 5.. till sum.
+            // '0' ways right ?? so this is why we are assigning '0's here.
             table[0][i] = 0;
         }
 
