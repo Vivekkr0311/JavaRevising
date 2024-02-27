@@ -15,6 +15,8 @@ public class CoinChange_DynamicProgramming {
             table[i][0] = 1;
         }
 
+        // Below loop is not required in java as all values by default will have '0'.
+        // But the sake of understanding this algorithm, I am keeping it here ;)
         for(int i = 1; i < sum + 1; i++){
             // This represents, having '0' coins, how many ways are there to make sum i = 0, 1, 2, 3, 4, 5.. till sum.
             // '0' ways right ?? so this is why we are assigning '0's here.
