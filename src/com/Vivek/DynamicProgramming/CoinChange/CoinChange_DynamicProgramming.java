@@ -17,11 +17,16 @@ public class CoinChange_DynamicProgramming {
         }
 
         for(int i = 1; i < coins.length + 1; i++){
+            // table[i][j]: represent how many ways are there you can make the sum 'j' using coins from coins[i - 1] to coins[0].
             for(int j = 1; j < sum + 1; j++){
-               if(coins[i - 1] > j){
-                   table[i][j] = table[i - 1][j];
-               }else{
+               if(coins[i - 1] <= j){ // if current coin coins[i - 1] is <= to the sum, we can make the sum 'j' using this coin 'coin[i -1]'.
                    table[i][j] = table[i][j - coins[i - 1]] + table[i - 1][j];
+                   // table[i][j]: is computed using if we consider the coin 'coin[i -1]', sum will decrement 'j - coin[i -1]' using this coin
+                   // and (plus) if we don't consider this coin, sum (j) will be intact. We find ways of both these condition and sum it.
+                   // like we did in the recursion solution.
+               }else{
+                   // We current coin is greater than the sum, simply ignore this coin, then sum (j) will be as it is.
+                   table[i][j] = table[i -1][j];
                }
             }
         }
@@ -43,5 +48,6 @@ public class CoinChange_DynamicProgramming {
         System.out.println("What is the sum you wanna make up using these coins ? ");
         int sum = input.nextInt();
         int ans = coinChange(coins, sum);
+        System.out.println("Number ways you can make the sum " +  sum + " using coins " + Arrays.toString(coins) + " are " + ans);
     }
 }
