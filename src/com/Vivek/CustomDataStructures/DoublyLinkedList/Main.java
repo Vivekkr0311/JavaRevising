@@ -8,9 +8,9 @@ public class Main {
         list.insertFirst(6);
         list.insertFirst(7);
 
-//        list.insertLast(10);
+        list.insertLast(10);
 
-//        list.insertAt(100, 2);
+        list.insertAt(100, 2);
         list.displayForward();
         list.displayBackward();
     }

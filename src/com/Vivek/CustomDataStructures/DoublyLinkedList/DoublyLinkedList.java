@@ -27,6 +27,7 @@ public class DoublyLinkedList {
             Node newNode = new Node(data);
             head = newNode;
             tail = newNode;
+            size++;
             return;
         }
         Node newNode =  new Node(data);
@@ -37,6 +38,7 @@ public class DoublyLinkedList {
             head.prev = newNode;
         }
         head = newNode;
+        size++;
     }
 
     public void insertLast(int data){
@@ -62,12 +64,16 @@ public class DoublyLinkedList {
         }
 
         Node temp = head;
-        for(int i = 0; i < idx; i++){
+        for(int i = 1; i < idx; i++){
             temp = temp.next;
         }
 
-        Node newNode = new Node(data, temp, temp.next.next);
+        Node newNode = new Node(data);
+        newNode.next = temp.next;
+        temp.next.prev = newNode;
+        newNode.prev = temp;
         temp.next = newNode;
+        size++;
     }
 
     public void displayForward(){
@@ -86,5 +92,9 @@ public class DoublyLinkedList {
             temp = temp.prev;
         }
         System.out.println(" START");
+    }
+
+    public int getSize(){
+        return this.size;
     }
 }
