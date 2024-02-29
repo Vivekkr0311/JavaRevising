@@ -12,5 +12,22 @@ public class Main {
 
         queue.remove();
         queue.display();
+
+        ArrayQ queueTwo = new ArrayQ(5);
+        queueTwo.insert(10);
+        queueTwo.insert(12);
+        queueTwo.insert(20);
+        queueTwo.insert(40);
+
+        queueTwo.display();
+        queueTwo.remove();
+        queueTwo.display();
+
+        queueTwo.insert(1000);
+        queueTwo.display();
+        queueTwo.remove();
+        queueTwo.display();
+
+
     }
 }
