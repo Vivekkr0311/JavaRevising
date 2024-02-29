@@ -78,6 +78,47 @@ public class LinkedList {
         System.out.println(" END");
     }
 
+    public void deleteFirst(){
+        head = head.next;
+        size--;
+    }
+
+    public void deleteEnd(){
+        Node temp = head;
+        while(temp.next != tail){
+            temp = temp.next;
+        }
+        temp.next = null;
+        tail = temp;
+        size--;
+    }
+
+    public void deleteFrom(int idx){
+        if(idx < 0){
+            System.out.println("Invalid idx");
+            return;
+        }
+        if(idx > size){
+            System.out.println("Size is " + getSize());
+            System.out.println("Cannot delete from " + idx);
+            return;
+        }
+        if(idx == 0){
+            deleteFirst();
+            return;
+        }
+        if(idx == size){
+            deleteEnd();
+            return;
+        }
+        Node temp = head;
+        for(int i = 1; i < idx; i++){
+            temp = temp.next;
+        }
+        temp.next = temp.next.next;
+        size--;
+    }
+
     public int getSize(){
         return this.size;
     }

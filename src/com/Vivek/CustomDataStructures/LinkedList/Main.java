@@ -13,6 +13,13 @@ public class Main {
         list.insertAt(200, 1);
         list.display();
         list.insertAt(4, 464);
-        System.out.println(list.getSize());
+        System.out.println("<--- Deleting --->");
+        list.display();
+        list.deleteFirst();
+        list.display();
+        list.deleteEnd();
+        list.display();
+        list.deleteFrom(2);
+        list.display();
     }
 }
