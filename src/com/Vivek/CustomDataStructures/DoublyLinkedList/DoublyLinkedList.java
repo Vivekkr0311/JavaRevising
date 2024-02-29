@@ -94,6 +94,36 @@ public class DoublyLinkedList {
         System.out.println(" START");
     }
 
+    public void deleteFirst(){
+        head = head.next;
+        head.prev = null;
+        size--;
+    }
+
+    public void deleteLast(){
+        tail = tail.prev;
+        tail.next = null;
+        size--;
+    }
+
+    public void deleteFrom(int idx){
+        if(idx == 0){
+            deleteFirst();
+            return;
+        }
+        if(idx == size - 1){
+            deleteLast();
+            return;
+        }
+        Node temp = head;
+        for(int i = 1; i < idx; i++){
+            temp = temp.next;
+        }
+
+        temp.next = temp.next.next;
+        temp.next.prev = temp;
+    }
+
     public int getSize(){
         return this.size;
     }
