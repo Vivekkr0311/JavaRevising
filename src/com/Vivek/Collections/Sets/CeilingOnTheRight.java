@@ -9,7 +9,7 @@ public class CeilingOnTheRight {
         TreeSet<Integer> treeSet = new TreeSet<>();
         int[] res = new int[arr.length];
 
-        for(int i = arr.length -1; i > 0; i--){
+        for(int i = arr.length -1; i >= 0; i--){
             Integer ceil = treeSet.ceiling(arr[i]);
             if(ceil == null){
                 res[i] = -1;
