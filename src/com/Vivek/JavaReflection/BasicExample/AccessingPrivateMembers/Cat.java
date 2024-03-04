@@ -18,6 +18,10 @@ public class Cat {
         this.age = age;
     }
 
+    private void privateMethod(){
+        System.out.println("This is a private method!!");
+    }
+
     @Override
     public String toString(){
         return this.name + " " + this.age;
