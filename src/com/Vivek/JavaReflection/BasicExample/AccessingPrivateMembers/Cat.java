@@ -22,6 +22,10 @@ public class Cat {
         System.out.println("This is a private method!!");
     }
 
+    private static void privateAndStatic(String arg){
+        System.out.println("This private and static method, parameter passed is " + arg);
+    }
+
     @Override
     public String toString(){
         return this.name + " " + this.age;

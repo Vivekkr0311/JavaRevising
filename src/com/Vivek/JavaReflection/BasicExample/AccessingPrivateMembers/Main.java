@@ -29,6 +29,11 @@ public class Main {
                 // This throw "IllegalAccessException".
                 m.invoke(myCat);
             }
+            if(m.getName().equals("privateAndStatic")){
+                m.setAccessible(true);
+                // for static methods we don't give objects.
+                m.invoke(null, "HAHA !!");
+            }
         }
     }
 }
