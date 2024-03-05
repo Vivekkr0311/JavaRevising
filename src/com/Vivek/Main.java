@@ -8,7 +8,7 @@ public class Main {
         String nameTwo = "Vivek";
         // Both are refering to the same String object.
         System.out.println(name == nameTwo);
-        
+
         //Now a new String is object is created therefore now
         //both variable will be refering to two different String variables.
         nameTwo = new String("Vivek");
