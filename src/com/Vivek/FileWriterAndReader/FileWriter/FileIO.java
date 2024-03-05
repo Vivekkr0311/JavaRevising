@@ -9,6 +9,7 @@ public class FileIO {
             String fullPath = currentDir + "/src/com/Vivek/FileWriterAndReader/FileWriter/output.txt";
             BufferedWriter writer = new BufferedWriter(new FileWriter(fullPath));
             writer.write("WRITING TO THE FILE!!");
+            writer.write("\nWRITING TO THE FILE!!");
             writer.close();
         } catch(Exception e){
             System.out.println(e.getMessage());
