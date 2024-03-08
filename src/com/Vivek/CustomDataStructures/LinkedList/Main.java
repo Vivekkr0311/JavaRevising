@@ -22,7 +22,7 @@ public class Main {
         list.deleteFrom(2);
         list.display();
 
-        list.insertAtRecursion(1000, 1);
+        list.insertAtRecursion(1000, 3);
         list.display();
     }
 }
