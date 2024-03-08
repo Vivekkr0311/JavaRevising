@@ -69,6 +69,33 @@ public class LinkedList {
         size++;
     }
 
+    private void insertRecursion(Node temp, int data, int idx, int step){
+        if(idx == 0){
+            insertFirst(data);
+            return;
+        }else if(step == idx - 1){
+            Node temp2 = temp;
+            Node newNode = new Node(data);
+            newNode.next = temp2.next;
+            temp2.next = newNode;
+            size++;
+            return;
+        }else if(idx == size - 1){
+            insertEnd(data);
+            return;
+        }
+        insertRecursion(temp.next, data, idx, step + 1);
+    }
+
+    public void insertAtRecursion(int data, int idx){
+        Node temp = head;
+        if(idx < 0 || idx > size){
+            System.out.println("Invalid idx");
+            return;
+        }
+        insertRecursion(temp, data, idx, 0);
+    }
+
     public void display(){
         Node temp = head;
         while(temp != null){

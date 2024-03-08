@@ -21,5 +21,8 @@ public class Main {
         list.display();
         list.deleteFrom(2);
         list.display();
+
+        list.insertAtRecursion(1000, 1);
+        list.display();
     }
 }
