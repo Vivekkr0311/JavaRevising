@@ -136,4 +136,19 @@ public class LinkedList {
     public int getSize(){
         return this.size;
     }
+
+    // Questions
+    // Remove duplicate nodes
+    public void removeDuplicate(){
+        Node curr = head;
+
+        while(curr.next != null) {
+            if(curr.data ==  curr.next.data){
+                curr.next = curr.next.next;
+                size--;
+            }else{
+                curr = curr.next;
+            }
+        }
+    }
 }
