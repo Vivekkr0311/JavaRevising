@@ -1,14 +1,13 @@
-package com.Vivek.CustomDataStructures.LinkedList;
+package com.Vivek.CustomDataStructures.LinkedList.RemoveDuplicates;
 
-import java.util.Objects;
 
-public class LinkedList {
+public class LL {
 
     private Node head;
     private Node tail;
     private int size;
 
-    public LinkedList(){
+    public LL(){
         this.size = 0;
     }
 
@@ -38,7 +37,7 @@ public class LinkedList {
     }
 
     public void insertEnd(int data){
-        Node newNode = new Node(data);
+       Node newNode = new Node(data);
         if(tail == null){
             insertFirst(data);
             return;
@@ -62,18 +61,18 @@ public class LinkedList {
             insertEnd(data);
             return;
         }
-        Node temp = head;
+       Node temp = head;
         for(int i = 1; i < idx; i++){
             temp = temp.next;
         }
-        Node newNode = new Node(data, temp.next);
+       Node newNode = new Node(data, temp.next);
         temp.next = newNode;
         size++;
     }
 
     private Node insertRecursion(Node node, int data, int idx){
         if(idx == 0) {
-            Node temp = new Node(data, node);
+           Node temp = new Node(data, node);
             size++;
             return temp;
         }
@@ -86,7 +85,7 @@ public class LinkedList {
     }
 
     public void display(){
-        Node temp = head;
+       Node temp = head;
         while(temp != null){
             System.out.print(temp.data + " -> ");
             temp = temp.next;
@@ -100,7 +99,7 @@ public class LinkedList {
     }
 
     public void deleteEnd(){
-        Node temp = head;
+       Node temp = head;
         while(temp.next != tail){
             temp = temp.next;
         }
@@ -127,7 +126,7 @@ public class LinkedList {
             deleteEnd();
             return;
         }
-        Node temp = head;
+       Node temp = head;
         for(int i = 1; i < idx; i++){
             temp = temp.next;
         }
@@ -142,7 +141,7 @@ public class LinkedList {
     // Questions
     // Remove duplicate nodes
     public void removeDuplicate(){
-        Node curr = head;
+       Node curr = head;
 
         while(curr.next != null) {
             if(curr.data ==  curr.next.data){
@@ -156,40 +155,16 @@ public class LinkedList {
         tail.next = null;
     }
 
-    // Merge two sorted list
-    public Node merge(Node head1, Node head2){
-        Node temp1 = head1;
-        Node temp2 = head2;
-        LinkedList newList = new LinkedList();
-
-        while(temp1 != null || temp2 != null){
-            if(temp1.data == temp2.data){
-                newList.insertEnd(temp1.data);
-                newList.insertEnd(temp2.data);
-                temp1 = temp1.next;
-                temp2 = temp2.next;
-            }else if(temp1.data < temp2.data){
-                newList.insertEnd(temp1.data);
-                temp1 = temp1.next;
-            }else{
-                newList.insertEnd(temp2.data);
-                temp2 = temp2.next;
-            }
-        }
-
-        if(temp1 == null && temp2 != null){
-            while(temp2 != null){
-                newList.insertEnd(temp2.data);
-                temp2 = temp2.next;
-            }
-        }
-
-        if(temp1 != null && temp2 == null){
-            while(temp1 != null){
-                newList.insertEnd(temp1.data);
-                temp1 = temp1.next;
-            }
-        }
-        return newList.head;
+    public static void main(String[] args) {
+        LL list = new LL();
+        list.insertFirst(4);
+        list.insertFirst(4);
+        list.insertFirst(2);
+        list.insertFirst(1);
+        list.insertFirst(1);
+        list.display();
+        list.removeDuplicate();
+        list.display();
     }
 }
+

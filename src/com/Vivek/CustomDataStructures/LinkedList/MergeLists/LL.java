@@ -1,14 +1,12 @@
-package com.Vivek.CustomDataStructures.LinkedList;
+package com.Vivek.CustomDataStructures.LinkedList.MergeLists;
 
-import java.util.Objects;
-
-public class LinkedList {
+public class LL {
 
     private Node head;
     private Node tail;
     private int size;
 
-    public LinkedList(){
+    public LL(){
         this.size = 0;
     }
 
@@ -139,57 +137,54 @@ public class LinkedList {
         return this.size;
     }
 
-    // Questions
-    // Remove duplicate nodes
-    public void removeDuplicate(){
-        Node curr = head;
+    // Merge two sorted list
+    public static LL merge(LL head1, LL head2){
+        Node temp1 = head1.head;
+        Node temp2 = head2.head;
+        LL newList = new LL();
 
-        while(curr.next != null) {
-            if(curr.data ==  curr.next.data){
-                curr.next = curr.next.next;
-                size--;
+        while(temp1 != null && temp2 != null){
+            if(temp1.data < temp2.data){
+                newList.insertEnd(temp1.data);
+                temp1 = temp1.next;
             }else{
-                curr = curr.next;
+                newList.insertEnd(temp2.data);
+                temp2 = temp2.next;
             }
         }
-        tail = curr;
-        tail.next = null;
+
+        while(temp1 != null){
+            newList.insertEnd(temp1.data);
+            temp1 = temp1.next;
+        }
+
+        while(temp2 != null){
+            newList.insertEnd(temp2.data);
+            temp2 = temp2.next;
+        }
+        return newList;
     }
 
-    // Merge two sorted list
-    public Node merge(Node head1, Node head2){
-        Node temp1 = head1;
-        Node temp2 = head2;
-        LinkedList newList = new LinkedList();
+    public static void main(String[] args) {
+        LL list1 = new LL();
 
-        while(temp1 != null || temp2 != null){
-            if(temp1.data == temp2.data){
-                newList.insertEnd(temp1.data);
-                newList.insertEnd(temp2.data);
-                temp1 = temp1.next;
-                temp2 = temp2.next;
-            }else if(temp1.data < temp2.data){
-                newList.insertEnd(temp1.data);
-                temp1 = temp1.next;
-            }else{
-                newList.insertEnd(temp2.data);
-                temp2 = temp2.next;
-            }
-        }
+        list1.insertEnd(1);
+        list1.insertEnd(3);
+        list1.insertEnd(5);
+//        list1.insertEnd(3);
+//        list1.insertEnd(9);
 
-        if(temp1 == null && temp2 != null){
-            while(temp2 != null){
-                newList.insertEnd(temp2.data);
-                temp2 = temp2.next;
-            }
-        }
+        LL list2 = new LL();
 
-        if(temp1 != null && temp2 == null){
-            while(temp1 != null){
-                newList.insertEnd(temp1.data);
-                temp1 = temp1.next;
-            }
-        }
-        return newList.head;
+        list2.insertEnd(14);
+        list2.insertEnd(55);
+        list2.insertEnd(70);
+        list2.insertEnd(100);
+
+        list1.display();
+        list2.display();
+
+        LL newList = merge(list1, list2);
+        newList.display();
     }
 }
