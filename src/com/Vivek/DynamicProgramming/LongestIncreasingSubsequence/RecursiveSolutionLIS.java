@@ -1,9 +1,8 @@
 package com.Vivek.DynamicProgramming.LongestIncreasingSubsequence;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.List;
+
 public class RecursiveSolutionLIS {
 
     static int findMax(int[] list){
@@ -24,6 +23,8 @@ public class RecursiveSolutionLIS {
         if(arr[i] > arr[j]){
             list[i] = Math.max(list[j]+ 1, list[i]);
             helper(arr, list, i, j + 1);
+        }else{
+            helper(arr, list, i, j + 1);
         }
         return list;
     }
@@ -39,7 +40,7 @@ public class RecursiveSolutionLIS {
         return recursiveLIS(arr, currLIS, i + 1);
     }
 
-    static int recursiveLISDP(int[] arr){
+    static int generalLISDP(int[] arr){
         // Usual DP solution
         int[] list = new int[arr.length];
         for(int i = 0; i < list.length; i++){
@@ -55,6 +56,7 @@ public class RecursiveSolutionLIS {
         }
 
         int max = list[0];
+        System.out.println(Arrays.toString(list));
         for(int i = 1; i < list.length; i++){
             if(list[i] > max){
                 max = list[i];
@@ -83,6 +85,9 @@ public class RecursiveSolutionLIS {
             currList[i] = 1;
         }
         currList = recursiveLIS(arr, currList, 0);
+        System.out.println(Arrays.toString(currList));
         System.out.println("LIS: " + findMax(currList));
+
+        System.out.println(generalLISDP(arr));
     }
 }
