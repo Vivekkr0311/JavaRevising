@@ -1,5 +1,6 @@
 package com.Vivek.DynamicProgramming.LongestIncreasingSubsequence;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class MaximumSumIncreasingSubsequence {
@@ -16,6 +17,7 @@ public class MaximumSumIncreasingSubsequence {
             }
         }
 
+        System.out.println(Arrays.toString(maximumSum));
         int max = maximumSum[0];
         for(int i = 0; i < maximumSum.length; i++){
             if(maximumSum[i] > max){
