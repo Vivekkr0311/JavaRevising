@@ -13,10 +13,13 @@ public class MinimumCoinsDP {
         for(int i = 1; i < intermediateSum.length; i++){
             for(int j = 0; j < coins.length; j++){
                 if(coins[j] <= i){ // if current coins is less than the curr sum 'i'
-                    intermediateSum[i] = Math.min(
-                            intermediateSum[i], // curr sum
-                            intermediateSum[i - coins[j]] + 1 // sum when we use the coin
-                    );
+                    int sub_res = intermediateSum[i -  coins[j]];
+                    if(sub_res != Integer.MAX_VALUE){
+                        intermediateSum[i] = Math.min(
+                                intermediateSum[i], // curr sum
+                                sub_res + 1 // sum when we use the coin
+                        );
+                    }
                     // then the coin required -> 'i', for sum intermediateSum[i], will minimum of above two values.
                 }
             }
