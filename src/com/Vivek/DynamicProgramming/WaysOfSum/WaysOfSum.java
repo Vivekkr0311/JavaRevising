@@ -18,10 +18,25 @@ public class WaysOfSum {
         return dp[n];
     }
 
+    static int recursiveSol(int n) {
+        if (n == 0) {
+            return 1;
+        }
+        if (n < 0) {
+            return 0;
+        }
+        int sub_res = 0;
+        for (int i = 1; i <= n; i++) {
+            sub_res = sub_res + recursiveSol(n - i);
+        }
+        return sub_res;
+    }
+
     public static void main(String[] args) {
         Scanner input  = new Scanner(System.in);
         System.out.println("Enter the number");
         int n = input.nextInt();
         System.out.println("Number of ways you can represent: " + n + ": " + waysOfSum(n));
+        System.out.println("Number of ways you can represent: " + n + ": " + recursiveSol(n));
     }
 }
