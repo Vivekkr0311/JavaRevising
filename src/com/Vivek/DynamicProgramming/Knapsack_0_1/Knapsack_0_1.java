@@ -1,7 +1,6 @@
 package com.Vivek.DynamicProgramming.Knapsack_0_1;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Scanner;
 
 public class Knapsack_0_1 {
