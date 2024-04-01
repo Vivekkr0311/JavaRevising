@@ -2,22 +2,33 @@ package com.Vivek.DynamicProgramming.Knapsack_0_1;
 
 import java.util.Scanner;
 
-public class RecursiveKnapsack_0_1 {
+public class DP_Knapsack_0_1 {
 
     static int knapsack(int W, int[] wt, int[] pr, int n){
-        if(n == 0 || W == 0){
-            return 0;
+        int[][] dp = new int[n + 1][W + 1];
+
+        for(int i = 0; i <= W; i++){
+            dp[0][i] = 0;
         }
 
-        if(wt[n - 1] > W){
-            return knapsack(W, wt, pr, n - 1);
-        }else{
-            return Math.max(
-                    knapsack(W, wt, pr, n - 1),
-                    pr[n -1] + knapsack(W - wt[n - 1], wt, pr, n - 1)
-            );
+        for(int i = 0; i <= n; i++){
+            dp[i][0] = 0;
         }
+
+        for(int i = 1; i <= n; i++){
+            for(int j = 1; j <= W; j++){
+                if(j < wt[i - 1]){
+                    dp[i][j] = dp[i - 1][j];
+                }else{
+                    dp[i][j] = Math.max(
+                            dp[i - 1][j], pr[i - 1] + dp[i - 1][j - wt[i - 1]]
+                    );
+                }
+            }
+        }
+        return dp[n][W];
     }
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter how many elements do you have? ");
