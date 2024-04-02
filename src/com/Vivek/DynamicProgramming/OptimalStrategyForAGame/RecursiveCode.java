@@ -20,6 +20,13 @@ public class RecursiveCode {
         // If sumOdd is maxium, we will take only one side of array which will be odd indexed elements.
         // If sumEven is maxium, we will take only other side of array always, which will be even indexed elements.
         // Hence, the ans will be maximum of these two.
+        if (sumEven == sumOdd) {
+            System.out.println("Match is tied!!");
+        } else if (max == sumEven) {
+            System.out.println("Always taking one side of even index will lead to winning!!");
+        } else if (max == sumOdd) {
+            System.out.println("Always taking one side of odd index will lead to winning!!");
+        }
         return max;
     }
 
@@ -49,6 +56,7 @@ public class RecursiveCode {
         for(int i = 0; i < n; i++){
             arr[i] = input.nextInt();
         }
-        System.out.println("Maximum you can get: " + optimalStrategy(arr, 0, arr.length - 1));
+//        System.out.println("Maximum you can get: " + optimalStrategy(arr, 0, arr.length - 1));
+        System.out.println("Winning: " + getMaxAndWin(arr));
     }
 }
