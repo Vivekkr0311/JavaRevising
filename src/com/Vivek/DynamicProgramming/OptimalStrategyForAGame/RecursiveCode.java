@@ -37,14 +37,35 @@ public class RecursiveCode {
             return Math.max(arr[forward], arr[backward]);
         }
 
-        if(forward < backward) {
-            return Math.max(
-                    arr[forward] + optimalStrategy(arr, forward + 1, backward),
-                    arr[backward] + optimalStrategy(arr, forward, backward - 1)
-            );
-        }else{
-            return arr[forward];
+        return Math.max(
+                arr[forward] + Math.min(
+                                optimalStrategy(arr, forward + 2, backward),
+                                optimalStrategy(arr, forward + 1, backward - 1)
+                            ),
+                arr[backward] + Math.min(
+                                optimalStrategy(arr, forward + 1, backward - 1),
+                                optimalStrategy(arr, forward, backward - 2)
+                            )
+        );
+    }
+
+    static int helper(int[] arr, int i, int j, int sum){
+        if(i + 1 == j){
+            return Math.max(arr[i], arr[j]);
         }
+
+        return Math.max(
+                sum - helper(arr, i + 1, j, sum - arr[i]),
+                sum - helper(arr, i, j - 1, sum - arr[j])
+        );
+    }
+
+    static int optimalStrategyToGetMax(int[] arr){
+        int sum = arr[0];
+        for(int i = 1; i < arr.length; i++){
+            sum = sum + arr[i];
+        }
+        return helper(arr, 0, arr.length - 1, sum);
     }
 
     public static void main(String[] args) {
@@ -58,5 +79,7 @@ public class RecursiveCode {
         }
 //        System.out.println("Maximum you can get: " + optimalStrategy(arr, 0, arr.length - 1));
         System.out.println("Winning: " + getMaxAndWin(arr));
+        System.out.println("Winning: " + optimalStrategyToGetMax(arr));
+        System.out.println("Winning: " + optimalStrategy(arr, 0, arr.length - 1));
     }
 }
