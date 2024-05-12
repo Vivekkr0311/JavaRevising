@@ -1,4 +1,4 @@
-package com.Vivek.CustomDataStructures.Trie.HashTrie;
+package com.Vivek.DataStructures.Trie.HashTrie;
 
 public class HashTrie {
     private TrieNode root = new TrieNode();

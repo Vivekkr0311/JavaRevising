@@ -1,4 +1,4 @@
-package com.Vivek.CustomDataStructures.LinkedList;
+package com.Vivek.DataStructures.LinkedList;
 
 import org.w3c.dom.Node;
 

@@ -1,4 +1,4 @@
-package com.Vivek.CustomDataStructures.UsingGenerics;
+package com.Vivek.DataStructures.UsingGenerics;
 import java.util.ArrayList;
 import java.util.Comparator;
 

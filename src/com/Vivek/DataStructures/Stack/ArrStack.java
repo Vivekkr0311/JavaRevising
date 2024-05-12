@@ -1,4 +1,4 @@
-package com.Vivek.CustomDataStructures.Stack;
+package com.Vivek.DataStructures.Stack;
 
 public class ArrStack {
 

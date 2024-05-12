@@ -1,4 +1,4 @@
-package com.Vivek.CustomDataStructures.CircularLinkedList;
+package com.Vivek.DataStructures.CircularLinkedList;
 
 public class Main {
     public static void main(String[] args) {

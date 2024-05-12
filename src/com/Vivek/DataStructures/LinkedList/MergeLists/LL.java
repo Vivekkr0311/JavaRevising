@@ -1,5 +1,4 @@
-package com.Vivek.CustomDataStructures.LinkedList.RemoveDuplicates;
-
+package com.Vivek.DataStructures.LinkedList.MergeLists;
 
 public class LL {
 
@@ -37,7 +36,7 @@ public class LL {
     }
 
     public void insertEnd(int data){
-       Node newNode = new Node(data);
+        Node newNode = new Node(data);
         if(tail == null){
             insertFirst(data);
             return;
@@ -61,18 +60,18 @@ public class LL {
             insertEnd(data);
             return;
         }
-       Node temp = head;
+        Node temp = head;
         for(int i = 1; i < idx; i++){
             temp = temp.next;
         }
-       Node newNode = new Node(data, temp.next);
+        Node newNode = new Node(data, temp.next);
         temp.next = newNode;
         size++;
     }
 
     private Node insertRecursion(Node node, int data, int idx){
         if(idx == 0) {
-           Node temp = new Node(data, node);
+            Node temp = new Node(data, node);
             size++;
             return temp;
         }
@@ -85,7 +84,7 @@ public class LL {
     }
 
     public void display(){
-       Node temp = head;
+        Node temp = head;
         while(temp != null){
             System.out.print(temp.data + " -> ");
             temp = temp.next;
@@ -99,7 +98,7 @@ public class LL {
     }
 
     public void deleteEnd(){
-       Node temp = head;
+        Node temp = head;
         while(temp.next != tail){
             temp = temp.next;
         }
@@ -126,7 +125,7 @@ public class LL {
             deleteEnd();
             return;
         }
-       Node temp = head;
+        Node temp = head;
         for(int i = 1; i < idx; i++){
             temp = temp.next;
         }
@@ -138,33 +137,54 @@ public class LL {
         return this.size;
     }
 
-    // Questions
-    // Remove duplicate nodes
-    public void removeDuplicate(){
-       Node curr = head;
+    // Merge two sorted list
+    public static LL merge(LL head1, LL head2){
+        Node temp1 = head1.head;
+        Node temp2 = head2.head;
+        LL newList = new LL();
 
-        while(curr.next != null) {
-            if(curr.data ==  curr.next.data){
-                curr.next = curr.next.next;
-                size--;
+        while(temp1 != null && temp2 != null){
+            if(temp1.data < temp2.data){
+                newList.insertEnd(temp1.data);
+                temp1 = temp1.next;
             }else{
-                curr = curr.next;
+                newList.insertEnd(temp2.data);
+                temp2 = temp2.next;
             }
         }
-        tail = curr;
-        tail.next = null;
+
+        while(temp1 != null){
+            newList.insertEnd(temp1.data);
+            temp1 = temp1.next;
+        }
+
+        while(temp2 != null){
+            newList.insertEnd(temp2.data);
+            temp2 = temp2.next;
+        }
+        return newList;
     }
 
     public static void main(String[] args) {
-        LL list = new LL();
-        list.insertFirst(4);
-        list.insertFirst(4);
-        list.insertFirst(2);
-        list.insertFirst(1);
-        list.insertFirst(1);
-        list.display();
-        list.removeDuplicate();
-        list.display();
+        LL list1 = new LL();
+
+        list1.insertEnd(1);
+        list1.insertEnd(3);
+        list1.insertEnd(5);
+//        list1.insertEnd(3);
+//        list1.insertEnd(9);
+
+        LL list2 = new LL();
+
+        list2.insertEnd(14);
+        list2.insertEnd(55);
+        list2.insertEnd(70);
+        list2.insertEnd(100);
+
+        list1.display();
+        list2.display();
+
+        LL newList = merge(list1, list2);
+        newList.display();
     }
 }
-

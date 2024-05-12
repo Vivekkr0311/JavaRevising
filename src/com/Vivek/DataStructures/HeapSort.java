@@ -1,10 +1,23 @@
-package com.Vivek.CustomDataStructures;
+package com.Vivek.DataStructures;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
-public class Heaps {
+public class HeapSort {
+
+    static void swap(ArrayList<Integer> arr, int first, int second){
+        int temp = arr.get(first);
+        arr.set(first, arr.get(second));
+        arr.set(second, temp);
+    }
+
+    static void heapsort(ArrayList<Integer> arr){
+        for(int i = 1; i + 1 <= arr.size(); i++){
+            int maxItemIdx = 0;
+            swap(arr, maxItemIdx, arr.size() - i);
+            heapify(arr, arr.size() - (i + 1));
+        }
+    }
 
     static ArrayList<Integer> heapify(ArrayList<Integer> arr, int n){
         for (int i = n; i > 0;) {
@@ -31,15 +44,8 @@ public class Heaps {
         return arr;
     }
     public static void main(String[] args) {
-//        How many elements?
-//                5
-//        Enter each elements:
-//        7 8 2 4 100
-//        [100, 8, 2, 4, 7]
-//        [8, 7, 2, 4, 100]
-//        [4, 7, 2, 8, 100]
-//        [7, 2, 4, 8, 100]
-//        [2, 7, 4, 8, 100]
+        // 7 5 6 20
+        // 7 8 2 4 100
         Scanner input = new Scanner(System.in);
         System.out.println("How many elements? ");
         int n = input.nextInt();
@@ -49,6 +55,8 @@ public class Heaps {
         for(int i = 0; i < n; i++){
             arr = insertElement(arr, input.nextInt());
         }
+        System.out.println(arr);
+        heapsort(arr);
         System.out.println(arr);
     }
 }

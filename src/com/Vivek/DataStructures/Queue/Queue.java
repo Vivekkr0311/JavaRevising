@@ -1,4 +1,4 @@
-package com.Vivek.CustomDataStructures.Queue;
+package com.Vivek.DataStructures.Queue;
 
 public class Queue {
 

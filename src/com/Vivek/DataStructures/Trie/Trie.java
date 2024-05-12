@@ -1,4 +1,4 @@
-package com.Vivek.CustomDataStructures.Trie;
+package com.Vivek.DataStructures.Trie;
 
 public class Trie {
 

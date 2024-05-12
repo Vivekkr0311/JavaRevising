@@ -1,4 +1,4 @@
-package com.Vivek.CustomDataStructures.Trie.HashTrie;
+package com.Vivek.DataStructures.Trie.HashTrie;
 
 import java.util.Hashtable;
 

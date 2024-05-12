@@ -1,4 +1,4 @@
-package com.Vivek.CustomDataStructures.DoublyLinkedList;
+package com.Vivek.DataStructures.DoublyLinkedList;
 
 public class DoublyLinkedList {
 
