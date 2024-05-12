@@ -8,6 +8,6 @@ public class BasicTree {
         BinaryTree tree = new BinaryTree();
         Scanner scanner = new Scanner(System.in);
         tree.populate(scanner);
-        tree.display();
+        tree.preetyDisplay();
     }
 }
