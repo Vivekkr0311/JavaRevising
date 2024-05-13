@@ -68,7 +68,24 @@ public class BST {
         preetyDisplay(node.left, level + 1);
     }
 
+    public void populateSorted(int[] nums){
+        // T(n) = O(n * log(n))
+        populateSorted(nums, 0, nums.length);
+    }
+
+    private void populateSorted(int[] nums, int start, int end){
+        if(start >= end){
+            return;
+        }
+
+        int mid = start + (end - start) / 2;
+        this.insert(nums[mid]);
+        populateSorted(nums, start, mid);
+        populateSorted(nums, mid + 1, end);
+    }
+
     public void insert(int value){
+        // T(n) = O(log(n))
         this.root = insert(value, this.root);
     }
 
@@ -107,5 +124,47 @@ public class BST {
         for(int i = 0; i < nums.length; i++){
             this.insert(nums[i]);
         }
+    }
+
+    public void preorderTraversal(){
+        preOrder(this.root);
+    }
+
+    private void preOrder(Node node){
+        if(node == null){
+            return;
+        }
+
+        System.out.print(node.value + " ");
+        preOrder(node.left);
+        preOrder(node.right);
+    }
+
+    public void inorderTraversal(){
+        inOrder(this.root);
+    }
+
+    private void inOrder(Node node){
+        if(node == null){
+            return;
+        }
+
+        inOrder(node.left);
+        System.out.print(node.value + " ");
+        inOrder(node.right);
+    }
+
+    public void postTraversal(){
+        postOrder(this.root);
+    }
+
+    private void postOrder(Node node){
+        if(node == null){
+            return;
+        }
+
+        postOrder(node.left);
+        postOrder(node.right);
+        System.out.print(node.value + " ");
     }
 }

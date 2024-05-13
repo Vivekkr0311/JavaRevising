@@ -8,5 +8,20 @@ public class BSTRun {
         tree.display();
         System.out.println("-------------------------");
         tree.preetyDisplay();
+
+        System.out.println("Sorted array tree: ");
+        int[] sorted = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        BST treeTwo = new BST();
+        treeTwo.populateSorted(sorted);
+        treeTwo.preetyDisplay();
+
+        System.out.print("Preorder: ");
+        treeTwo.preorderTraversal();
+        System.out.println();
+        System.out.print("Inorder: ");
+        treeTwo.inorderTraversal();
+        System.out.println();
+        System.out.print("Postorder: ");
+        treeTwo.postTraversal();
     }
 }
