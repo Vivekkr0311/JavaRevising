@@ -145,9 +145,33 @@ public class AVL {
             }
 
             if(height(node.left.left) - height(node.left.right) < 0 ){
-                // left right case
+//          left right case
+
+//                    p
+//              (L) /   \
+//                  c   t4
+//                 / \ (R)
+//                t1  gc
+//                   /  \
+//                  t2    t3
+
                 node.left = leftRotate(node.left);
+//              After Left rotation on 'c'
+//                     p
+//                (L) / \
+//                  gc   t4
+//             (L) /  \
+//                c    t3
+//               / \
+//              t1 t2
                 return rightRotate(node);
+
+//              After Right rotation on 'p'
+//                     gc
+//                   /     \
+//                  c       p
+//                /  \    /  \
+//              t1    t2  t3  t4
             }
         }
 
@@ -159,19 +183,50 @@ public class AVL {
             }
 
             if(height(node.right.left) - height(node.right.right) > 0 ) {
-                // left right case
-                node.right = rightRotate(node.left);
+//              Right Left case
+//                            p
+//                           / \ (R)
+//                          t1   c
+//                         (L) /   \
+//                            gc    t4
+//                            /  \
+//                           t2   t3
+
+                node.right = rightRotate(node.right);
+//                After right rotation on 'c'
+//                            p
+//                           / \ (L)
+//                          t1   gc
+//                             /   \ (L)
+//                            t2    c
+//                                 /  \
+//                                t2   t3
                 return leftRotate(node);
+
+//                After left rotation on 'p'
+//                           gc
+//                          / \
+//                         p    c
+//                       /  \   /   \
+//                    t2   t3   t3   t4
             }
         }
         return node;
     }
 
     private Node rightRotate(Node p){
+//        p                                                     c
+// (L)   / \                                                /      \
+//      c   t4                                             gc       p
+// (L) / \        After Right Rotation on 'c' =>         /   \    /   \
+//    gc  t3                                            t1   t2  t3    t4
+//   /  \
+//  t1   t2
+
         Node c = p.left;
-        Node t = c.right;
+        Node t3 = c.right;
         c.right = p;
-        p.left = t;
+        p.left = t3;
 
         p.height = Math.max(height(p.left), height(p.right) + 1) ;
         c.height = Math.max(height(c.left), height(c.right) + 1);
@@ -179,11 +234,25 @@ public class AVL {
     }
 
     private Node leftRotate(Node c){
+//        p                                                    c
+//       / \  (R)                                           /      \
+//      t1   c                                             p        gc
+//          /  \ (R) After Left Rotation on 'c' =>       /   \    /   \
+//         t2   gc                                      t1   t2  t3    t4
+//             /  \
+//            t3   t4
+//     Another example: This example can be used to relate with the code.
+//        c                                                   p
+//      /   \ (R)                                           /   \
+//     t1    p     After Left Rotation on 'c' =>           c      t3
+//          /  \ (R)                                      /  \
+//         t2   t2                                       t1    t2
+
         Node p = c.right;
-        Node t = p.left;
+        Node t2 = p.left;
 
         p.left = c;
-        c.right = t;
+        c.right = t2;
 
         p.height = Math.max(height(p.left), height(p.right) + 1);
         c.height = Math.max(height(c.left), height(c.right) + 1);
