@@ -9,5 +9,7 @@ public class BasicTree {
         Scanner scanner = new Scanner(System.in);
         tree.populate(scanner);
         tree.preetyDisplay();
+
+        tree.bfs();
     }
 }
