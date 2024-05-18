@@ -17,25 +17,24 @@ public class LevelOrderSuccessor {
         queue.offer(root);
 
         while(!queue.isEmpty()){
-            Node currNode = queue.peek();
-            if(currNode.value == val){
-                queue.poll();
-                if(queue.isEmpty()){
-                    return -1;
-                }
-                return queue.peek().value;
-            }
+            Node currNode = queue.poll();
 
-            queue.poll();
             if(currNode.left != null){
                 queue.offer(currNode.left);
             }
             if(currNode.right != null){
                 queue.offer(currNode.right);
             }
+
+            if(currNode.value == val){
+                break;
+            }
         }
 
-        return -1;
+        if(queue.peek() == null){
+            return -1;
+        }
+        return queue.peek().value;
     }
 
     public static void main(String[] args) {
