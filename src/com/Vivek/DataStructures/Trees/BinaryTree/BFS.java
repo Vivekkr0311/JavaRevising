@@ -1,6 +1,5 @@
-package com.Vivek.DataStructures.Trees.BinaryTree.LinkedListRepresentation;
+package com.Vivek.DataStructures.Trees.BinaryTree;
 
-import com.Vivek.DataStructures.Trees.BinaryTree.BinaryTree;
 import com.Vivek.DataStructures.Trees.BinaryTree.BinaryTree.Node;
 
 import java.util.*;
