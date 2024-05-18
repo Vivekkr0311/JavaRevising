@@ -91,43 +91,4 @@ public class BinaryTree {
         }
         preetyDisplay(node.left, level + 1);
     }
-
-    public void bfs(){
-        List<List<Integer>> result = bfs(this.root);
-        for(List<Integer> li : result){
-            System.out.println(li);
-        }
-    }
-
-    private List<List<Integer>> bfs(Node node){
-        List<List<Integer>> result = new ArrayList<>();
-
-        if(node == null){
-            return result;
-        }
-
-        Queue<Node> queue = new LinkedList<>();
-        queue.offer(node);
-
-        while(!queue.isEmpty()){
-
-            int levelSize = queue.size();
-            List<Integer> currentLevel = new ArrayList<>(levelSize);
-
-            for(int i = 0; i < levelSize; i++){
-                Node currNode = queue.poll();
-                currentLevel.add(currNode.value);
-
-                if(currNode.left != null){
-                    queue.offer(currNode.left);
-                }
-                if(currNode.right != null){
-                    queue.offer(currNode.right);
-                }
-            }
-            result.add(currentLevel);
-        }
-
-        return result;
-    }
 }

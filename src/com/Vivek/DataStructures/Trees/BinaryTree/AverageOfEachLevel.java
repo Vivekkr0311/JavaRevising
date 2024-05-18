@@ -17,8 +17,24 @@ public class AverageOfEachLevel {
         }
 
         Queue<Node> queue = new LinkedList<>();
-        while(!queue.isEmpty()){
+        queue.offer(root);
 
+        while(!queue.isEmpty()){
+            int currLevelSize = queue.size();
+            Double currAvg = 0.0;
+
+            for(int i = 0; i < currLevelSize; i++){
+                Node currNode = queue.poll();
+                currAvg += (double) currNode.value;
+
+                if(currNode.left != null){
+                    queue.offer(currNode.left);
+                }
+                if(currNode.right != null){
+                    queue.offer(currNode.right);
+                }
+            }
+            result.add(currAvg / currLevelSize);
         }
         return result;
     }
@@ -30,7 +46,7 @@ public class AverageOfEachLevel {
         tree.populate(scanner);
 
         Node root = tree.getRoot();
-
-
+        List<Double> result = solution(root);
+        System.out.println(result);
     }
 }
