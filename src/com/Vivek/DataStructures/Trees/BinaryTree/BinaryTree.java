@@ -8,10 +8,10 @@ public class BinaryTree {
 
     }
 
-    private static class Node {
-        int value;
-        Node left;
-        Node right;
+    public static class Node {
+        public int value;
+        public Node left;
+        public Node right;
 
         Node(int value){
             this.value = value;
@@ -19,6 +19,14 @@ public class BinaryTree {
     }
 
     private Node root;
+
+    public Node getRoot(){
+        // Made this method to solve tree question in other java file,
+        // its not good practice to return root node.
+        // This is just for solving the question in different java file.
+        return this.root;
+    }
+
 
     public void populate(Scanner scanner){
         System.out.println("Enter the root node: ");
