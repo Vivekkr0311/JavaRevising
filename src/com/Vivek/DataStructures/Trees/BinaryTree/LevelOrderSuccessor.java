@@ -30,11 +30,8 @@ public class LevelOrderSuccessor {
                 break;
             }
         }
-
-        if(queue.peek() == null){
-            return -1;
-        }
-        return queue.peek().value;
+        
+        return queue.peek() == null ? -1 : queue.peek().value;
     }
 
     public static void main(String[] args) {
