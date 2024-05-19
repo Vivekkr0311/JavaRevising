@@ -76,6 +76,47 @@ public class PopulatingRightNext {
         }
     }
 
+    static Node selfTry(Node root){
+        if(root == null){
+            return null;
+        }
+
+        // horizontal pointer will traverse through level
+        // and while traversing it will make the connections
+        Node horizontal = root;
+        Node leftTraverse = root;
+
+        while(leftTraverse.left != null){
+            horizontal = leftTraverse;
+
+            while(horizontal != null){
+                horizontal.left.next = horizontal.right;
+                if(horizontal.next != null){
+                    // This a special case when we will make connection of nodes which are siblings
+                    // but there are not in the same subtree.
+
+                    // for below example, think horizontal is at 2, and we are trying to
+                    // make connection between 5 and 6
+
+                    //         1  -> null
+                    //       /   \
+                    //      2  ->  3 -> null
+                    //     /  \   / \
+                    //    4 -> 5  6  7
+                    horizontal.right.next = horizontal.next.left;
+                }
+                // horizontal will proceed in level
+                horizontal = horizontal.next;
+            }
+
+            // left traverse pointer will proceed in left direction, it will
+            // help horizontal pointer to come at left side, when horizontal hits the end of particular level.
+            leftTraverse = leftTraverse.left;
+        }
+
+        return root;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         BinaryTree tree = new BinaryTree();
@@ -85,7 +126,8 @@ public class PopulatingRightNext {
 //        populateRightNext(root);
 
 //        traversingViaNext(root);
-        populateRightNextTwo(root);
+//        populateRightNextTwo(root);
+        selfTry(root);
         traversingViaNextTwo(root);
     }
 }
