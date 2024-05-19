@@ -30,7 +30,7 @@ public class LevelOrderSuccessor {
                 break;
             }
         }
-        
+
         return queue.peek() == null ? -1 : queue.peek().value;
     }
 
