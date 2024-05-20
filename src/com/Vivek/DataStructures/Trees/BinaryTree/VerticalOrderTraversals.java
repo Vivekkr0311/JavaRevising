@@ -6,7 +6,7 @@ import java.util.*;
 
 public class VerticalOrderTraversals {
 
-    static void verticalOrderTraversal(Node node, int horizontalDistance, HashMap<Integer, List<Integer>> table){
+    static void verticalOrderTraversal(Node node, int horizontalDistance, TreeMap<Integer, List<Integer>> table){
         if(node == null){
             return;
         }
@@ -21,9 +21,9 @@ public class VerticalOrderTraversals {
         verticalOrderTraversal(node.right, horizontalDistance + 1, table);
     }
 
-    static void printResult(HashMap<Integer, List<Integer>> table){
+    static void printResult(TreeMap<Integer, List<Integer>> table){
         for(Map.Entry<Integer, List<Integer>> record : table.entrySet()){
-            System.out.println("At vertical line " + record.getKey() + " -> " + record.getValue());
+            System.out.println(record.getValue());
         }
     }
 
@@ -34,7 +34,7 @@ public class VerticalOrderTraversals {
         tree.preetyDisplay();
 
         Node root = tree.getRoot();
-        HashMap<Integer, List<Integer>> table = new HashMap<>();
+        TreeMap<Integer, List<Integer>> table = new TreeMap<>();
         verticalOrderTraversal(root, 0, table);
         printResult(table);
     }
