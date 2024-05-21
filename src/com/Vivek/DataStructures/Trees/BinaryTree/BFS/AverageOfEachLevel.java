@@ -1,4 +1,4 @@
-package com.Vivek.DataStructures.Trees.BinaryTree;
+package com.Vivek.DataStructures.Trees.BinaryTree.BFS;
 
 import java.util.List;
 import java.util.Queue;
@@ -6,6 +6,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import com.Vivek.DataStructures.Trees.BinaryTree.BinaryTree;
 import com.Vivek.DataStructures.Trees.BinaryTree.BinaryTree.Node;
 
 public class AverageOfEachLevel {

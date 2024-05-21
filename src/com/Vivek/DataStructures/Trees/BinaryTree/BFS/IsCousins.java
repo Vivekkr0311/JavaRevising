@@ -1,9 +1,8 @@
-package com.Vivek.DataStructures.Trees.BinaryTree;
+package com.Vivek.DataStructures.Trees.BinaryTree.BFS;
 
+import com.Vivek.DataStructures.Trees.BinaryTree.BinaryTree;
 import com.Vivek.DataStructures.Trees.BinaryTree.BinaryTree.Node;
 
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Scanner;
 
 public class IsCousins {
