@@ -3,11 +3,57 @@ package com.Vivek.DataStructures.Trees.BinaryTree.BFS;
 import com.Vivek.DataStructures.Trees.BinaryTree.BinaryTree;
 import com.Vivek.DataStructures.Trees.BinaryTree.BinaryTree.Node;
 
-import java.util.Deque;
 import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Deque;
+import java.util.List;
 
 public class ZigZagLevelOrderTraversal {
+
+    public List<List<Integer>> zigzagLevelOrder(Node root) {
+        List<List<Integer>> result = new ArrayList<>();
+        if(root == null){
+            return result;
+        }
+
+        Deque<Node> deque = new LinkedList<>();
+        deque.offer(root);
+        boolean flag = false;
+
+        while(!deque.isEmpty()){
+            int currLevelSize= deque.size();
+            List<Integer> currLevel = new ArrayList<>();
+
+            for(int i = 0; i < currLevelSize; i++){
+                if(flag){
+                    Node currNode = deque.pollLast();
+                    currLevel.add(currNode.valueue);
+
+                    if(currNode.right != null){
+                        deque.addFirst(currNode.right);
+                    }
+                    if(currNode.left != null){
+                        deque.addFirst(currNode.left);
+                    }
+                }else{
+
+                    Node currNode = deque.pollFirst();
+                    currLevel.add(currNode.value);
+
+                    if(currNode.left != null){
+                        deque.addLast(currNode.left);
+                    }
+                    if(currNode.right != null){
+                        deque.addLast(currNode.right);
+                    }
+                }
+            }
+            result.add(currLevel);
+            flag = !flag;
+        }
+        return result;
+    }
 
     static void zigZag(Node root){
         if(root == null){
