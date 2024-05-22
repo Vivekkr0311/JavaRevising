@@ -28,7 +28,7 @@ public class ZigZagLevelOrderTraversal {
             for(int i = 0; i < currLevelSize; i++){
                 if(flag){
                     Node currNode = deque.pollLast();
-                    currLevel.add(currNode.valueue);
+                    currLevel.add(currNode.value);
 
                     if(currNode.right != null){
                         deque.addFirst(currNode.right);
