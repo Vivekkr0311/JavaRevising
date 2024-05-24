@@ -1,11 +1,11 @@
 package com.Vivek.DataStructures.Trees.BinaryTree.DFS;
 
 import com.Vivek.DataStructures.Trees.BinaryTree.BinaryTree.Node;
-import com.Vivek.DataStructures.Trees.BinaryTree.BinaryTree;
-
 import java.util.*;
 
 public class ConvertSortedArrayToBinarySearchTree {
+
+    // Use case of preorder DFS traversal
 
     static Node helper(int[] arr, int start, int end){
         if(arr.length == 0){

@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class MinimumDepth {
 
+    // Use case of post order DFS traversal
+
     static int minimumDepth(Node root){
         if(root == null){
             return 0;

@@ -8,6 +8,8 @@ import com.Vivek.DataStructures.Trees.BinaryTree.BinaryTree.Node;
 
 public class DiameterOfTree {
 
+    // Use case of post order DFS traversal
+
     static int diameter = 0;
     static int diameterOfBinaryTree(Node root) {
         height(root);

@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class MaximumDepth {
 
+    // Use case of post order DFS traversal
+
     static int maximumDepth(Node root, int depth){
         if(root == null){
             return depth;

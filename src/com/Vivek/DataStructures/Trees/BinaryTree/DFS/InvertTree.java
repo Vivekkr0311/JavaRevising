@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class InvertTree {
 
+    // Use case of post order DFS traversal
+
     static Node invert(Node root){
         if(root == null){
             return null;
