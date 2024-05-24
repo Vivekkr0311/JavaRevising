@@ -16,7 +16,7 @@ public class BinaryTree {
         // Added this pointer to solve a question "Populating right next".
         public Node next;
 
-        Node(int value){
+        public Node(int value){
             this.value = value;
         }
     }
