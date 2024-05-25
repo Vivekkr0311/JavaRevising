@@ -30,6 +30,26 @@ public class FlattenTreeToBinaryTree {
         return node;
     }
 
+    static void flatten(Node root){
+        if(root == null){
+            return;
+        }
+
+        Node curr = root;
+        while(curr != null){
+            if(curr.left != null){
+                Node temp = curr.left;
+                while(temp.right != null){
+                    temp = temp.right;
+                }
+                temp.right = curr.right;
+                curr.right = curr.left;
+                curr.left = null;
+            }
+            curr = curr.right;
+        }
+    }
+
     private static void preetyDisplay(Node node){
         preetyDisplay(node, 0);
     }
@@ -60,7 +80,10 @@ public class FlattenTreeToBinaryTree {
 
         Node root = tree.getRoot();
         System.out.println("Converting: ");
-        convert(root);
-        preetyDisplay(solution());
+//        convert(root);
+//        preetyDisplay(solution());
+
+        flatten(root);
+        tree.preetyDisplay();
     }
 }
