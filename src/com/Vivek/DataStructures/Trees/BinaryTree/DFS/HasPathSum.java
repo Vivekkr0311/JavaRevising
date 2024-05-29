@@ -30,7 +30,6 @@ public class HasPathSum {
         BinaryTree tree = new BinaryTree();
         tree.populate(scanner);
         tree.preetyDisplay();
-
         Node root = tree.getRoot();
         System.out.println("Enter the sum you wanna check: ");
         int sum = scanner.nextInt();
