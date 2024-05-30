@@ -34,6 +34,38 @@ public class IsBalanced {
         return !(Math.abs(leftHeight - rightHeight) > 1) && leftCall && rightCall;
     }
 
+    static int checkHeight(Node node){
+        if(node == null){
+            return 0;
+        }
+
+        if(node.left == null && node.right == null && node != null){
+            return 1;
+        }
+
+        int left = checkHeight(node.left);
+        if(left == -1){
+            return -1;
+        }
+
+        int right = checkHeight(node.right);
+        if(right == -1){
+            return -1;
+        }
+
+        if(Math.abs(left - right) > 1){
+            return -1;
+        }
+        return Math.max(left, right) + 1;
+    }
+
+    static boolean isBalancedTwo(Node root){
+        if(checkHeight(root) == -1){
+            return false;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         BinaryTree tree = new BinaryTree();
