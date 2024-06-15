@@ -48,6 +48,38 @@ public class SerializeBinaryTree {
         return result;
     }
 
+    static Node deserialized(List<Integer> nodes){
+//        for(int i = 0; i < nodes.size(); i++){
+//            Node root = new Node(nodes.get(i));
+//            root.left = new Node(nodes.get(2 * i + 1));
+//            root.right = new Node(nodes.get(2 * i + 2));
+//        }
+//        return root;
+        return null;
+    }
+
+    private static void preetyDisplay(Node node){
+        preetyDisplay(node, 0);
+    }
+
+    private static void preetyDisplay(Node node, int level){
+        if(node == null){
+            return;
+        }
+
+        preetyDisplay(node.right, level + 1);
+
+        if(level != 0){
+            for(int i = 0; i < level - 1; i++){
+                System.out.print("|\t\t");
+            }
+            System.out.println("|-------->" + node.value);
+        }else{
+            System.out.println(node.value);
+        }
+        preetyDisplay(node.left, level + 1);
+    }
+
 
 
     public static void main(String[] args) {
@@ -57,6 +89,10 @@ public class SerializeBinaryTree {
         tree.preetyDisplay();
         Node root = tree.getRoot();
 
-        System.out.println("Serialized tree is: " + serialized(root));
+        List<Integer> res = serialized(root);
+        System.out.println("Serialized tree is: " + res);
+
+        Node node = deserialized(res);
+        preetyDisplay(node);
     }
 }
