@@ -27,6 +27,19 @@ public class SumRootToLeafNumbers {
         return left;
     }
 
+    static int helper2(Node root, int sum){
+        if(root == null){
+            return 0;
+        }
+        if(root.left == null && root.right == null){
+            sum = sum * 10 + root.value;
+            return sum;
+        }
+
+        int left = helper2(root.left, sum * 10 + root.value);
+        int right = helper2(root.right, sum * 10 + root.value);
+        return left + right;
+    }
 
     static int sumNumbers(Node root){
         ArrayList<String> list = helper(root, "");
@@ -38,6 +51,11 @@ public class SumRootToLeafNumbers {
         return ans;
     }
 
+    static int sumNumbersTwo(Node root){
+        int ans = helper2(root, 0);
+        return ans;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         BinaryTree tree = new BinaryTree();
@@ -46,5 +64,6 @@ public class SumRootToLeafNumbers {
 
         Node root = tree.getRoot();
         System.out.println(sumNumbers(root));
+        System.out.println(sumNumbersTwo(root));
     }
 }
