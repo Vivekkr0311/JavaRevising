@@ -17,6 +17,13 @@ public class CountPathForTheGivenSum {
         return helper(root, sum, new ArrayList<>());
     }
 
+    static List<List<Integer>> findPath(Node root, int sum){
+        List<List<Integer>> paths = new ArrayList<>();
+        List<Integer> path = new ArrayList<>();
+        helper2(root, sum, path, paths);
+        return paths;
+    }
+
     static int helper(Node root, int sum, ArrayList<Integer> path){
         if(root == null){
             return 0;
@@ -44,6 +51,24 @@ public class CountPathForTheGivenSum {
         return count;
     }
 
+    static void helper2(Node root, int sum, List<Integer> path, List<List<Integer>> paths){
+        if(root == null){
+            return;
+        }
+
+        path.add(root.value);
+
+        if(root.value == sum && root.left == null && root.right == null){
+            paths.add(new ArrayList<>());
+        }else{
+            helper2(root.left, sum - root.value, path, paths);
+            helper2(root.right, sum - root.value, path, paths);
+        }
+
+        // backtrack
+        path.remove(path.size() - 1);
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         BinaryTree tree = new BinaryTree();
@@ -55,5 +80,10 @@ public class CountPathForTheGivenSum {
         int sum = scanner.nextInt();
 
         System.out.println("Number of path exist for the sum: " + sum + " is " + countPath(root, sum));
+        System.out.println("All path exist for the sum: " + sum + " is ");
+        List<List<Integer>> result = findPath(root, sum);
+        for(List<Integer> li : result){
+            System.out.println(li);
+        }
     }
 }
