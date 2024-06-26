@@ -7,7 +7,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class CountCompleteTreeNodes {
+public class CountCompleteTreeNodesUsingBFS {
+    
+    // Its DFS solution is much faster
 
     private static int countNodes(Node root) {
         if(root == null){
