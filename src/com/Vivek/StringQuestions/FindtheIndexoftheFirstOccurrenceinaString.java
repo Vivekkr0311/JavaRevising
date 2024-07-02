@@ -5,15 +5,15 @@ import java.util.Scanner;
 public class FindtheIndexoftheFirstOccurrenceinaString {
 
     private static int strStr(String haystack, String needle) {
-        if (needle.length() == 0) {
-            return 0;
+        if(needle.length() == 0){
+            return -1;
         }
 
-        int l = needle.length();
         int n = haystack.length();
+        int l = needle.length();
 
         for(int i = 0; i <= n - l; i++){
-            if (haystack.substring(i, i + l).equals(needle)) {
+            if(haystack.substring(i, i + l).equals(needle)){
                 return i;
             }
         }
