@@ -10,7 +10,7 @@ public class UniqueBinarySearchTree {
 
         // There is one unique BST with 0 nodes (empty tree)
         dp[0] = 1;
-        
+
         for (int nodes = 1; nodes <= n; nodes++) {
             int total = 0;
             for (int root = 1; root <= nodes; root++) {
