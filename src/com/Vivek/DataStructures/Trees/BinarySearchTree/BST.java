@@ -1,11 +1,15 @@
 package com.Vivek.DataStructures.Trees.BinarySearchTree;
 
+import com.Vivek.DataStructures.Trees.BinaryTree.BinaryTree;
+
+import java.util.Scanner;
+
 public class BST {
-    public class Node {
-        private int value;
-        private int height;
-        private Node left;
-        private Node right;
+    public static class Node {
+        public int value;
+        public int height;
+        public Node left;
+        public Node right;
 
         public Node(int value){
             this.value = value;
@@ -166,5 +170,40 @@ public class BST {
         postOrder(node.left);
         postOrder(node.right);
         System.out.print(node.value + " ");
+    }
+
+    public Node getRoot(){
+        // Made this method to solve tree question in other java file,
+        // its not good practice to return root node.
+        // This is just for solving the question in different java file.
+        return this.root;
+    }
+
+    public void populate(Scanner scanner){
+        System.out.println("Enter the root node: ");
+        int value = scanner.nextInt();
+        root = new Node(value);
+
+        populate(scanner, root);
+    }
+
+    private static void populate(Scanner scanner, Node node){
+        System.out.println("Do you want to enter left of: " + node.value);
+        boolean left = scanner.nextBoolean();
+        if(left){
+            System.out.println("Enter the value: ");
+            int value = scanner.nextInt();
+            node.left = new Node(value);
+            populate(scanner, node.left);
+        }
+
+        System.out.println("Do you want to enter right of: " + node.value);
+        boolean right = scanner.nextBoolean();
+        if(right){
+            System.out.println("Enter the value: ");
+            int value = scanner.nextInt();
+            node.right = new Node(value);
+            populate(scanner, node.right);
+        }
     }
 }
