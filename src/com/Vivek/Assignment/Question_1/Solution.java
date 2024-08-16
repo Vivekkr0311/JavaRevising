@@ -32,6 +32,10 @@ public class Solution {
 
         while(prev.data > val){
             // when first node is always greater than the x
+            if(prev.next == null){
+                head = null;
+                break;
+            }
             head = prev.next;
             prev = head;
             curr = prev.next;
@@ -41,11 +45,10 @@ public class Solution {
             // greater value found in middle or at the end
             if(curr.data > val){
                 prev.next = curr.next;
-                curr = curr.next;
             }else{
                 prev = prev.next;
-                curr = curr.next;
             }
+            curr = curr.next;
         }
         return head;
     }
