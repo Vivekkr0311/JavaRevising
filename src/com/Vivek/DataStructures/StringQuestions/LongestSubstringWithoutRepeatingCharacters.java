@@ -1,9 +1,6 @@
 package com.Vivek.DataStructures.StringQuestions;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class LongestSubstringWithoutRepeatingCharacters {
 
@@ -48,11 +45,32 @@ public class LongestSubstringWithoutRepeatingCharacters {
         return length;
     }
 
+    private static int lengthOfLongestSubstring_2(String s){
+        int left = 0;
+        int right = 0;
+        int max = 0;
+        Set<Character> set = new HashSet<>();
+
+        while(left < s.length() && right < s.length()){
+            if(!set.contains(s.charAt(right))){
+                set.add(s.charAt(right));
+                max = Math.max(max, right - left + 1);
+                right++;
+            }else{
+                set.remove(s.charAt(right));
+                left++;
+                right = left;
+                set.clear();
+            }
+        }
+        return max;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your string: ");
         String s = scanner.nextLine();
         System.out.println("All substring: " + generatingSubstring(s));
-        System.out.println("Longest substring length: " + lengthOfLongestSubstring(s));
+        System.out.println("Longest substring length: " + lengthOfLongestSubstring_2(s));
     }
 }
