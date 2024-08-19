@@ -1,4 +1,4 @@
-package com.Vivek.StringQuestions;
+package com.Vivek.DataStructures.StringQuestions;
 
 public class Rough {
     static String sol(String input){

@@ -1,4 +1,4 @@
-package com.Vivek.StringQuestions;
+package com.Vivek.DataStructures.StringQuestions;
 
 import java.util.Scanner;
 import java.util.HashMap;
