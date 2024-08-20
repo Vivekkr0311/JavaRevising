@@ -40,23 +40,38 @@ public class LongestPalindromeSubstring {
         return max;
     }
 
-    private static int longestPalingdromeSubstring(String s){
-        int max = 0;
-        int a_pointer = 0;
-        int b_pointer = 0;
+    private static String longestPalingdromeSubstring(String s){
+        if(s == null || s.length() < 1){
+            return "";
+        }
 
-        int n = s.length();
-        Set<Character> set = new HashSet<>();
-        while(a_pointer < n && b_pointer < n){
-            if(s.charAt(a_pointer) == s.charAt(b_pointer)){
-                max = Math.max(max, max + 1);
-                b_pointer++;
-            }else{
-                a_pointer++;
-                b_pointer = a_pointer;
+        int start = 0;
+        int end = 0;
+
+        for(int i = 0; i < s.length(); i++){
+            int len1 = expandFromMiddle(s, i, i);
+            int len2 = expandFromMiddle(s, i, i + 1);
+
+            int len = Math.max(len1, len2);
+
+            if (len > end - start) {
+                start = i - ((len - 1) / 2);
+                end = i + (len / 2);
             }
         }
-        return max;
+        return s.substring(start, end + 1);
+    }
+
+    private static int expandFromMiddle(String s, int left, int right){
+        if(s == null || left > right){
+            return 0;
+        }
+
+        while(left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)){
+            left--;
+            right++;
+        }
+        return right - left - 1;
     }
 
     public static void main(String[] args) {
@@ -64,7 +79,8 @@ public class LongestPalindromeSubstring {
         System.out.println("Enter the string: ");
         String s = scanner.nextLine();
 
-        System.out.println(allSubstring(s));
-        System.out.println("Length longest palindrome substring: " + longestPalingdromeSubstring_2(s));
+//        System.out.println(allSubstring(s));
+//        System.out.println("Length longest palindrome substring: " + longestPalingdromeSubstring_2(s));
+        System.out.println("Length longest palindrome substring: " + longestPalingdromeSubstring(s));
     }
 }
