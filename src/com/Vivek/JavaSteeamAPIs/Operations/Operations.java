@@ -56,5 +56,44 @@ public class Operations {
                 .collect(Collectors.toList());
 
         System.out.println("Distinct and Sorted (Desc) skip elements: " + distinctAndSortedDescOnlySkipElements);
+
+        // Finding min
+        Integer min  = duplicatesValues
+                .stream()
+                .distinct()
+                .sorted((a, b) -> b -a)
+                        .max((a, b) -> b - a).get();
+
+        System.out.println("Min in: " + duplicatesValues + " is " + min);
+
+        // Finding max
+        Integer max  = duplicatesValues
+                .stream()
+                .distinct()
+                .sorted((a, b) -> b -a)
+                .max((a, b) -> a - b).get();
+
+        System.out.println("Max in: " + duplicatesValues + " is " + max);
+
+        // peek()
+        Integer max2  = duplicatesValues
+                .stream()
+                .distinct()
+                .peek(System.out::println)
+                .sorted((a, b) -> b -a)
+                .max((a, b) -> a - b).get();
+
+        System.out.println("Max in: " + duplicatesValues + " is " + max2);
+
+        // count()
+        Long count  = duplicatesValues
+                .stream()
+                .distinct()
+                .peek(System.out::println)
+                .count();
+        System.out.println("Count: " + count);
+
+        // parallel stream, it used in multi threading
+        list.parallelStream();
     }
 }
