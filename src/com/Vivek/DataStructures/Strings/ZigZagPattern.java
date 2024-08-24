@@ -80,7 +80,7 @@ public class ZigZagPattern {
                 }
             }
         }
-        System.out.println(sb.toString());
+        System.out.println(sb);
     }
 
     public static void main(String[] args) {
