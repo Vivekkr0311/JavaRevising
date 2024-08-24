@@ -1,4 +1,4 @@
-package com.Vivek.DataStructures.StringQuestions;
+package com.Vivek.DataStructures.Strings;
 
 import java.util.Scanner;
 
