@@ -1,4 +1,4 @@
-package com.Vivek.Recursion.SimpleProblemsUsingRecursion.Permutations;
+package com.Vivek.DataStructures.Strings;
 
 import java.util.Scanner;
 
@@ -23,7 +23,7 @@ public class StringPermutations {
         System.out.println("Enter your string: ");
         String inputString = input.nextLine();
 
-        System.out.println("Permutations of " +  inputString +" are ");
+        System.out.println("Permutations of " +  inputString + " are ");
         stringPermutations("", inputString);
     }
 }
