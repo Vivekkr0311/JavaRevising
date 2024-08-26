@@ -1,6 +1,5 @@
 package com.Vivek.DataStructures.Strings;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class RegularExpression {

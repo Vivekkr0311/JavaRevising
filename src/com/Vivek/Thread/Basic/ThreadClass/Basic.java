@@ -1,4 +1,4 @@
-package com.Vivek.Thread.Basic;
+package com.Vivek.Thread.Basic.ThreadClass;
 
 public class Basic {
     public static void main(String[] args) {

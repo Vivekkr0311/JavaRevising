@@ -1,4 +1,4 @@
-package com.Vivek.Thread.Basic;
+package com.Vivek.Thread.Basic.ThreadClass;
 
 public class World extends Thread{
 
