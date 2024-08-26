@@ -26,7 +26,7 @@ public class RegularExpression {
     }
 
     private static boolean isMatch5(String s, String p){
-        return helper(0, 0, s, p);
+        return helper2(0, 0, s, p);
     }
 
     private static boolean helper(int i, int j, String s, String p){
@@ -121,7 +121,6 @@ public class RegularExpression {
         System.out.println(s + " matches " + p + " : " + isMatch3(s, p));
         System.out.println(s + " matches " + p + " : " + isMatch4(s, p));
 
-        Arrays.fill(map, false);
-
+        System.out.println(s + " matches " + p + " : " + isMatch5(s, p));
     }
 }
