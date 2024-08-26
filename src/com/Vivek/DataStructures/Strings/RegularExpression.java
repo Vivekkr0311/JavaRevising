@@ -4,6 +4,25 @@ import java.util.Scanner;
 
 public class RegularExpression {
 
+    private static boolean helper(int i, int j, String s, String p){
+        if(j == p.length()){
+            return i == s.length();
+        }
+
+        boolean first_character_match = (i < s.length()) && ((p.charAt(j) == '.') || (s.charAt(i) == p.charAt(j)));
+
+        if(j + 1 < p.length() && p.charAt(j + 1) == '*'){
+            boolean not_take_astrisk = helper(i, j + 2, s, p);
+            boolean take_astrisk = first_character_match && helper(i + 1, j, s, p);
+            return not_take_astrisk || take_astrisk;
+        }
+        return first_character_match && helper(i + 1, j + 1, s, p);
+    }
+
+    private static boolean isMatch4(String s, String p){
+        return helper(0, 0, s, p);
+    }
+
     private static boolean isMatch3(String s, String p){
         if(p.length() == 0){
             return s.length() == 0;
@@ -75,5 +94,6 @@ public class RegularExpression {
         String p = scanner.nextLine();
 
         System.out.println(s + " matches " + p + " : " + isMatch3(s, p));
+        System.out.println(s + " matches " + p + " : " + isMatch4(s, p));
     }
 }
