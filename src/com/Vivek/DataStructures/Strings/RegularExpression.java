@@ -1,8 +1,33 @@
 package com.Vivek.DataStructures.Strings;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class RegularExpression {
+
+    private static boolean[][] map = new boolean[21][21];
+    private static boolean helper2(int i, int j, String s, String p){
+        if(j == p.length()){
+            return i == s.length();
+        }
+
+        if(map[i][j] != false){
+            return map[i][j];
+        }
+
+        boolean first_character_match = (i < s.length()) && ((p.charAt(j) == '.') || (s.charAt(i) == p.charAt(j)));
+
+        if(j + 1 < p.length() && p.charAt(j + 1) == '*'){
+            boolean not_take_astrisk = helper2(i, j + 2, s, p);
+            boolean take_astrisk = first_character_match && helper2(i + 1, j, s, p);
+            return map[i][j] = not_take_astrisk || take_astrisk;
+        }
+        return map[i][j] = first_character_match && helper2(i + 1, j + 1, s, p);
+    }
+
+    private static boolean isMatch5(String s, String p){
+        return helper(0, 0, s, p);
+    }
 
     private static boolean helper(int i, int j, String s, String p){
         if(j == p.length()){
@@ -95,5 +120,8 @@ public class RegularExpression {
 
         System.out.println(s + " matches " + p + " : " + isMatch3(s, p));
         System.out.println(s + " matches " + p + " : " + isMatch4(s, p));
+
+        Arrays.fill(map, false);
+
     }
 }
