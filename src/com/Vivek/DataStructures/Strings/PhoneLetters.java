@@ -72,11 +72,45 @@ public class PhoneLetters {
         return result;
     }
 
+    private static List<String> helper2(String up, String p){
+        if(up.isEmpty()){
+            List<String> list = new ArrayList<>();
+            list.add(p);
+            return list;
+        }
+
+        char[] characters = map.get(up.charAt(0));
+
+        List<String> ans = new ArrayList<>();
+        for(int i = 0; i < characters.length; i++){
+            List<String> callList = helper2(up.substring(1), p + characters[i]);
+            ans.addAll(callList);
+        }
+        return ans;
+    }
+
+    private static List<String> letterCombinations2(String digits) {
+        if(digits.isEmpty()){
+            return new ArrayList<>();
+        }
+        map.put('2', two);
+        map.put('3', three);
+        map.put('4', four);
+        map.put('5', five);
+        map.put('6', six);
+        map.put('7', seven);
+        map.put('8', eight);
+        map.put('9', nine);
+
+        return helper2(digits, "");
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter digits: ");
         String s = scanner.nextLine();
 
-        System.out.println(letterCombinations(s));
+//        System.out.println(letterCombinations(s));
+        System.out.println(letterCombinations2(s));
     }
 }
