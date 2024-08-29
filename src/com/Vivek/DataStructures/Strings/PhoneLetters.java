@@ -105,12 +105,50 @@ public class PhoneLetters {
         return helper2(digits, "");
     }
 
+
+    private static List<String> helper3(String up, String p){
+        if(up.isEmpty()){
+            List<String> list = new ArrayList<>();
+            list.add(p);
+            return list;
+        }
+
+        int digit = up.charAt(0) - '0';
+        int lower_bound = (digit - 2) * 3;
+        int higher_bound = (digit - 1) * 3;
+        if(digit == 7){
+            higher_bound = higher_bound + 1;
+        }else if(digit == 9){
+            lower_bound = lower_bound + 1;
+            higher_bound = higher_bound + 2;
+        }else if(digit == 8){
+            lower_bound += 1;
+            higher_bound += 1;
+        }
+        List<String> ans = new ArrayList<>();
+        for(int i = lower_bound; i < higher_bound; i++){
+            char ch = (char) ('a' + i);
+            List<String> list = helper3(up.substring(1), p + ch);
+            ans.addAll(list);
+        }
+        return ans;
+    }
+
+    private static List<String> letterCombinations3(String digits) {
+        if(digits.isEmpty()){
+            return new ArrayList<>();
+        }
+
+        return helper3(digits, "");
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter digits: ");
         String s = scanner.nextLine();
 
 //        System.out.println(letterCombinations(s));
-        System.out.println(letterCombinations2(s));
+//        System.out.println(letterCombinations2(s));
+        System.out.println(letterCombinations3(s));
     }
 }
