@@ -58,11 +58,40 @@ public class GenerateParentheses {
         return ans;
     }
 
+    private static List<String> res = new ArrayList<>();
+    private static void helper2(StringBuilder sb, int openN, int closeN, int n){
+        if(openN == n && closeN == n){
+            res.add(sb.toString());
+            return;
+        }
+
+        if(openN < n){
+            sb.append("(");
+            helper2(sb, openN + 1, closeN, n);
+            sb.deleteCharAt(sb.length() - 1);
+        }
+
+        if(closeN < openN){
+            sb.append(")");
+            helper2(sb, openN, closeN + 1, n);
+            sb.deleteCharAt(sb.length() - 1);
+        }
+    }
+
+    private static List<String> generateParenthesis2(int n) {
+        res.clear();
+        helper2(new StringBuilder(), 0, 0, n);
+        return res;
+    }
+
+
+
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter n: ");
         int n = scanner.nextInt();
-        List<String> ans = generateParenthesis(n);
+        List<String> ans = generateParenthesis2(n);
 //        System.out.println(allPermu);
         System.out.println(ans);
     }
