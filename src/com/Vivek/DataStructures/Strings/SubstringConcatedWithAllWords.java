@@ -52,32 +52,40 @@ public class SubstringConcatedWithAllWords {
     }
 
     private static List<Integer> findSubstring2(String s, String[] words){
-        HashMap<String, Integer> map = getMap(words);
-
-        int wordSize = words[0].length();
-        int wordArraySize = words.length;
-
         List<Integer> ans = new ArrayList<>();
-        for(int i = 0;  i <= s.length() - wordSize; i += wordSize){
-            HashMap<String, Integer> currMap = new HashMap<>();
-            currMap.putAll(map);
-            for(int j = i; j < i + wordArraySize * wordSize; j += wordSize){
-                String currSubString = s.substring(j, j + wordSize);
-                if(!currMap.containsKey(currSubString) || currMap.get(currSubString) == 0){
-                    break;
-                }else{
-                    currMap.put(currSubString, currMap.get(currSubString) - 1);
-                }
-            }
+        if (s == null || s.length() == 0 || words == null || words.length == 0) return ans;
+        HashMap<String, Integer> map = new HashMap<>();
+        for (String word : words) {
+            map.put(word, map.getOrDefault(word, 0) + 1);
+        }
 
-            boolean allZero = true;
-            for(String sub :  currMap.keySet()){
-                if(currMap.get(sub) != 0){
-                    allZero = false;
+        int wordLength = words[0].length();
+        int numWords = words.length;
+        for (int i = 0; i < wordLength; i++) {
+            int left = i, right = i, count = 0;
+            HashMap<String, Integer> windowMap = new HashMap<>();
+            while (right + wordLength <= s.length()) {
+                String word = s.substring(right, right + wordLength);
+                right += wordLength;
+
+                if (map.containsKey(word)) {
+                    windowMap.put(word, windowMap.getOrDefault(word, 0) + 1);
+                    count++;
+                    while (windowMap.get(word) > map.get(word)) {
+                        String leftWord = s.substring(left, left + wordLength);
+                        windowMap.put(leftWord, windowMap.get(leftWord) - 1);
+                        count--;
+                        left += wordLength;
+                    }
+
+                    if (count == numWords) {
+                        ans.add(left);
+                    }
+                } else {
+                    windowMap.clear();
+                    count = 0;
+                    left = right;
                 }
-            }
-            if(allZero){
-                ans.add(i);
             }
         }
         return ans;
