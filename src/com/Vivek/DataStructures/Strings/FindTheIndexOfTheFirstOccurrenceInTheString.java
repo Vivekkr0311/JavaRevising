@@ -2,7 +2,7 @@ package com.Vivek.DataStructures.Strings;
 
 import java.util.Scanner;
 
-public class FindtheIndexoftheFirstOccurrenceinaString {
+public class FindTheIndexOfTheFirstOccurrenceInTheString {
 
     private static int strStr(String haystack, String needle) {
         if(needle.length() == 0){
