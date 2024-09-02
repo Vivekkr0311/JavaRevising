@@ -10,41 +10,40 @@ public class LongestValidParenthesis {
             return 0;
         }
 
-        int left = 0;
-        int right = 0;
+        int openingParenthesesCount = 0;
+        int closingParenthesesCount = 0;
         int max = 0;
         for(int i = 0; i < n; i++){
             char currChar = input.charAt(i);
             if(currChar == '('){
-                left++;
+                openingParenthesesCount++;
             }else if(currChar == ')'){
-                right++;
+                closingParenthesesCount++;
             }
 
-            if(left == right){
-                max = Math.max(max, left * 2);
-            }else if(right > left){
-                left = 0;
-                right = 0;
+            if(openingParenthesesCount == closingParenthesesCount){
+                max = Math.max(max, openingParenthesesCount * 2);
+            }else if(closingParenthesesCount > openingParenthesesCount){
+                openingParenthesesCount = 0;
+                closingParenthesesCount = 0;
             }
         }
 
-        left = 0;
-        right = 0;
-        max = 0;
-        for(int i = n; i >= 0; i--){
+        openingParenthesesCount = 0;
+        closingParenthesesCount = 0;
+        for(int i = n - 1; i >= 0; i--){
             char currChar = input.charAt(i);
             if(currChar == '('){
-                left++;
+                openingParenthesesCount++;
             }else if(currChar == ')'){
-                right++;
+                closingParenthesesCount++;
             }
 
-            if(left == right){
-                max = Math.max(max, left * 2);
-            }else if(right < left){
-                left = 0;
-                right = 0;
+            if(openingParenthesesCount == closingParenthesesCount){
+                max = Math.max(max, openingParenthesesCount * 2);
+            }else if(closingParenthesesCount < openingParenthesesCount){
+                openingParenthesesCount = 0;
+                closingParenthesesCount = 0;
             }
         }
         return max;
