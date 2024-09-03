@@ -60,6 +60,48 @@ public class MinimumWindowSubstring {
         return ans;
     }
 
+    private static String minWindow2(String s, String t){
+        if (s == null || s.length() == 0 || t == null || t.length() == 0) return "";
+        HashMap<Character, Integer> map = new HashMap<>();
+        for (char ch : t.toCharArray()) {
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
+        }
+
+        int left = 0, right = 0, have = 0;
+        int ansLength = Integer.MAX_VALUE;
+        String ans = "";
+
+        HashMap<Character, Integer> windowMap = new HashMap<>();
+        int required = map.size();
+
+        while (right < s.length()) {
+            char ch = s.charAt(right);
+            windowMap.put(ch, windowMap.getOrDefault(ch, 0) + 1);
+
+            if (map.containsKey(ch) && windowMap.get(ch).intValue() == map.get(ch).intValue()) {
+                have++;
+            }
+
+            while (have == required) {
+                if (right - left + 1 < ansLength) {
+                    ansLength = right - left + 1;
+                    ans = s.substring(left, right + 1);
+                }
+
+                char leftChar = s.charAt(left);
+                windowMap.put(leftChar, windowMap.get(leftChar) - 1);
+
+                if (map.containsKey(leftChar) && windowMap.get(leftChar).intValue() < map.get(leftChar).intValue()) {
+                    have--;
+                }
+                left++;
+            }
+
+            right++;
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter s: ");
