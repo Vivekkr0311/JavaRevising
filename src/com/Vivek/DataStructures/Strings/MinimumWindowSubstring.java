@@ -5,6 +5,23 @@ import java.util.Scanner;
 
 public class MinimumWindowSubstring {
 
+    private static boolean isFreqSame(HashMap<Character, Integer> map, HashMap<Character, Integer> localMap){
+        if(map.size() == 0 && localMap.size() == 0){
+            return true;
+        }
+
+        for(Character ch : map.keySet()){
+            if(localMap.containsKey(ch)){
+                if(map.get(ch) > localMap.get(ch)){
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        }
+        return true;
+    }
+
     private static String minWindow(String s, String t){
         String ans = "";
         int ansLength = Integer.MAX_VALUE;
@@ -19,23 +36,17 @@ public class MinimumWindowSubstring {
             }
         }
 
-        int sumOfFreq = 0;
-        for(char ch : map.keySet()){
-            sumOfFreq += map.get(ch);
-        }
-
         for(int i = 0; i <= m - n; i++){
-            int tempSumFreq = sumOfFreq;
+            HashMap<Character, Integer> localMap = new HashMap<>();
             for(int j = i;  j < m; j++){
                 char ch = s.charAt(j);
-                if(map.containsKey(ch)){
-                    if(map.get(ch) == 0){
-                        break;
-                    }
-                    tempSumFreq--;
+                if(localMap.containsKey(ch)){
+                    localMap.put(ch, localMap.get(ch) + 1);
+                }else{
+                    localMap.put(ch, 1);
                 }
 
-                if(tempSumFreq == 0){
+                if(isFreqSame(map, localMap)){
                     String tempS = s.substring(i, j + 1);
                     int tempSLength = tempS.length();
                     if(ansLength > tempSLength){
