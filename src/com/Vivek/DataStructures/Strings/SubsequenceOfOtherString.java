@@ -7,7 +7,8 @@ public class SubsequenceOfOtherString {
     private static boolean subsequenceOtherString(String mainString, String subsequence){
         int mainStringLength = mainString.length();
         int subsequenceLength = subsequence.length();
-        if(mainStringLength == 0 || subsequenceLength == 0){
+        
+        if(mainStringLength == 0 || subsequenceLength == 0 || mainStringLength > subsequenceLength){
             return false;
         }
 
