@@ -24,6 +24,19 @@ public class LeftMostRepeatingCharacters {
         return (res == Integer.MAX_VALUE) ? -1 : res;
     }
 
+    private static int leftMostRepeatingCharacter_Efficient_2(String s){
+        boolean[] isVisited = new boolean[CHAR];
+        int res = -1;
+        for(int i = s.length() -1; i >= 0; i--){
+            if(isVisited[s.charAt(i)]){
+                res = i;
+            }else{
+                isVisited[s.charAt(i)] = true;
+            }
+        }
+        return res;
+    }
+
     private static int leftMostRepeatingCharacter(String s){
         if(s.isEmpty()){
             return -1;
@@ -55,5 +68,6 @@ public class LeftMostRepeatingCharacters {
 
         System.out.println("Index of left most repeating character is: " + leftMostRepeatingCharacter(input));
         System.out.println("Index of left most repeating character is: " + leftMostRepeatingCharacter_Efficient_1(input));
+        System.out.println("Index of left most repeating character is: " + leftMostRepeatingCharacter_Efficient_2(input));
     }
 }
