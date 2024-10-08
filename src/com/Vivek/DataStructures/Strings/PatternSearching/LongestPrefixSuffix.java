@@ -1,6 +1,7 @@
 package com.Vivek.DataStructures.Strings.PatternSearching;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class LongestPrefixSuffix {
@@ -31,11 +32,36 @@ public class LongestPrefixSuffix {
         return res;
     }
 
+    private static void longestPrefixSuffix_Efficient(String input, int[] lps){
+        lps[0] = 0;
+        int i = 1;
+        int n = input.length();
+        int len = 0;
+
+        while(i < n){
+            if(input.charAt(i) == input.charAt(len)){
+                len++;
+                lps[i] = len;
+                i++;
+            }else{
+                if(len == 0){
+                    lps[i] = 0;
+                    i++;
+                }else{
+                    len = lps[len - 1];
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the string: ");
         String input = scanner.nextLine();
 
         System.out.println("Longest prefix suffix for each idx of " + input + " are " + fillLongestProperPrefixSuffix(input));
+        int[] lps = new int[input.length()];
+        longestPrefixSuffix_Efficient(input, lps);
+        System.out.println("Longest prefix suffix for each idx of " + input + " are " + Arrays.toString(lps));
     }
 }
