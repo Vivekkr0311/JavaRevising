@@ -27,6 +27,11 @@ public class Test {
 
         // To solve this issue we need to synchronize the threads, so that they will not access the common resource
         // at the same time, for implementing this we use 'synchronize' keyword.
+
+        // When multiple threads access the common resource (critical section), then it may cause race-condition,
+        // race-condition is a condition in which the result of can vary, it is not consistent or according to our
+        // expectation.
+        // So we can say, we prevent race condition to occur by using synchronized keyword, this ensures Mutual exclusion.
         System.out.println(counter.getCounter());
     }
 }
