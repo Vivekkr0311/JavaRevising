@@ -21,7 +21,8 @@ public class ExplicitLockBankAccount {
                         this.balance -= amount;
                         System.out.println(Thread.currentThread().getName() + " Transaction completed" + " balance is " + this.balance);
                     }catch (Exception r){
-
+                        // This is used to retain the state of the thread if it was interrupted.
+                        Thread.currentThread().interrupt();
                     }finally {
                         lock.unlock();
                     }
@@ -33,7 +34,8 @@ public class ExplicitLockBankAccount {
                 System.out.println(Thread.currentThread().getName() + " Could not acquire the lock, try again later!");
             }
         }catch (Exception e){
-
+            // This is used to retain the state of the thread if it was interrupted.
+            Thread.currentThread().interrupt();
         }
     }
 }
