@@ -7,7 +7,7 @@ public class MissingNumber {
 
     private static int missingNumber(int[] arr){
         int n = arr.length;
-        int sum = n * (n + 1) / 2;
+        int sum = (n * (n + 1)) >> 1;
         int sum2 = 0;
 
         for(int i = 0; i < n; i++){
