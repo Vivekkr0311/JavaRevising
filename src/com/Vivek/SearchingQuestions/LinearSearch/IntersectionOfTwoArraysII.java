@@ -1,11 +1,12 @@
-package com.Vivek.SearchingQuestions.BinarySearch;
+package com.Vivek.SearchingQuestions.LinearSearch;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class IntersectionOfTwoArraysII {
 
     private static int[] intersection(int[] nums1, int[] nums2) {
-        // Binary Search implementation pending
         Arrays.sort(nums1);
         Arrays.sort(nums2);
 
