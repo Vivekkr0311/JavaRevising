@@ -74,6 +74,36 @@ public class LongestPalindromeSubstring {
         return right - left - 1;
     }
 
+    private static boolean isPalindrome(String s, int start, int end){
+        if(start >= end){
+            return true;
+        }
+        if(s.charAt(start) == s.charAt(end)){
+            return isPalindrome(s, start + 1, end - 1);
+        }
+        return false;
+    }
+
+    private static String longestPalindrome(String input){
+        int maxLength = Integer.MIN_VALUE;
+        int n = input.length();
+        int startPoint = 0;
+
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n; j++){
+                if(isPalindrome(input, i, j)){
+                    int currLength = j - i + 1;
+                    if(currLength > maxLength){
+                        maxLength = currLength;
+                        startPoint = i;
+                    }
+                }
+            }
+        }
+
+        return input.substring(startPoint, startPoint + maxLength);
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the string: ");

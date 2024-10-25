@@ -66,6 +66,25 @@ public class LongestSubstringWithoutRepeatingCharacters {
         return max;
     }
 
+    private static int longest(String input){
+        int a_pointer = 0;
+        int b_pointer = 0;
+        int n = input.length();
+        Set<Character> set = new HashSet<>();
+        int max = Integer.MAX_VALUE;
+        while(b_pointer < n){
+            if(set.contains(input.charAt(b_pointer))){
+                set.remove(input.charAt(a_pointer));
+                a_pointer++;
+            }else{
+                set.add(input.charAt(b_pointer));
+                b_pointer++;
+                max = Math.max(max, set.size());
+            }
+        }
+        return max;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your string: ");
