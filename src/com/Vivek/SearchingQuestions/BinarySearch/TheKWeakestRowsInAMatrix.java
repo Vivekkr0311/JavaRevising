@@ -36,6 +36,48 @@ public class TheKWeakestRowsInAMatrix {
         return ans;
     }
 
+    private static int countNumberOfOnesUsingBinarySearch(int[] row){
+        int start = 0;
+        int end = row.length - 1;
+
+        while(start <= end){
+            int mid = start + ((end - start) >> 1);
+
+            if(row[mid] == 1){
+                start = mid + 1;
+            }else if(row[mid] == 0){
+                end = mid - 1;
+            }
+        }
+
+        return end + 1;
+    }
+
+    private static int[] kWeakestRowsTwo(int[][] mat, int k){
+        int[][] soldiersCount = new int[mat.length][2];
+
+        for(int i = 0; i < mat.length; i++){
+            int numberOfSoldiers = countNumberOfOnesUsingBinarySearch(mat[i]);
+            soldiersCount[i][0] = numberOfSoldiers;
+            soldiersCount[i][1] = i;
+        }
+
+        Arrays.sort(soldiersCount, (a, b) -> {
+            if(a[0] == b[0]){
+                return Integer.compare(a[1], b[1]);
+            }else{
+                return Integer.compare(a[0], b[0]);
+            }
+        });
+
+        int[] ans = new int[k];
+        for(int i = 0; i < k; i++){
+            ans[i] = soldiersCount[i][1];
+        }
+
+        return ans;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Number of rows: ");
@@ -53,5 +95,6 @@ public class TheKWeakestRowsInAMatrix {
         System.out.println("Enter k: ");
         int k = scanner.nextInt();
         System.out.println("K most weakest rows are: " + Arrays.toString(kWeakestRows(mat, k)));
+        System.out.println("K most weakest rows are: " + Arrays.toString(kWeakestRowsTwo(mat, k)));
     }
 }
