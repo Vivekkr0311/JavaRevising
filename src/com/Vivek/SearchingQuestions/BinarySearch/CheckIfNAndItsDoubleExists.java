@@ -1,6 +1,7 @@
 package com.Vivek.SearchingQuestions.BinarySearch;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class CheckIfNAndItsDoubleExists {
@@ -34,7 +35,7 @@ public class CheckIfNAndItsDoubleExists {
         return -1;
     }
 
-    private static boolean checkIfNAndItsDoubleExists(int[] arr){
+    private static boolean checkIfNAndItsDoubleExistsUsingBinarySearch(int[] arr){
         Arrays.sort(arr);
 
         for(int i = 0; i < arr.length; i++){
@@ -42,6 +43,18 @@ public class CheckIfNAndItsDoubleExists {
             if(foundIdx != -1 && foundIdx != i){
                 return true;
             }
+        }
+        return false;
+    }
+
+    private static boolean checkIfNAndItsDoubleExists(int[] arr){
+        HashSet<Integer> set = new HashSet<>();
+
+        for(int i = 0; i < arr.length; i++){
+            if(((arr[i] & 1) == 0 && set.contains(arr[i] >> 1)) || set.contains(arr[i] << 1)){
+                return true;
+            }
+            set.add(arr[i]);
         }
         return false;
     }
@@ -56,8 +69,9 @@ public class CheckIfNAndItsDoubleExists {
         for(int i = 0; i < n; i++){
             arr[i] = scanner.nextInt();
         }
-
-        System.out.println("If N and its double exists: " + checkIfNAndItsDoubleExistsBruteForce(arr));
+//
+//        System.out.println("If N and its double exists: " + checkIfNAndItsDoubleExistsBruteForce(arr));
+//        System.out.println("If N and its double exists: " + checkIfNAndItsDoubleExistsUsingBinarySearch(arr));
         System.out.println("If N and its double exists: " + checkIfNAndItsDoubleExists(arr));
     }
 }
