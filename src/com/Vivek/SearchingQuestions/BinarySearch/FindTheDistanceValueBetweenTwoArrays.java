@@ -14,23 +14,29 @@ public class FindTheDistanceValueBetweenTwoArrays {
             int d2 = Math.abs(arr2[mid] - target);
             if(d == d2){
                 return mid;
-            }else if(d2 > d){
+            }else if(arr2[mid] > d - target){
                 lastIdx =  mid - 1;
             }else{
                 startIdx = mid + 1;
             }
         }
-        return lastIdx + 1;
+        return startIdx;
     }
 
     private static int findTheDistanceValueBetweenTwoArrays(int[] arr1, int[] arr2, int d){
-        Arrays.sort(arr2);
-
         int ans = 0;
-        for(int i = 0; i < arr1.length; i++){
-            ans +=  helper(arr2, arr1[i], d);
+        for (int i = 0; i < arr1.length; i++) {
+            int index = helper(arr2, arr1[i], d);
+            // Check if there's any element in arr2 that is within the distance d
+            if (index > 0 && Math.abs(arr2[index - 1] - arr1[i]) <= d) {
+                continue; // Found an element within the distance
+            }
+            if (index < arr2.length && Math.abs(arr2[index] - arr1[i]) <= d) {
+                continue; // Found an element within the distance
+            }
+            ans++; // Increment if no elements in arr2 are within distance d
         }
-        return arr1.length - ans;
+        return ans; // Return the count of valid elements in arr1
     }
 
     private static int findTheDistanceValueBetweenTwoArraysBruteForce(int[] arr1, int[] arr2, int d){
@@ -72,7 +78,7 @@ public class FindTheDistanceValueBetweenTwoArrays {
         System.out.println("Enter d: ");
         int d = scanner.nextInt();
 
-//        System.out.println("Number of elements for |arr[i] - arr[j]| <= d (" + d + "): " +  findTheDistanceValueBetweenTwoArrays(arr1, arr2, d));
-        System.out.println("Number of elements for |arr[i] - arr[j]| <= d (" + d + "): " +  findTheDistanceValueBetweenTwoArraysBruteForce(arr1, arr2, d));
+        System.out.println("Number of elements for |arr[i] - arr[j]| <= d (" + d + "): " +  findTheDistanceValueBetweenTwoArrays(arr1, arr2, d));
+//        System.out.println("Number of elements for |arr[i] - arr[j]| <= d (" + d + "): " +  findTheDistanceValueBetweenTwoArraysBruteForce(arr1, arr2, d));
     }
 }
