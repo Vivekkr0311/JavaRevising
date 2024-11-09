@@ -10,10 +10,10 @@ public class KthMissingPositiveNumber {
        while(start < end){
            int mid = start + ((end -start) >> 1);
 
-           if(arr[mid] - mid - 1 > k){
-               end = mid;
-           }else{
+           if(arr[mid] - mid - 1 < k){
                start = mid + 1;
+           }else{
+               end  = mid;
            }
        }
 
@@ -51,6 +51,6 @@ public class KthMissingPositiveNumber {
         System.out.println("Enter kth position: ");
         int k = scanner.nextInt();
 
-        System.out.println("Kth missing number in " + Arrays.toString(arr) + " is " + findKthPositive(arr, k));
+        System.out.println("Kth missing number in " + Arrays.toString(arr) + " is " + findKthPositiveBigOhN(arr, k));
     }
 }
