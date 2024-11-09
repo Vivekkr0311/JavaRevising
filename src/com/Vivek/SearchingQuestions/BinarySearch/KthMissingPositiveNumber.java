@@ -3,7 +3,24 @@ package com.Vivek.SearchingQuestions.BinarySearch;
 import java.util.*;
 
 public class KthMissingPositiveNumber {
-    private static int findKthPositive(int[] arr, int k){
+    private static int findKthPositiveLogN(int[] arr, int k){
+       int start = 0;
+       int end = arr.length - 1;
+
+       while(start < end){
+           int mid = start + ((end -start) >> 1);
+
+           if(arr[mid] - mid - 1 > k){
+               end = mid;
+           }else{
+               start = mid + 1;
+           }
+       }
+
+       return arr[end] + k;
+    }
+
+    private static int findKthPositiveBigOhN(int[] arr, int k){
         int missingCount = 0;
         int lastValue = 0;
 
