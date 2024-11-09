@@ -52,5 +52,6 @@ public class KthMissingPositiveNumber {
         int k = scanner.nextInt();
 
         System.out.println("Kth missing number in " + Arrays.toString(arr) + " is " + findKthPositiveBigOhN(arr, k));
+        System.out.println("Kth missing number in " + Arrays.toString(arr) + " is " + findKthPositiveLogN(arr, k));
     }
 }
