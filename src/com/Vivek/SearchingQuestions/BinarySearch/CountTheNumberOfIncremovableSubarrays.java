@@ -12,7 +12,17 @@ public class CountTheNumberOfIncremovableSubarrays {
         return true;
     }
 
-    private static int incremovableSubarrayCount(int[] nums){
+    private static boolean isIncreasing(int[] nums, int start, int end){
+        for (int i = start; i + 1 <= end; i++) {
+            if (nums[i] >= nums[i + 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    private static int incremovableSubarraysCountApproach1(int[] nums){
         int n = nums.length;
         int count = 0;
 
@@ -42,6 +52,18 @@ public class CountTheNumberOfIncremovableSubarrays {
         return count;
     }
 
+    private static int incremovableSubarraysCountApproach2(int[] nums){
+        int count = 0;
+        for(int i = 0; i < nums.length; i++){
+            for(int j = i; j < nums.length; j++){
+                if(isIncreasing(nums, i, j)){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the number of elements: ");
@@ -53,6 +75,7 @@ public class CountTheNumberOfIncremovableSubarrays {
             nums[i] = scanner.nextInt();
         }
 
-        System.out.println("Number of incremovable sub-arrays is: " + incremovableSubarrayCount(nums));
+        System.out.println("Number of incremovable sub-arrays is: " + incremovableSubarraysCountApproach1(nums));
+        System.out.println("Number of incremovable sub-arrays is: " + incremovableSubarraysCountApproach2(nums));
     }
 }
