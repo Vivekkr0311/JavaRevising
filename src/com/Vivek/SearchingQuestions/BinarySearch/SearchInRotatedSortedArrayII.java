@@ -15,29 +15,27 @@ public class SearchInRotatedSortedArrayII {
         return pivot;
     }
 
-//    private static int findPivot(int[] nums){
-//        int start = 0;
-//        int end = nums.length - 1;
-//
-//        while(start <= end){
-//            int mid = start + ((end - start) >> 1);
-//
-//            if(mid < end && nums[mid] > nums[mid + 1]){
-//                return mid;
-//            }else if(mid > start && nums[mid] < nums[mid - 1]){
-//                return mid - 1;
-//            }else if(mid < end && nums[mid] == nums[mid + 1]){
-//
-//            }
-//
-//            if(nums[start] < nums[mid]){
-//                start = mid + 1;
-//            }else{
-//                end = mid - 1;
-//            }
-//        }
-//        return -1;
-//    }
+    private static int findPivot(int[] nums){
+        int start = 0;
+        int end = nums.length - 1;
+
+        while(start <= end){
+            int mid = start + ((end - start) >> 1);
+
+            if(mid < end && nums[mid] > nums[mid + 1]){
+                return mid + 1;
+            }else if(mid > start && nums[mid] < nums[mid - 1]){
+                return mid;
+            }
+
+            if(nums[start] < nums[mid]){
+                start = mid + 1;
+            }else{
+                end = mid - 1;
+            }
+        }
+        return -1;
+    }
 
     private static boolean binarySearch(int[] nums, int start, int end, int target){
         while(start <= end){
@@ -76,9 +74,10 @@ public class SearchInRotatedSortedArrayII {
             arr[i] = scanner.nextInt();
         }
 
-        System.out.println("Enter the target element: ");
-        int target = scanner.nextInt();
+//        System.out.println("Enter the target element: ");
+//        int target = scanner.nextInt();
 
-        System.out.println(target + " is found in the array: " + search(arr, target));
+//        System.out.println(target + " is found in the array: " + search(arr, target));
+        System.out.println(findPivot(arr));
     }
 }
