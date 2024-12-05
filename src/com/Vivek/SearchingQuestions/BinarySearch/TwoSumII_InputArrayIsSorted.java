@@ -24,12 +24,7 @@ public class TwoSumII_InputArrayIsSorted {
 
         for(int i = 0; i < nums.length; i++){
             int find = target - nums[i];
-            int idxFound = search(nums, find, 0, nums.length - 1);
-
-            if(idxFound == i){
-                // taking care of duplicate elements
-                idxFound = search(nums, find, i + 1, nums.length - 1);
-            }
+            int idxFound = search(nums, find, i + 1, nums.length - 1);
             if(idxFound != -1){
                 ans[0] = i + 1;
                 ans[1] = idxFound + 1;
@@ -52,7 +47,7 @@ public class TwoSumII_InputArrayIsSorted {
 
         System.out.println("Enter the target: ");
         int target = scanner.nextInt();
-
+        System.out.println("Assuming array start with 1 index.");
         System.out.println("Indexes at which the elements present which makes up the target: " + target + " is " + Arrays.toString(twoSum(nums, target)));
     }
 }
