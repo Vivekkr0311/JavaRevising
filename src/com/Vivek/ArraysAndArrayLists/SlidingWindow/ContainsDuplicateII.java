@@ -28,8 +28,8 @@ public class ContainsDuplicateII {
         while(j < n){
             if(Math.abs(i - j) > k){
                 // shrink
-                i++;
                 window.remove(nums[i]);
+                i++;
             }
 
             if(window.contains(nums[j])){
@@ -54,6 +54,7 @@ public class ContainsDuplicateII {
 
         System.out.println("Enter k: ");
         int k = scanner.nextInt();
+        // This is faster than the other one.
         System.out.println(Arrays.toString(nums) + " contains duplicate " + containsNearbyDuplicate(nums, k));
         System.out.println(Arrays.toString(nums) + " contains duplicate " + containsNearbyDuplicateTwo(nums, k));
     }
