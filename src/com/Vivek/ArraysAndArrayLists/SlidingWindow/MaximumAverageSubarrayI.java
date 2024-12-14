@@ -3,7 +3,7 @@ package com.Vivek.ArraysAndArrayLists.SlidingWindow;
 import java.util.Scanner;
 
 public class MaximumAverageSubarrayI {
-    private static double findMaxAverage(int[] nums, int k){
+    private static double findMaxAverageBruteForce(int[] nums, int k){
         double avg = Double.NEGATIVE_INFINITY;
 
         for(int i = 0; i + k <= nums.length; i++){
@@ -14,6 +14,31 @@ public class MaximumAverageSubarrayI {
 
             double newAvg = (double) sum / k;
             avg = Math.max(avg, newAvg);
+        }
+        return avg;
+    }
+
+    private static double findMaxAverage(int[] nums, int k){
+        double avg = Double.NEGATIVE_INFINITY;
+
+        int sum = 0;
+        if(k <= nums.length){
+            for(int i = 0; i < k; i++){
+                sum += nums[i];
+            }
+        }
+        avg = (double) sum / k;
+
+        int left = 0;
+        int right = k;
+
+        while(right < nums.length){
+            sum = sum - nums[left];
+            sum = sum + nums[right];
+            double newAvg = (double) sum / k;
+            avg = Math.max(avg, newAvg);
+            left++;
+            right++;
         }
         return avg;
     }
