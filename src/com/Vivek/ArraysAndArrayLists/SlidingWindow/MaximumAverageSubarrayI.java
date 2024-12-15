@@ -43,6 +43,27 @@ public class MaximumAverageSubarrayI {
         return avg;
     }
 
+    private static double findMaxAverageMostEfficient(int[] nums, int k){
+        int sum = 0;
+        if(k <= nums.length){
+            for(int i = 0; i < k; i++){
+                sum += nums[i];
+            }
+        }
+        int maxSum = sum;
+        int left = 0;
+        int right = k;
+
+        while(right < nums.length){
+            sum = sum - nums[left];
+            sum = sum + nums[right];
+            maxSum = Math.max(maxSum, sum);
+            left++;
+            right++;
+        }
+        return (double) maxSum / k;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter number of elements: ");
