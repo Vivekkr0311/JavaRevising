@@ -1,4 +1,4 @@
-package com.Vivek.SlidingWindow.SlidingWindowOnArray;
+package com.Vivek.ArraysAndArrayLists.SlidingWindow;
 
 import java.util.Scanner;
 
