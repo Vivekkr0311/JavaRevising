@@ -42,7 +42,7 @@ public class DefuseTheBomb {
         return res;
     }
 
-    private static int[] decrypt(int[] nums, int k){
+    private static int[] decryptBruteForce(int[] nums, int k){
         if(k > 0){
             // forward sum
             return forwardSum(nums, k);
@@ -51,6 +51,39 @@ public class DefuseTheBomb {
             return backwardSum(nums, k * (-1));
         }
         return new int[nums.length];
+    }
+
+
+    private static int[] decrypt(int[] nums, int k){
+        if(k == 0){
+            return new int[nums.length];
+        }
+        int n = nums.length;
+        int i =  -1; int j  = -1;
+        if(k > 0){
+            i = 1;
+            j = k;
+        }else {
+            i = n - k * (-1);
+            j = n - 1;
+        }
+
+        int[] result = new int[n];
+        int firstWindowSum = 0;
+        for(int pointer = i; pointer <= j; pointer++){
+            firstWindowSum += nums[pointer];
+        }
+
+        for(int pointer = 0; pointer < n; pointer++){
+            result[pointer] = firstWindowSum;
+
+            firstWindowSum -= nums[i % n];
+            i++;
+
+            firstWindowSum += nums[(j + 1) % n];
+            j++;
+        }
+        return result;
     }
 
     public static void main(String[] args) {
