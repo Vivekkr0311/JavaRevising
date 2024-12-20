@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class MinimumDifferenceBetweenHighestAndLowestOfKScores {
     private static int minimumDifferenceBruteForce(int[] nums, int k){
+        // 98 % fast
         Arrays.sort(nums);
 
         int left = 0;
@@ -16,6 +17,21 @@ public class MinimumDifferenceBetweenHighestAndLowestOfKScores {
             globalMin = Math.min(currDiff, globalMin);
             left++;
             right++;
+        }
+        return globalMin;
+    }
+
+    private static int minimumDifference(int[] nums, int k){
+        // 100 % fast
+        Arrays.sort(nums);
+
+        int left = 0;
+        int globalMin = Integer.MAX_VALUE;
+        for(int right = k - 1; right < nums.length; right++){
+            int localDiff = nums[right] - nums[left++];
+            if(localDiff < globalMin){
+                globalMin = localDiff;
+            }
         }
         return globalMin;
     }
@@ -35,5 +51,6 @@ public class MinimumDifferenceBetweenHighestAndLowestOfKScores {
         int k = scanner.nextInt();
 
         System.out.println("Minimum of different of " + k + " students in " + Arrays.toString(nums) + " is " + minimumDifferenceBruteForce(nums, k));
+        System.out.println("Minimum of different of " + k + " students in " + Arrays.toString(nums) + " is " + minimumDifference(nums, k));
     }
 }
