@@ -30,6 +30,31 @@ public class LongestEvenOddSubarrayWithThreshold {
         return ans;
     }
 
+    private static int longestAlternatingSubarraySlidingWindow(int[] nums, int threshold){
+        int ans = 0;
+        int left = 0;
+        int right = left;
+
+        while(right < nums.length){
+            boolean leftPointerProperty = nums[left] <= threshold && nums[left] % 2 == 0;
+            if(leftPointerProperty && nums[right] <= threshold && (right == left || nums[right] % 2 != nums[right - 1] % 2)){
+                int currDiff = right - left + 1;
+
+                if(currDiff > ans){
+                    ans = currDiff;
+                }
+                right++;
+            }else{
+                left++;
+                if (left > right) {
+                    right = left;
+                }
+            }
+        }
+
+        return ans;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("How many elements: ");
@@ -46,5 +71,6 @@ public class LongestEvenOddSubarrayWithThreshold {
 
 
         System.out.println("Maximum subarray which satisfies the condition is: " + longestAlternatingSubarray(nums, threshold));
+        System.out.println("Maximum subarray which satisfies the condition is: " + longestAlternatingSubarraySlidingWindow(nums, threshold));
     }
 }
