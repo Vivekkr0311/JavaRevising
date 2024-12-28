@@ -35,11 +35,40 @@ public class MaximumLengthSubstringWithTwoOccurrences {
         return ansLength;
     }
 
+    private static int maximumLengthSubstring(String s){
+        HashMap<Character, Integer> map = new HashMap<>();
+        int n = s.length();
+
+        int left = 0;
+        int right = 0;
+        int ansLength = 0;
+
+        while(right < n){
+            int freq = map.getOrDefault(s.charAt(right), 0);
+
+            if(freq + 1 > 2){
+                left++;
+                right = left;
+                map.clear();
+            }else{
+                map.put(s.charAt(right), freq + 1);
+                right++;
+            }
+
+            int currLength = right - left;
+            if(currLength > ansLength){
+                ansLength = currLength;
+            }
+        }
+        return ansLength;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter input string: ");
         String input = scanner.nextLine();
 
-        System.out.println("Substring which has maximum length such that \nit also contains each character more than once: " + maximumLengthSubstringBruteForce(input));
+//        System.out.println("Substring which has maximum length such that \nit also contains each character more than once: " + maximumLengthSubstringBruteForce(input));
+        System.out.println("Substring which has maximum length such that \nit also contains each character more than once: " + maximumLengthSubstring(input));
     }
 }
