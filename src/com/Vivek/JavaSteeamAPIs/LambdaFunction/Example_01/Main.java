@@ -1,4 +1,4 @@
-package com.Vivek.LambdaFunction.Example_01;
+package com.Vivek.JavaSteeamAPIs.LambdaFunction.Example_01;
 
 import java.util.ArrayList;
 import java.util.Arrays;

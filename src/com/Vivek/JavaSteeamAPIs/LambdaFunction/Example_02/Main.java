@@ -1,7 +1,6 @@
-package com.Vivek.LambdaFunction.Example_02;
+package com.Vivek.JavaSteeamAPIs.LambdaFunction.Example_02;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.function.Consumer;
 
 public class Main {

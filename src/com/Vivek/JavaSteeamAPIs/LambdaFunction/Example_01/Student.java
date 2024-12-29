@@ -1,6 +1,4 @@
-package com.Vivek.LambdaFunction.Example_01;
-
-import javax.swing.text.StyledDocument;
+package com.Vivek.JavaSteeamAPIs.LambdaFunction.Example_01;
 
 public class Student {
 
