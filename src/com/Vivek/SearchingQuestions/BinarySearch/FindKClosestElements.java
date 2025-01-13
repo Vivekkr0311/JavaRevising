@@ -1,12 +1,24 @@
-package com.Vivek.ArraysAndArrayLists.SlidingWindow;
+package com.Vivek.SearchingQuestions.BinarySearch;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class FindKClosestElements {
-    // There is binary search solution of this question
-    // Path: com.Vivek.SearchingQuestions.BinarySearch.FindKClosestElements
+    private static int binarySearch(int[] arr, int n, int x, int k) {
+        int start = 0;
+        int end = n - k;
+
+        while (start < end) {
+            int mid = start + ((end - start) >> 1);
+            if (x - arr[mid] > arr[mid + k] - x) {
+                start = mid + 1;
+            } else {
+                end = mid;
+            }
+        }
+        return start;
+    }
 
     private static List<Integer> findClosestElements(int[] arr, int k, int x) {
         List<Integer> ans = new ArrayList<>();
@@ -15,18 +27,10 @@ public class FindKClosestElements {
             return ans;
         }
 
-        int left = 0;
-        int right = n - 1;
+        int left = binarySearch(arr, n, x, k);
+        int right = left + k;
 
-        while (right - left + 1 > k) {
-            if (Math.abs(arr[left] - x) > Math.abs(arr[right] - x)) {
-                left++;
-            } else {
-                right--;
-            }
-        }
-
-        for (int i = left; i <= right; i++) {
+        for (int i = left; i < right; i++) {
             ans.add(arr[i]);
         }
         return ans;
