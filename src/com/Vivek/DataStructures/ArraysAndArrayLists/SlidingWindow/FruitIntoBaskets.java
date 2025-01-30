@@ -26,8 +26,13 @@ public class FruitIntoBaskets {
                 }
                 i++;
             }
+
             totalAns = Math.max(totalAns, j - i + 1);
             j++;
+
+            if(n - j + 1 < totalAns){
+                break;
+            }
         }
         return totalAns;
     }
