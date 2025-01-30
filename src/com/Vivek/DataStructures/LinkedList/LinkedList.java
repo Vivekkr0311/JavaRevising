@@ -4,42 +4,32 @@ import java.util.Objects;
 
 public class LinkedList {
 
-    private Node head;
+    public Node head;
     private Node tail;
     private int size;
 
-    public LinkedList(){
+    public LinkedList() {
         this.size = 0;
     }
 
-    private class Node{
-        private int data;
-        private Node next;
-
-        public Node(int data){
-            this.data = data;
-        }
-
-        public Node(int data, Node next){
-            this.data = data;
-            this.next = next;
-        }
+    public Node getHead() {
+        return this.head;
     }
 
-    public void insertFirst(int data){
+    public void insertFirst(int data) {
         Node newNode = new Node(data);
         newNode.next = head;
         head = newNode;
         this.size++;
 
-        if(tail == null){
+        if (tail == null) {
             tail = head;
         }
     }
 
-    public void insertEnd(int data){
+    public void insertEnd(int data) {
         Node newNode = new Node(data);
-        if(tail == null){
+        if (tail == null) {
             insertFirst(data);
             return;
         }
@@ -48,22 +38,22 @@ public class LinkedList {
         this.size++;
     }
 
-    public void insertAt(int data, int idx){
-        if(idx > size){
+    public void insertAt(int data, int idx) {
+        if (idx > size) {
             System.out.println("cannot insert at " + idx);
             System.out.println("List size is " + getSize());
             return;
         }
-        if(idx == 0){
+        if (idx == 0) {
             insertFirst(data);
             return;
         }
-        if(idx == size){
+        if (idx == size) {
             insertEnd(data);
             return;
         }
         Node temp = head;
-        for(int i = 1; i < idx; i++){
+        for (int i = 1; i < idx; i++) {
             temp = temp.next;
         }
         Node newNode = new Node(data, temp.next);
@@ -71,8 +61,8 @@ public class LinkedList {
         size++;
     }
 
-    private Node insertRecursion(Node node, int data, int idx){
-        if(idx == 0) {
+    private Node insertRecursion(Node node, int data, int idx) {
+        if (idx == 0) {
             Node temp = new Node(data, node);
             size++;
             return temp;
@@ -81,27 +71,27 @@ public class LinkedList {
         return node;
     }
 
-    public void insertAtRecursion(int data, int idx){
+    public void insertAtRecursion(int data, int idx) {
         head = insertRecursion(head, data, idx);
     }
 
-    public void display(){
+    public void display() {
         Node temp = head;
-        while(temp != null){
+        while (temp != null) {
             System.out.print(temp.data + " -> ");
             temp = temp.next;
         }
         System.out.println(" END");
     }
 
-    public void deleteFirst(){
+    public void deleteFirst() {
         head = head.next;
         size--;
     }
 
-    public void deleteEnd(){
+    public void deleteEnd() {
         Node temp = head;
-        while(temp.next != tail){
+        while (temp.next != tail) {
             temp = temp.next;
         }
         temp.next = null;
@@ -109,46 +99,46 @@ public class LinkedList {
         size--;
     }
 
-    public void deleteFrom(int idx){
-        if(idx < 0){
+    public void deleteFrom(int idx) {
+        if (idx < 0) {
             System.out.println("Invalid idx");
             return;
         }
-        if(idx > size){
+        if (idx > size) {
             System.out.println("Size is " + getSize());
             System.out.println("Cannot delete from " + idx);
             return;
         }
-        if(idx == 0){
+        if (idx == 0) {
             deleteFirst();
             return;
         }
-        if(idx == size){
+        if (idx == size) {
             deleteEnd();
             return;
         }
         Node temp = head;
-        for(int i = 1; i < idx; i++){
+        for (int i = 1; i < idx; i++) {
             temp = temp.next;
         }
         temp.next = temp.next.next;
         size--;
     }
 
-    public int getSize(){
+    public int getSize() {
         return this.size;
     }
 
     // Questions
     // Remove duplicate nodes
-    public void removeDuplicate(){
+    public void removeDuplicate() {
         Node curr = head;
 
-        while(curr.next != null) {
-            if(curr.data ==  curr.next.data){
+        while (curr.next != null) {
+            if (curr.data == curr.next.data) {
                 curr.next = curr.next.next;
                 size--;
-            }else{
+            } else {
                 curr = curr.next;
             }
         }
@@ -157,35 +147,35 @@ public class LinkedList {
     }
 
     // Merge two sorted list
-    public Node merge(Node head1, Node head2){
+    public Node merge(Node head1, Node head2) {
         Node temp1 = head1;
         Node temp2 = head2;
         LinkedList newList = new LinkedList();
 
-        while(temp1 != null || temp2 != null){
-            if(temp1.data == temp2.data){
+        while (temp1 != null || temp2 != null) {
+            if (temp1.data == temp2.data) {
                 newList.insertEnd(temp1.data);
                 newList.insertEnd(temp2.data);
                 temp1 = temp1.next;
                 temp2 = temp2.next;
-            }else if(temp1.data < temp2.data){
+            } else if (temp1.data < temp2.data) {
                 newList.insertEnd(temp1.data);
                 temp1 = temp1.next;
-            }else{
+            } else {
                 newList.insertEnd(temp2.data);
                 temp2 = temp2.next;
             }
         }
 
-        if(temp1 == null && temp2 != null){
-            while(temp2 != null){
+        if (temp1 == null && temp2 != null) {
+            while (temp2 != null) {
                 newList.insertEnd(temp2.data);
                 temp2 = temp2.next;
             }
         }
 
-        if(temp1 != null && temp2 == null){
-            while(temp1 != null){
+        if (temp1 != null && temp2 == null) {
+            while (temp1 != null) {
                 newList.insertEnd(temp1.data);
                 temp1 = temp1.next;
             }
