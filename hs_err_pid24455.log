@@ -16,7 +16,7 @@
 
 ---------------  S U M M A R Y ------------
 
-Command Line: -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=55490:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 com.Vivek.OOPs.ClassesAndObjects.Main
+Command Line: -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=55490:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 com.Vivek.Java.OOPs.ClassesAndObjects.com.Vivek.Java.Generics.Main
 
 Host: "MacBookPro18,3" arm64, 8 cores, 16G, Darwin 23.0.0, macOS 14.0 (23A344)
 Time: Thu Oct 26 12:35:05 2023 IST elapsed time: 104.562601 seconds (0d 0h 1m 44s)
@@ -2901,7 +2901,7 @@ Dynamic libraries:
 
 VM Arguments:
 jvm_args: -javaagent:/Applications/IntelliJ IDEA CE.app/Contents/lib/idea_rt.jar=55490:/Applications/IntelliJ IDEA CE.app/Contents/bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 
-java_command: com.Vivek.OOPs.ClassesAndObjects.Main
+java_command: com.Vivek.Java.OOPs.ClassesAndObjects.com.Vivek.Java.Generics.Main
 java_class_path (initial): /Users/vivek/IdeaProjects/JavaRevising/out/production/JavaRevising
 Launcher Type: SUN_STANDARD
 
