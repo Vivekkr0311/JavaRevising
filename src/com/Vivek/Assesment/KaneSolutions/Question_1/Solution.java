@@ -1,4 +1,4 @@
-package com.Vivek.LeetCode.Question_1;
+package com.Vivek.Assesment.KaneSolutions.Question_1;
 
 import java.util.Scanner;
 
