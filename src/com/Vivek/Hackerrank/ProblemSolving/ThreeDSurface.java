@@ -6,29 +6,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ThreeDSurface {
-//    private static int[] getFrontView(List<List<Integer>> A) {
-//        int[] frontCost = new int[A.size()];
-//        for (int i = 0; i < A.size(); i++) {
-//            frontCost[i] = A.get(i).get(0);
-//        }
-//        return frontCost;
-//    }
-
-//    private static int[] getCurrentLayer(int col, List<List<Integer>> A) {
-//        int[] intermediateLayer = new int[A.size()];
-//        for (int r = 0; r < A.get(0).size(); r++) {
-//            int prevLayerElement = A.get(r).get(col - 1);
-//            int currElement = A.get(r).get(col);
-//            int diff = currElement - prevLayerElement;
-//            if (diff > 0) {
-//                intermediateLayer[r] = diff;
-//            } else {
-//                intermediateLayer[r] = 0;
-//            }
-//        }
-//        return intermediateLayer;
-//    }
-
     private static int getSum(int[] arr) {
         int sum = 0;
         for (int i : arr) {
@@ -36,62 +13,6 @@ public class ThreeDSurface {
         }
         return sum;
     }
-
-//    private static int frontViewCost(List<List<Integer>> A) {
-//        int costAns = 0;
-//        int[] frontLayer = getFrontView(A);
-//        int frontViewSum = getSum(frontLayer);
-//        int[] sumOfAllLayers = new int[A.size()];
-//        sumOfAllLayers[0] = frontViewSum;
-//
-//        for (int c = 1; c < A.size(); c++) {
-//            int[] currentColLayer = getCurrentLayer(c, A);
-//            int currSum = getSum(currentColLayer);
-//            sumOfAllLayers[c] = currSum;
-//        }
-//
-//        for (int i = 0; i < A.size(); i++) {
-//            costAns += sumOfAllLayers[i]; // Add contributions of all layers
-//        }
-//        return costAns;
-//    }
-
-//    private static int sideViewCostAnd(List<List<Integer>> A) {
-//        int costAns = 0;
-//
-//        int[] allLayerCost = new int[A.size()];
-//
-//        int[] firstLayer = new int[A.get(0).size()];
-//        for (int i = 0; i < A.size(); i++) {
-//            firstLayer[i] = A.get(0).get(i);
-//        }
-//        allLayerCost[0] = getSum(firstLayer);
-//
-//
-//        for (int i = 1; i < A.size(); i++) {
-//            int[] currLayer = new int[A.get(0).size()];
-//
-//            for (int j = 0; j < A.get(i).size(); j++) {
-//                int curr = A.get(i).get(j);
-//                int prev = A.get(i - 1).get(j);
-//                int diff = curr - prev;
-//
-//                if (diff > 0) {
-//                    currLayer[i] = diff;
-//                } else {
-//                    currLayer[i] = 0;
-//                }
-//            }
-//
-//            int getSum = getSum(currLayer);
-//            allLayerCost[i] = getSum;
-//        }
-//
-//        for (int i : allLayerCost) {
-//            costAns += i;
-//        }
-//        return costAns;
-//    }
 
     private static int sideLeftCost(List<List<Integer>> A) {
         int[] firstlayer = new int[A.get(A.size() - 1).size()];
