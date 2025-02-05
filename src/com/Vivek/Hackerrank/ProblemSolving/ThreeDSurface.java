@@ -33,7 +33,7 @@ public class ThreeDSurface {
                 int diff = curr - prev;
                 if (diff > 0) {
                     costHelpArray[j] = diff;
-                } else  {
+                } else {
                     costHelpArray[j] = 0;
                 }
             }
@@ -149,6 +149,35 @@ public class ThreeDSurface {
         int backCost = sideBackCost(A);
 
         return topAndBottomViewCostAns + sideLeftCost + sideRightCost + frontCost + backCost;
+    }
+
+    private static int surfaceArea2(List<List<Integer>> A) {
+        int rows = A.size();
+        int cols = A.get(0).size();
+        int totalSurfaceArea = 0;
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                int height = A.get(i).get(j);
+
+                // Top and bottom surfaces
+                totalSurfaceArea += 2;
+
+                // Left surface or adjacent column difference
+                totalSurfaceArea += (j == 0) ? height : Math.max(0, height - A.get(i).get(j - 1));
+
+                // Right surface or adjacent column difference
+                totalSurfaceArea += (j == cols - 1) ? height : Math.max(0, height - A.get(i).get(j + 1));
+
+                // Front surface or adjacent row difference
+                totalSurfaceArea += (i == 0) ? height : Math.max(0, height - A.get(i - 1).get(j));
+
+                // Back surface or adjacent row difference
+                totalSurfaceArea += (i == rows - 1) ? height : Math.max(0, height - A.get(i + 1).get(j));
+            }
+        }
+
+        return totalSurfaceArea;
     }
 
     public static void main(String[] args) {
