@@ -1,29 +1,25 @@
 package com.Vivek.LeetCode.DataStructures.ArraysAndArrayLists.SlidingWindow;
 // https://leetcode.com/problems/binary-subarrays-with-sum/description/?envType=problem-list-v2&envId=sliding-window??
 
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class BinarySubarraysWithSum_930 {
     private static int numSubaraysWithSum(int[] nums, int goal) {
-        int i = 0;
-        int j = 0;
-        int n = nums.length;
-        int sum = 0;
         int res = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
 
-        while (j < n) {
-            sum += nums[j];
+        int sum = 0;
+        map.put(0, 1);
+        for (int i : nums) {
+            sum += i;
+            int a = sum - goal;
 
-            while (sum > goal) {
-                sum -= nums[i];
-                i++;
+            if (map.containsKey(a)) {
+                res += map.get(a);
             }
 
-            if (sum == goal) {
-                res = res + j - i + 1;
-                j++;
-            }
+            map.put(sum, map.getOrDefault(sum, 0) + 1);
         }
 
         return res;
