@@ -35,6 +35,35 @@ public class BinarySubarraysWithSum_930 {
         return res;
     }
 
+    private static int numSubaraysWithSumSlidingWindow2(int[] nums, int goal) {
+        int i = 0;
+        int j = 0;
+        int n = nums.length;
+        int result = 0;
+        int windowSum = 0;
+        int countPrefixZeros = 0;
+
+        while (j < n) {
+            windowSum += nums[j];
+
+            while (i < j && (nums[i] == 0 || windowSum > goal)) {
+                if (nums[i] == 0) {
+                    countPrefixZeros++;
+                } else {
+                    countPrefixZeros = 0;
+                }
+                windowSum -= nums[i];
+                i++;
+            }
+
+            if (windowSum == goal) {
+                result += 1 + countPrefixZeros;
+            }
+            j++;
+        }
+        return result;
+    }
+
     private static int numSubaraysWithSum(int[] nums, int goal) {
         int res = 0;
         HashMap<Integer, Integer> map = new HashMap<>();
@@ -87,5 +116,6 @@ public class BinarySubarraysWithSum_930 {
         System.out.println("Number of subarrays with sum " + goal + " is " + numSubaraysWithSum(nums, goal));
         System.out.println("Number of subarrays with sum " + goal + " is " + numSubaraysWithSumBruteForce(nums, goal));
         System.out.println("Number of subarrays with sum " + goal + " is " + numSubaraysWithSumSlidingWindow(nums, goal));
+        System.out.println("Number of subarrays with sum " + goal + " is " + numSubaraysWithSumSlidingWindow2(nums, goal));
     }
 }
