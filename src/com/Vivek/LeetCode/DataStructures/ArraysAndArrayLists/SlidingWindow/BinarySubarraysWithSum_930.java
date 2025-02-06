@@ -5,6 +5,36 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class BinarySubarraysWithSum_930 {
+    private static int numSubaraysWithSumSlidingWindow(int[] nums, int goal) {
+        return slidingWindowHelper(nums, goal) - slidingWindowHelper(nums, goal - 1);
+    }
+
+    private static int slidingWindowHelper(int[] nums, int goal) {
+        if (goal < 0) {
+            return 0;
+        }
+
+        int l = 0;
+        int r = 0;
+        int n = nums.length;
+        int res = 0;
+        int sum = 0;
+
+        while (r < n) {
+            sum += nums[r];
+
+            while (sum > goal) {
+                sum -= nums[l];
+                l++;
+            }
+
+            res += r - l + 1;
+            r++;
+        }
+
+        return res;
+    }
+
     private static int numSubaraysWithSum(int[] nums, int goal) {
         int res = 0;
         HashMap<Integer, Integer> map = new HashMap<>();
@@ -56,5 +86,6 @@ public class BinarySubarraysWithSum_930 {
 
         System.out.println("Number of subarrays with sum " + goal + " is " + numSubaraysWithSum(nums, goal));
         System.out.println("Number of subarrays with sum " + goal + " is " + numSubaraysWithSumBruteForce(nums, goal));
+        System.out.println("Number of subarrays with sum " + goal + " is " + numSubaraysWithSumSlidingWindow(nums, goal));
     }
 }
