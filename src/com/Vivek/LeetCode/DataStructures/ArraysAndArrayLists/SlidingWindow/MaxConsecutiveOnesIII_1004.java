@@ -3,7 +3,7 @@ package com.Vivek.LeetCode.DataStructures.ArraysAndArrayLists.SlidingWindow;
 import java.util.Scanner;
 
 // https://leetcode.com/problems/max-consecutive-ones-iii/description/?envType=problem-list-v2&envId=sliding-window
-public class MaxConsecutiveOnesIII {
+public class MaxConsecutiveOnesIII_1004 {
     private static int longestOnes(int[] nums, int k) {
         int i = 0;
         int j = 0;
