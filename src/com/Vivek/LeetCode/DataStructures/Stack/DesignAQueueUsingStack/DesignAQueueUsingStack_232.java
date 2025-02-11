@@ -1,8 +1,8 @@
 package com.Vivek.LeetCode.DataStructures.Stack.DesignAQueueUsingStack;
-
+//https://leetcode.com/problems/implement-queue-using-stacks/description/
 import java.util.Scanner;
 
-public class DesignAQueueUsingStack {
+public class DesignAQueueUsingStack_232 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
