@@ -1,7 +1,5 @@
 package com.Vivek.LeetCode.DataStructures.Stack.DesignAQueueUsingStack;
 
-import com.sun.security.jgss.GSSUtil;
-
 import java.util.Scanner;
 
 public class DesignAQueueUsingStack {
@@ -10,31 +8,31 @@ public class DesignAQueueUsingStack {
         Scanner scanner = new Scanner(System.in);
         System.out.println("How many element do you want to insert in the queue? ");
         int n = scanner.nextInt();
-        CustomQueue queue = new CustomQueue();
+        MyQueue queue = new MyQueue();
 
-        System.out.println("Enque the elements: ");
+        System.out.println("push the elements: ");
         for (int i = 0; i < n; i++) {
-            queue.enque(scanner.nextInt());
+            queue.push(scanner.nextInt());
         }
 
         queue.display();
 
-        int firstDeque = queue.deque();
-        System.out.println("first dequeue data: " + firstDeque);
+        int firstpop = queue.pop();
+        System.out.println("first deque/ pop data: " + firstpop);
         queue.display();
 
-        int secondDeque = queue.deque();
-        System.out.println("second dequeue data: " + secondDeque);
+        int secondpop = queue.pop();
+        System.out.println("second deque/ pop data: " + secondpop);
         queue.display();
 
-        System.out.println("Insert something to check enque: ");
-        int firstEnque = scanner.nextInt();
-        queue.enque(firstEnque);
+        System.out.println("Insert something to check push: ");
+        int firstpush = scanner.nextInt();
+        queue.push(firstpush);
         queue.display();
 
-        System.out.println("Insert something to check enque: ");
-        int secondEnque = scanner.nextInt();
-        queue.enque(secondEnque);
+        System.out.println("Insert something to check push: ");
+        int secondpush = scanner.nextInt();
+        queue.push(secondpush);
         queue.display();
     }
 }
