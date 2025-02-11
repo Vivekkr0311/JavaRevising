@@ -1,8 +1,9 @@
-package com.Vivek.LLD.LibrarySystem.classes;
+package com.Vivek.LLD.LibrarySystem.classes.Books;
 
 import com.Vivek.LLD.LibrarySystem.interfaces.Books;
 
-public class NonFictionBook implements Books {
-    private String title;
-    private String author;
+public class NonFictionBook extends Books {
+    public NonFictionBook(String title, String author) {
+        super(title, author);
+    }
 }

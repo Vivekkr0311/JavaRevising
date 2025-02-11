@@ -1,8 +1,9 @@
-package com.Vivek.LLD.LibrarySystem.classes;
+package com.Vivek.LLD.LibrarySystem.classes.Books;
 
 import com.Vivek.LLD.LibrarySystem.interfaces.Books;
 
-public class ReferenceBook implements Books {
-    private String title;
-    private String author;
+public class ReferenceBook extends Books {
+    public ReferenceBook(String title, String author) {
+        super(title, author);
+    }
 }

@@ -1,8 +1,9 @@
-package com.Vivek.LLD.LibrarySystem.classes;
+package com.Vivek.LLD.LibrarySystem.classes.Books;
 
 import com.Vivek.LLD.LibrarySystem.interfaces.Books;
 
-public class FictionBook implements Books {
-    private String title;
-    private String author;
+public class FictionBook extends Books {
+    public FictionBook(String title, String author) {
+        super(title, author);
+    }
 }
