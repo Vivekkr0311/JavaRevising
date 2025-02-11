@@ -29,6 +29,43 @@ public class MaxSumSubarray {
         return max_so_far;
     }
 
+    private static int kadance(int[] nums) {
+        int global_sum = nums[0];
+        int curr_sum = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            if (curr_sum + nums[i] > nums[i]) {
+                curr_sum += nums[i];
+            } else {
+                curr_sum = nums[i];
+            }
+
+            if (curr_sum > global_sum) {
+                global_sum = curr_sum;
+            }
+        }
+
+        return global_sum;
+    }
+
+//    private static int kadanceAlgorithmMaxSumSubArray(int[] nums) {
+//        int csum = nums[0];
+//        int osum = nums[0];
+//
+//        for (int i = 1; i < nums.length; i++) {
+//            if (csum >= 0) {
+//                csum += nums[i];
+//            } else {
+//                csum = nums[i];
+//            }
+//
+//            if (csum > osum) {
+//                osum = csum;
+//            }
+//        }
+//        return osum;
+//    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter number of element: ");
@@ -42,5 +79,6 @@ public class MaxSumSubarray {
 
         System.out.println("Max sum subarray: " + maxSumSubarrayBruteforce(nums));
         System.out.println("Max sum subarray: " + kadanceAlgorithmMaxSumSubArray(nums));
+        System.out.println("Max sum subarray: " + kadance(nums));
     }
 }
