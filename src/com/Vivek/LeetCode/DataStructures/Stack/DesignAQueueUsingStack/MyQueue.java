@@ -3,6 +3,10 @@ package com.Vivek.LeetCode.DataStructures.Stack.DesignAQueueUsingStack;
 import java.util.Stack;
 
 class MyQueue {
+    // This queue is push optimized queue
+    // You can have only either of them
+    //  1. Push optimized queue or
+    //  2. Pop optimized queue
 
     private Stack<Integer> enque;
     private Stack<Integer> deque;
