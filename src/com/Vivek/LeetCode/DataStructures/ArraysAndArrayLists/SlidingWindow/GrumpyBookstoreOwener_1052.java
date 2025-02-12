@@ -4,46 +4,39 @@ import java.util.Scanner;
 
 // https://leetcode.com/problems/grumpy-bookstore-owner/description/?envType=problem-list-v2&envId=sliding-window
 public class GrumpyBookstoreOwener_1052 {
-    private static int prefixSum(int[] customers, int minutes) {
-        int[] prefix = new int[customers.length];
-        int windowSum = 0;
-        int maxPrefixWasAt = -1;
-        for (int i = 0; i < minutes; i++) {
-            windowSum = windowSum + customers[i];
-            prefix[i] = windowSum;
-        }
-
-        for (int i = minutes; i < customers.length; i++) {
-            windowSum = windowSum + customers[i] - customers[i - minutes];
-            if (windowSum > prefix[i - 1]) {
-                maxPrefixWasAt = i;
-            }
-            prefix[i] = Math.max(prefix[i - 1], windowSum);
-        }
-
-        return maxPrefixWasAt;
-    }
-
     private static int maxSatisfied(int[] customers, int[] grumpy, int minutes) {
-        if (customers.length == 1) {
-            if (grumpy[0] == 0 || (grumpy[0] == 1 && minutes >= customers.length)) {
-                return customers[0];
-            } else {
-                return 0;
-            }
-        }
-        int maxCustomersWasAt = prefixSum(customers, minutes);
-        int numberOfCustomerSatisfied = 0;
-        int startOfMaxTraffic = maxCustomersWasAt - minutes + 1;
-        for (int i = 0; i < customers.length; i++) {
-            int isGrumpy = grumpy[i];
-
-            if ((i >= startOfMaxTraffic && i <= maxCustomersWasAt)|| isGrumpy == 0) {
-                numberOfCustomerSatisfied += customers[i];
+        int n = customers.length;
+        int numberOfUnsatisfiedCustomer = 0;
+        for (int i = 0; i < minutes; i++) {
+            if (grumpy[i] == 1) {
+                numberOfUnsatisfiedCustomer += customers[i];
             }
         }
 
-        return numberOfCustomerSatisfied;
+        int i = 0;
+        int j = i + minutes;
+        int window_count = numberOfUnsatisfiedCustomer;
+        while (j < n) {
+            if (grumpy[j] == 1) {
+                window_count += customers[j];
+            }
+
+            if (grumpy[i] == 1) {
+                window_count -= customers[i];
+            }
+
+            numberOfUnsatisfiedCustomer = Math.max(window_count, numberOfUnsatisfiedCustomer);
+            i++;
+            j++;
+        }
+
+        int remainingCustomer = 0;
+        for (int p = 0; p < customers.length; p++) {
+            if (grumpy[p] == 0) {
+                remainingCustomer += customers[p];
+            }
+        }
+        return numberOfUnsatisfiedCustomer + remainingCustomer;
     }
 
     public static void main(String[] args) {
