@@ -1,7 +1,5 @@
 package com.Vivek.LeetCode.DataStructures.ArraysAndArrayLists.SlidingWindow;
 
-import com.Vivek.Hackerrank.ProblemSolving.BreakingTheRecords;
-
 import java.util.HashSet;
 import java.util.Scanner;
 
