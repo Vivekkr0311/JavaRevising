@@ -5,36 +5,29 @@ import java.util.Scanner;
 
 public class FruitIntoBaskets_904 {
     private static int totalFruit(int[] fruits) {
+        int i = 0;
+        int j = 0;
         int n = fruits.length;
-        if (n == 1) {
-            return 1;
-        }
-        int totalAns = 0;
-        HashMap<Integer, Integer> fruitCount = new HashMap<>();
+        int ans = 0;
+        int[] count = new int[n];
+        int unique = 0;
 
-        int i = 0, j = 0;
         while (j < n) {
-            int curr = fruits[j];
-            fruitCount.put(curr, fruitCount.getOrDefault(curr, 0) + 1);
+            if (count[fruits[j]]++ == 0) {
+                unique++;
+            }
 
-            while (fruitCount.size() > 2) {
-                int leftFruit = fruits[i];
-
-                fruitCount.put(leftFruit, fruitCount.get(leftFruit) - 1);
-                if (fruitCount.get(leftFruit) == 0) {
-                    fruitCount.remove(leftFruit);
+            while (unique > 2) {
+                if (--count[fruits[i]] == 0) {
+                    unique--;
                 }
                 i++;
             }
 
-            totalAns = Math.max(totalAns, j - i + 1);
+            ans = Math.max(ans, j - i + 1);
             j++;
-
-            if (n - j + 1 < totalAns) {
-                break;
-            }
         }
-        return totalAns;
+        return ans;
     }
 
     private static int totalFruitBruteForce(int[] fruits) {
@@ -62,6 +55,30 @@ public class FruitIntoBaskets_904 {
         return ans;
     }
 
+    private static int totalFruitSlidingWindow(int[] fruits) {
+        int i = 0;
+        int j = 0;
+        int n = fruits.length;
+        int ans = Integer.MIN_VALUE;
+        HashMap<Integer, Integer> treeMap = new HashMap<>();
+
+        while (j < n) {
+            treeMap.put(fruits[j], treeMap.getOrDefault(fruits[j], 0) + 1);
+
+            while (treeMap.size() > 2) {
+                treeMap.put(fruits[i], treeMap.get(fruits[i]) - 1);
+                if (treeMap.get(fruits[i]) == 0) {
+                    treeMap.remove(fruits[i]);
+                }
+                i++;
+            }
+
+            ans = Math.max(ans, j - i + 1);
+            j++;
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Number of trees: ");
@@ -75,5 +92,6 @@ public class FruitIntoBaskets_904 {
 
         System.out.println("Maximum fruits can be picked: " + totalFruit(fruits));
         System.out.println("Maximum fruits can be picked: " + totalFruitBruteForce(fruits));
+        System.out.println("Maximum fruits can be picked: " + totalFruitSlidingWindow(fruits));
     }
 }
