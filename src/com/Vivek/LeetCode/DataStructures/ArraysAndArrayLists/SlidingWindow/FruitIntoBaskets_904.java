@@ -3,7 +3,7 @@ package com.Vivek.LeetCode.DataStructures.ArraysAndArrayLists.SlidingWindow;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class FruitIntoBaskets {
+public class FruitIntoBaskets_904 {
     private static int totalFruit(int[] fruits) {
         int n = fruits.length;
         if (n == 1) {
@@ -30,11 +30,36 @@ public class FruitIntoBaskets {
             totalAns = Math.max(totalAns, j - i + 1);
             j++;
 
-            if(n - j + 1 < totalAns){
+            if (n - j + 1 < totalAns) {
                 break;
             }
         }
         return totalAns;
+    }
+
+    private static int totalFruitBruteForce(int[] fruits) {
+        HashMap<Integer, Integer> picked_tree_id = new HashMap<>();
+
+        int ans = Integer.MIN_VALUE;
+
+        for (int i = 0; i < fruits.length; i++) {
+            int local_count = 0;
+            for (int j = i; j < fruits.length; j++) {
+                picked_tree_id.put(fruits[j], picked_tree_id.getOrDefault(fruits[j], 0) + 1);
+
+                if (picked_tree_id.size() == 3) {
+                    picked_tree_id.remove(fruits[j]);
+                    break;
+                }
+            }
+
+            for (Integer key : picked_tree_id.keySet()) {
+                local_count += picked_tree_id.get(key);
+            }
+            ans = Math.max(ans, local_count);
+            picked_tree_id.clear();
+        }
+        return ans;
     }
 
     public static void main(String[] args) {
@@ -49,5 +74,6 @@ public class FruitIntoBaskets {
         }
 
         System.out.println("Maximum fruits can be picked: " + totalFruit(fruits));
+        System.out.println("Maximum fruits can be picked: " + totalFruitBruteForce(fruits));
     }
 }
