@@ -28,6 +28,27 @@ public class GetEqualSubstringsWithinBudget_1208 {
         return ans == Integer.MIN_VALUE ? 0 : ans;
     }
 
+    private static int equalSubstringSlidingWindow(String s, String t, int maxCost) {
+        int ans = 0;
+        int n = s.length();
+        int i = 0;
+        int j = 0;
+        int currCost = 0;
+        while (i < n && j < n) {
+            int cost = Math.abs(s.charAt(j) - t.charAt(j));
+            currCost += cost;
+
+            while (currCost > maxCost) {
+                currCost -= Math.abs(s.charAt(i) - t.charAt(i));
+                i++;
+            }
+            ans = Math.max(ans, j - i + 1);
+            j++;
+        }
+
+        return ans;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter s: ");
