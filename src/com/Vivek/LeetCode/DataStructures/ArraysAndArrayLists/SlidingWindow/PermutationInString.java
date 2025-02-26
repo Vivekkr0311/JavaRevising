@@ -1,6 +1,5 @@
 package com.Vivek.LeetCode.DataStructures.ArraysAndArrayLists.SlidingWindow;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class PermutationInString {
