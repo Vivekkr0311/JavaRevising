@@ -1,6 +1,8 @@
 package com.Vivek.LeetCode.DataStructures.ArraysAndArrayLists.SlidingWindow;
 
+import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Deque;
 import java.util.Scanner;
 
 public class SlidingWindow_Maximum_239 {
@@ -14,7 +16,7 @@ public class SlidingWindow_Maximum_239 {
         return max;
     }
 
-    private static int[] maxSlidingWindow(int[] nums, int k) {
+    private static int[] maxSlidingWindowBruteForce(int[] nums, int k) {
         int n = nums.length;
         int ansArrayLength = n - k + 1;
         if (n == k) {
@@ -34,6 +36,30 @@ public class SlidingWindow_Maximum_239 {
         return ans;
     }
 
+    private static int[] maxSlidingWindow(int[] nums, int k) {
+        int n = nums.length;
+        int[] ans = new int[n - k + 1];
+        int idx = 0;
+        Deque<Integer> deq = new ArrayDeque<>();
+
+        for (int i = 0; i < n; i++) {
+            while (!deq.isEmpty() && deq.peekFirst() <= i - k) {
+                deq.pollFirst();
+            }
+
+            while (!deq.isEmpty() && nums[i] >= nums[deq.peekLast()]) {
+                deq.pollLast();
+            }
+
+            deq.offerLast(i);
+
+            if (i >= k - 1) {
+                ans[idx++] = nums[deq.peekFirst()];
+            }
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter n: ");
@@ -48,6 +74,7 @@ public class SlidingWindow_Maximum_239 {
         System.out.println("Enter k: ");
         int k = scanner.nextInt();
 
+        System.out.println("Maximum of all " + k + " sized subarrays: " + Arrays.toString(maxSlidingWindowBruteForce(nums, k)));
         System.out.println("Maximum of all " + k + " sized subarrays: " + Arrays.toString(maxSlidingWindow(nums, k)));
     }
 }
