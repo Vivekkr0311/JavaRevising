@@ -32,6 +32,67 @@ public class LongestRepeatingCharacterReplacement_424 {
         return maxWindow;
     }
 
+    private static int characterReplacementSlidingWindow(String s, int k) {
+        int n = s.length();
+        int maxLen = 0;
+        int r = 0;
+        int l = 0;
+        int maxFreq = 0;
+        char[] charArray = s.toCharArray();
+        int[] freq = new int[26];
+
+        while (r < n) {
+            freq[charArray[r] - 'A']++;
+            maxFreq = Math.max(maxFreq, freq[charArray[r] - 'A']);
+            int currLength = r - l + 1;
+            while (currLength - maxFreq > k) {
+                freq[charArray[l] - 'A']--;
+                l++;
+
+                maxFreq = 0;
+                for (int i = 0; i < freq.length; i++) {
+                    maxFreq = Math.max(maxFreq, freq[i]);
+                }
+
+                currLength = r - l + 1;
+            }
+
+            if (currLength - maxFreq <= k) {
+                maxLen = Math.max(maxLen, currLength);
+            }
+            r++;
+        }
+
+        return maxLen;
+    }
+
+    private static int characterReplacementSlidingWindow2(String s, int k) {
+        int n = s.length();
+        int maxLen = 0;
+        int r = 0;
+        int l = 0;
+        int maxFreq = 0;
+        char[] charArray = s.toCharArray();
+        int[] freq = new int[26];
+
+        while (r < n) {
+            freq[charArray[r] - 'A']++;
+            maxFreq = Math.max(maxFreq, freq[charArray[r] - 'A']);
+            int currLength = r - l + 1;
+            if (currLength - maxFreq > k) {
+                freq[charArray[l] - 'A']--;
+                l++;
+            }
+
+            if (currLength - maxFreq <= k) {
+                maxLen = Math.max(maxLen, currLength);
+            }
+            r++;
+        }
+
+        return maxLen;
+    }
+
     private static int characterReplacementBruteForce(String s, int k) {
         int maxLen = 0;
         int n = s.length();
@@ -68,5 +129,7 @@ public class LongestRepeatingCharacterReplacement_424 {
 
         System.out.println("Length of longest repeating string by replacing " + k + " character is: " + characterReplacement(s, k));
         System.out.println("Length of longest repeating string by replacing " + k + " character is: " + characterReplacementBruteForce(s, k));
+        System.out.println("Length of longest repeating string by replacing " + k + " character is: " + characterReplacementSlidingWindow(s, k));
+        System.out.println("Length of longest repeating string by replacing " + k + " character is: " + characterReplacementSlidingWindow2(s, k));
     }
 }
