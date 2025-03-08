@@ -36,6 +36,29 @@ public class SlidingWindow_Maximum_239 {
         return ans;
     }
 
+    private static int[] maxSlidingWindowSimpleCode(int[] nums, int k) {
+        int[] res = new int[nums.length - k + 1];
+        int j = 0;
+        ArrayDeque<Integer> queue = new ArrayDeque<>();
+        for (int i = 0; i < nums.length; i++) {
+            while (!queue.isEmpty() && nums[queue.getLast()] < nums[i]) {
+                queue.removeLast();
+            }
+
+            queue.addLast(i);
+
+            if (queue.getFirst() + k == i) {
+                queue.removeFirst();
+            }
+
+            if (i >= k - 1) {
+                res[j] = nums[queue.getFirst()];
+                j++;
+            }
+        }
+        return res;
+    }
+
     private static int[] maxSlidingWindow(int[] nums, int k) {
         int n = nums.length;
         int[] ans = new int[n - k + 1];
@@ -76,5 +99,6 @@ public class SlidingWindow_Maximum_239 {
 
         System.out.println("Maximum of all " + k + " sized subarrays: " + Arrays.toString(maxSlidingWindowBruteForce(nums, k)));
         System.out.println("Maximum of all " + k + " sized subarrays: " + Arrays.toString(maxSlidingWindow(nums, k)));
+        System.out.println("Maximum of all " + k + " sized subarrays: " + Arrays.toString(maxSlidingWindowSimpleCode(nums, k)));
     }
 }
