@@ -1,14 +1,16 @@
 package com.Vivek.LeetCode.DataStructures.ArraysAndArrayLists.SlidingWindow;
 
+import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class FindTwoNonOverlappingSubarraysEachWithTargetSum_1477 {
+
     private static int minSumOfLengths(int[] arr, int target) {
         int left = 0;
         int right = 0;
         int n = arr.length;
-        int ans = 0;
         int sum = 0;
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
 
         while (right < n) {
             sum += arr[right];
@@ -19,14 +21,16 @@ public class FindTwoNonOverlappingSubarraysEachWithTargetSum_1477 {
             }
 
             if (sum == target) {
-                ans++;
-                left = right + 1;
-                sum = 0;
+                int currLength = right - left + 1;
+                minHeap.add(currLength);
+                sum -= arr[left];
+                left++;
             }
             right++;
         }
+        int size = minHeap.size();
 
-        return !(ans > 1) ? -1: ans;
+        return !(size > 1) ? -1 : minHeap.poll() + minHeap.poll();
     }
 
     public static void main(String[] args) {
