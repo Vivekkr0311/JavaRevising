@@ -1,9 +1,47 @@
 package com.Vivek.LeetCode.DataStructures.ArraysAndArrayLists.SlidingWindow;
 
+import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class FindTwoNonOverlappingSubarraysEachWithTargetSum_1477 {
+    public static int minSumOfLengthsWithDp(int[] arr, int target) {
+        int left = 0;
+        int right = 0;
+        int n = arr.length;
+        int sum = 0;
+
+        int[] dp = new int[n];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+
+        int result = Integer.MAX_VALUE;
+        int bestLength = Integer.MAX_VALUE;
+
+        while (right < n) {
+            sum += arr[right];
+
+            while (sum > target) {
+                sum -= arr[left];
+                left++;
+            }
+
+            if (sum == target) {
+                int currLength = right - left + 1;
+
+                if (left > 0 && dp[left - 1] != Integer.MAX_VALUE) {
+                    result = Math.min(result, currLength + dp[left - 1]);
+                }
+
+                bestLength = Math.min(bestLength, currLength);
+            }
+
+            dp[right] = bestLength;
+            right++;
+        }
+
+        return result == Integer.MAX_VALUE ? -1 : result;
+    }
+
 
     private static int minSumOfLengths(int[] arr, int target) {
         int left = 0;
