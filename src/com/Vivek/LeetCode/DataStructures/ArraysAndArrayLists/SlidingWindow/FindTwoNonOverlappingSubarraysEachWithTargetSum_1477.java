@@ -86,5 +86,6 @@ public class FindTwoNonOverlappingSubarraysEachWithTargetSum_1477 {
         int target = scanner.nextInt();
 
         System.out.println("Number of subarrays which are non-overlapping with target sum: " + minSumOfLengths(nums, target));
+        System.out.println("Number of subarrays which are non-overlapping with target sum: " + minSumOfLengthsWithDp(nums, target));
     }
 }
