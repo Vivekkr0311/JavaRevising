@@ -95,8 +95,35 @@ public class LongestSusbstringOfAllVowelsInOrder_1839 {
             if (set.size() == 5) {
                 ansLength = Math.max(ansLength, right - left + 1);
             }
+
             right++;
         }
+        return ansLength;
+    }
+
+    private static int longestBeautifulSubstring3(String word) {
+        int n = word.length();
+        int left = 0, right = 0, ansLength = 0;
+        int count = 0; // To count distinct vowels in order
+
+        while (right < n) {
+            if (right > 0 && word.charAt(right) < word.charAt(right - 1)) {
+                // Reset the window if the sequence is broken
+                count = 0;
+                left = right;
+            }
+
+            if (right == left || word.charAt(right) != word.charAt(right - 1)) {
+                count++; // Count unique vowels
+            }
+
+            if (count == 5) { // Found all vowels in order
+                ansLength = Math.max(ansLength, right - left + 1);
+            }
+
+            right++;
+        }
+
         return ansLength;
     }
 
@@ -107,5 +134,6 @@ public class LongestSusbstringOfAllVowelsInOrder_1839 {
 
         System.out.println("Length of beautiful subtring is: " + longestBeautifulSubstring(word));
         System.out.println("Length of beautiful subtring is: " + longestBeautifulSubstring2(word));
+        System.out.println("Length of beautiful subtring is: " + longestBeautifulSubstring3(word));
     }
 }
