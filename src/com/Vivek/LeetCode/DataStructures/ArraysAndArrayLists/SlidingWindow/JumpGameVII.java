@@ -51,6 +51,29 @@ public class JumpGameVII {
         return helper2(charString, minJump, maxJump, 0, charString.length - 1);
     }
 
+    private static boolean canReachUsingSlidingWindowAndDP(String s, int minJump, int maxJump) {
+        // this solution follows dynamic programming with sliding window
+        char[] charArray = s.toCharArray();
+        int n = charArray.length;
+        if (charArray[n - 1] == '1') return false;
+
+        boolean[] dp = new boolean[n];
+        dp[0] = true;
+        int reachableCount = 0;
+
+        for (int i = 1; i < n; i++) {
+            if (i >= minJump) {
+                reachableCount += dp[i - minJump] ? 1 : 0;
+            }
+            if (i > maxJump) {
+                reachableCount -= dp[i - maxJump - 1] ? 1 : 0;
+            }
+
+            dp[i] = (charArray[i] == '0' && reachableCount > 0);
+        }
+        return dp[n - 1];
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter binary string: ");
@@ -64,5 +87,6 @@ public class JumpGameVII {
 
         System.out.println("Can we reach end ?: " + canReachUsingHelper1(s, minJump, maxJump));
         System.out.println("Can we reach end ?: " + canReachUsingHelper2(s, minJump, maxJump));
+        System.out.println("Can we reach end ?: " + canReachUsingSlidingWindowAndDP(s, minJump, maxJump));
     }
 }
