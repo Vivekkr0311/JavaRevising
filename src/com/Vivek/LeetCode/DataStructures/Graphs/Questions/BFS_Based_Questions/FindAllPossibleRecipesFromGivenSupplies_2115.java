@@ -4,7 +4,7 @@ import java.util.*;
 
 public class FindAllPossibleRecipesFromGivenSupplies_2115 {
 //    This question is based on Graph (Topological Sorting using Kahn's Algorithm - BFS)
-    
+
     private static List<String> findAllRecipes(String[] recipes, List<List<String>> ingredients, String[] supplies) {
         // Step 1: Initialize graph and in-degree map
         Map<String, List<String>> graph = new HashMap<>();
