@@ -29,11 +29,36 @@ public class PartitionLabels_763 {
         return ans;
     }
 
+    // in less code
+    private static List<Integer> partitionLabels_(String s) {
+        int[] map = new int[26];
+        char[] charArray = s.toCharArray();
+        for (int i = 0; i < charArray.length; i++) {
+            map[charArray[i] - 'a'] = i;
+        }
+
+        List<Integer> ans = new ArrayList<>();
+        int i = 0;
+        int start = 0;
+        int end = 0;
+        while (i < charArray.length) {
+            end = Math.max(end, map[charArray[i] - 'a']);
+
+            if (i == end) {
+                ans.add(end - start + 1);
+                start = end + 1;
+            }
+            i++;
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the string: ");
         String s = scanner.nextLine();
 
-        System.out.println("Partion size: " + partitionLabels(s));
+        System.out.println("Partition size: " + partitionLabels(s));
+        System.out.println("Partition size: " + partitionLabels_(s));
     }
 }
