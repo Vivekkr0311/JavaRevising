@@ -20,6 +20,19 @@ public class SumOfAllSubsetXORTotals_1863 {
         return sum;
     }
 
+    private static int subsetXORSum_(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+
+        int bitWiseOr = 0;
+        for (int num : nums) {
+            bitWiseOr |= num;
+        }
+
+        return bitWiseOr << (nums.length - 1);
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the number of elements in the array:");
@@ -32,5 +45,6 @@ public class SumOfAllSubsetXORTotals_1863 {
         }
 
         System.out.println("Sum of all subset XOR totals: " + subsetXORSum(nums));
+        System.out.println("Sum of all subset XOR totals: " + subsetXORSum_(nums));
     }
 }
