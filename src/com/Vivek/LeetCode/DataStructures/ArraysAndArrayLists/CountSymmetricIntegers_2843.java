@@ -34,8 +34,29 @@ public class CountSymmetricIntegers_2843 {
     private static int countSymmetricIntegers(int low, int high) {
         int count = 0;
         for (int i = low; i <= high; i++) {
-            if (isSymmetric(i)) {
+            if (((i >= 10 && i <= 99 && i % 11 == 0) || (i >= 1000 && i <= 9999)) && isSymmetric(i)) {
                 count++;
+            }
+        }
+        return count;
+    }
+
+    // this below code work only for the input constraints
+    // 1 <= low <= high <= 10^4 (1000)
+    private static int countSymmetricIntegers_(int low, int high) {
+        int count = 0;
+        for (int i = low; i <= high; i++) {
+            if (i >= 10 && i <= 99 && i % 11 == 0) {
+                count++;
+            } else if (i >= 1000 && i <= 9999) {
+                int first = i / 1000;
+                int second = (i / 100) % 10;
+                int third = (i / 10) % 10;
+                int fourth = i % 10;
+
+                if (first + second == third + fourth) {
+                    count++;
+                }
             }
         }
         return count;
@@ -50,5 +71,6 @@ public class CountSymmetricIntegers_2843 {
         int high = scanner.nextInt();
 
         System.out.println("Count of symmetric integers between " + low + " and " + high + " is: " + countSymmetricIntegers(low, high));
+        System.out.println("Count of symmetric integers between " + low + " and " + high + " is: " + countSymmetricIntegers_(low, high));
     }
 }
