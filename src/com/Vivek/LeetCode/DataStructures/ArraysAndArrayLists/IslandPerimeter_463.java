@@ -3,34 +3,28 @@ package com.Vivek.LeetCode.DataStructures.ArraysAndArrayLists;
 import java.util.Scanner;
 
 public class IslandPerimeter_463 {
-    
+
     private static int islandPerimeter(int[][] grid) {
-        int n = grid.length;
         int result = 0;
-        for (int row = 0; row < n; row++) {
+        int numberOfRows = grid.length;
+        int numberOfCols = grid[0].length;
+
+        for (int row = 0; row < numberOfRows; row++) {
             for (int col = 0; col < grid[0].length; col++) {
                 int currPerimeter = 0;
 
                 if (grid[row][col] == 1) {
-                    // up check
-                    if (row == 0 || row > 0 && grid[row - 1][col] == 0) {
-                        currPerimeter++;
-                    }
+                    // top
+                    if (row == 0 || grid[row - 1][col] == 0) currPerimeter++;
 
-                    // left check
-                    if (col == 0 || col > 0 && grid[row][col - 1] == 0) {
-                        currPerimeter++;
-                    }
+                    // bottom
+                    if (row == numberOfRows - 1 || grid[row + 1][col] == 0) currPerimeter++;
 
-                    // right check
-                    if (col == grid[row].length - 1 || col < grid[row].length - 1 && grid[row][col + 1] == 0) {
-                        currPerimeter++;
-                    }
+                    // left
+                    if (col == 0 || grid[row][col - 1] == 0) currPerimeter++;
 
-                    // down check
-                    if (row == grid.length - 1 || row < grid.length - 1 && grid[row + 1][col] == 0) {
-                        currPerimeter++;
-                    }
+                    // right
+                    if (col == numberOfCols - 1 || grid[row][col + 1] == 0) currPerimeter++;
                 }
                 result += currPerimeter;
             }
