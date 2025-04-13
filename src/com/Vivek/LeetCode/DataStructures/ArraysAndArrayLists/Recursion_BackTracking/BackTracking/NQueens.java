@@ -1,4 +1,4 @@
-package com.Vivek.LeetCode.Recursion_BackTracking.BackTracking;
+package com.Vivek.LeetCode.DataStructures.ArraysAndArrayLists.Recursion_BackTracking.BackTracking;
 
 import java.util.Scanner;
 

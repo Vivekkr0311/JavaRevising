@@ -1,4 +1,4 @@
-package com.Vivek.LeetCode.Recursion_BackTracking.Recursion.Fibonacci.SimpleProblemsUsingRecursion.PatternProblems.SelectionSort;
+package com.Vivek.LeetCode.DataStructures.ArraysAndArrayLists.Recursion_BackTracking.Recursion.SimpleProblemsUsingRecursion.PatternProblems.SelectionSort;
 
 import java.util.Arrays;
 import java.util.Scanner;

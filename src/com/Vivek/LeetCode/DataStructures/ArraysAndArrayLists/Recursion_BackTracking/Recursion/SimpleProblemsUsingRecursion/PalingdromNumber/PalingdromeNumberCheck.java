@@ -1,5 +1,5 @@
-package com.Vivek.LeetCode.Recursion_BackTracking.Recursion.Fibonacci.SimpleProblemsUsingRecursion.PalingdromNumber;
-import com.Vivek.LeetCode.Recursion_BackTracking.Recursion.Fibonacci.SimpleProblemsUsingRecursion.ReverseNumber.ReverseNumberWithHelper;
+package com.Vivek.LeetCode.DataStructures.ArraysAndArrayLists.Recursion_BackTracking.Recursion.SimpleProblemsUsingRecursion.PalingdromNumber;
+import com.Vivek.LeetCode.DataStructures.ArraysAndArrayLists.Recursion_BackTracking.Recursion.SimpleProblemsUsingRecursion.ReverseNumber.ReverseNumberWithHelper;
 
 import java.util.Scanner;
 

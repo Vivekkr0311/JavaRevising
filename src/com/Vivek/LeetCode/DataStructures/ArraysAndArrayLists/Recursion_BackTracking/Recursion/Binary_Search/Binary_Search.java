@@ -1,4 +1,4 @@
-package com.Vivek.LeetCode.Recursion_BackTracking.Recursion.Fibonacci.Binary_Search;
+package com.Vivek.LeetCode.DataStructures.ArraysAndArrayLists.Recursion_BackTracking.Recursion.Binary_Search;
 
 import java.util.Arrays;
 import java.util.Scanner;
