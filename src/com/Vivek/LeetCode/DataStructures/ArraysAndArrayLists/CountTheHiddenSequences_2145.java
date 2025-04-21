@@ -30,6 +30,24 @@ public class CountTheHiddenSequences_2145 {
         return count;
     }
 
+    private static int countValidSequences_(int[] differences, int lower, int upper) {
+        int curr = 0;
+        int minVal = 0;
+        int maxVal = 0;
+
+        for (int d : differences) {
+            curr += d;
+            minVal = Math.min(minVal, curr);
+            maxVal = Math.max(maxVal, curr);
+
+            if ((upper - maxVal) - (lower - minVal) + 1 <= 0) {
+                return 0;
+            }
+        }
+
+        return (upper - maxVal) - (lower - minVal) + 1;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the number of differences in the array:");
@@ -48,5 +66,6 @@ public class CountTheHiddenSequences_2145 {
         int upper = scanner.nextInt();
 
         System.out.println("Number of valid sequences: " + countValidSequences(differences, lower, upper));
+        System.out.println("Number of valid sequences: " + countValidSequences_(differences, lower, upper));
     }
 }
