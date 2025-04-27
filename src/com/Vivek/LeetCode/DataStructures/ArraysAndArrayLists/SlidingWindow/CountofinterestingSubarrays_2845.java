@@ -2,7 +2,7 @@ package com.Vivek.LeetCode.DataStructures.ArraysAndArrayLists.SlidingWindow;
 
 import java.util.*;
 
-public class SubarraySumsDivisibleByK_974 {
+public class CountofinterestingSubarrays_2845 {
     private static long subarraysDivByK(List<Integer> nums, int modulo, int k) {
         int n = nums.size();
         Map<Integer, Long> mp = new HashMap<>(); // remainder -> count
