@@ -1,4 +1,4 @@
-package com.Vivek.LeetCode.BitManipulationTricks;
+package com.Vivek.LeetCode.Maths.BitManipulationTricks;
 
 import java.util.Scanner;
 
