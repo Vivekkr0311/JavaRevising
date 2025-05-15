@@ -32,6 +32,40 @@ public class LongestUnequalAdjacentGroupsSubsequenceI_2900 {
         return helper(words, groups, new ArrayList<>(), 0);
     }
 
+    private static List<String> helper_(String[] words, int[] groups, List<String> ans, int idx) {
+        // gives TLE
+        if (idx == words.length) {
+            return new ArrayList<>(ans);
+        }
+
+        List<String> take = new ArrayList<>();
+        List<String> donTake = new ArrayList<>();
+
+        if (idx == 0 || groups[idx - 1] != groups[idx]) {
+            List<String> newAns = new ArrayList<>(ans);
+            newAns.add(words[idx]);
+            take = helper(words, groups, newAns, idx + 1);
+        }
+
+        donTake = helper(words, groups, new ArrayList<>(ans), idx + 1);
+
+        return take.size() >= donTake.size() ? take : donTake;
+    }
+
+    private static List<String> getLongestSubsequence_(String[] words, int[] groups) {
+        return helper_(words, groups, new ArrayList<>(), 0);
+    }
+
+    private static List<String> getLongestSubsequence__(String[] words, int[] groups) {
+        List<String> ans = new ArrayList<>();
+        for (int i = 0; i < words.length; i++) {
+            if (i == 0 || groups[i] != groups[i - 1]) {
+                ans.add(words[i]);
+            }
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter length of words array: ");
@@ -54,5 +88,7 @@ public class LongestUnequalAdjacentGroupsSubsequenceI_2900 {
         }
 
         System.out.println("Result: " + getLongestSubsequence(words, groups));
+        System.out.println("Result: " + getLongestSubsequence_(words, groups));
+        System.out.println("Result: " + getLongestSubsequence__(words, groups));
     }
 }
