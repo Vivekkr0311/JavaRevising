@@ -3,7 +3,7 @@ package com.Vivek.LeetCode.DataStructures.Graphs.AdjacencyList;
 import java.util.*;
 
 public class AdjacencyList {
-    private static Map<Integer, List<Integer>> createGraph(int[][] edges) {
+    public static Map<Integer, List<Integer>> createUndirectedGraph(int[][] edges) {
         Map<Integer, List<Integer>> graph = new HashMap<>();
 
         for (int[] e : edges) {
@@ -13,6 +13,17 @@ public class AdjacencyList {
 
             // for undirected graph, in case of directed just remove the below line
             graph.computeIfAbsent(v, k -> new ArrayList<>()).add(u);
+        }
+        return graph;
+    }
+
+    public static Map<Integer, List<Integer>> createDirectedGraph(int[][] edges) {
+        Map<Integer, List<Integer>> graph = new HashMap<>();
+
+        for (int[] e : edges) {
+            int u = e[0];
+            int v = e[1];
+            graph.computeIfAbsent(u, k -> new ArrayList<>()).add(v);
         }
         return graph;
     }
@@ -31,6 +42,6 @@ public class AdjacencyList {
         }
 
         System.out.println("Graph adjacency list representation: ");
-        System.out.println(createGraph(edges));
+        System.out.println(createUndirectedGraph(edges));
     }
 }

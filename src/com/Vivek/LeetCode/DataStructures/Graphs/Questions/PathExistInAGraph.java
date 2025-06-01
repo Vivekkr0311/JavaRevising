@@ -1,4 +1,4 @@
-package com.Vivek.LeetCode.DataStructures.Graphs;
+package com.Vivek.LeetCode.DataStructures.Graphs.Questions;
 
 import java.util.ArrayList;
 

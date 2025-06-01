@@ -1,4 +1,4 @@
-package com.Vivek.LeetCode.DataStructures.Graphs.GraphTraversal.DFS;
+package com.Vivek.LeetCode.DataStructures.Graphs.Questions;
 
 import java.util.Arrays;
 import java.util.Scanner;
