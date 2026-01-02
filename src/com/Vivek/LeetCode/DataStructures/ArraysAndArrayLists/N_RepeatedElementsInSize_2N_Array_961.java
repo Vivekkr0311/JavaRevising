@@ -18,6 +18,21 @@ public class N_RepeatedElementsInSize_2N_Array_961 {
         return ans;
     }
 
+    private static int wrapIndex(int index, int n) {
+        return (index % n + n) % n;
+    }
+
+    // repeated element always appears either in (i - 1) or (i - 2) position
+    private static int repeatedNTimesOptimized(int[] nums) {
+        int n = nums.length;
+        for (int i = 2; i < n; i++) {
+            if (nums[i] == nums[i - 1] || nums[i] == nums[i - 2]) {
+                return nums[i];
+            }
+        }
+        return nums[0];
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the number of elements (2N): ");
@@ -29,5 +44,6 @@ public class N_RepeatedElementsInSize_2N_Array_961 {
         }
 
         System.out.println("The element repeated N times is: " + repeatedNTimes(nums));
+        System.out.println("The element repeated N times is: " + repeatedNTimesOptimized(nums));
     }
 }
