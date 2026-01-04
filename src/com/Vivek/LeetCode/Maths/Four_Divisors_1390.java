@@ -52,6 +52,40 @@ public class Four_Divisors_1390 {
         return sum;
     }
 
+    private static int findSumOfDivisors (int n) {
+        int divisorSum = 0;
+        int count = 0;
+
+        for (int fact = 1; fact * fact <= n; fact++) {
+            if (n % fact == 0) {
+                int otherFact = n / fact;
+
+                // perfect square
+                if (otherFact == fact) {
+                    count++; divisorSum += fact;
+                } else {
+                    count += 2; divisorSum += fact + otherFact;
+                }
+            }
+
+            // we need exactly four divisor number
+            if (count > 4) {
+                return 0;
+            }
+        }
+
+        return count == 4 ? divisorSum : 0;
+    }
+
+    private static int sumFourDivisors__(int[] nums) {
+        int result = 0;
+        for (int num : nums) {
+            result += findSumOfDivisors(num);
+        }
+
+        return result;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the number of elements in the array:");
@@ -63,5 +97,6 @@ public class Four_Divisors_1390 {
         }
 
         System.out.println("Sum of divisors of numbers with exactly four divisors: " + sumFourDivisors(nums));
+        System.out.println("Sum of divisors of numbers with exactly four divisors: " + sumFourDivisors__(nums));
     }
 }
