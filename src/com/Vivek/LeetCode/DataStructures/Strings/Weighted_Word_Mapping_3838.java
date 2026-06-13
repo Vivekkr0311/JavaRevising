@@ -5,22 +5,18 @@ import java.util.Scanner;
 public class Weighted_Word_Mapping_3838 {
     private static int getSumOfString(String str, int[] weights){
         int sum = 0;
-        char[] arrChar = str.toCharArray();
-
-        for(int i = 0; i < arrChar.length; i++) {
-            int idx = arrChar[i] - 'a';
-            sum += weights[idx];
+        for(int i = 0; i < str.length(); i++) {
+            sum += weights[str.charAt(i) - 'a'];
         }
-        return 122 - sum % 26;
+        return 'z' - (sum % 26);
     }
 
     private static String mapWordWeights(String[] words, int[] weights) {
-        String ans = "";
+        StringBuilder ans = new StringBuilder();
         for(String word : words){
-            int idx = getSumOfString(word, weights);
-            ans = ans + (char) idx;
+            ans.append((char) getSumOfString(word, weights));
         }
-        return ans;
+        return ans.toString();
     }
 
     public static void main(String[] args) {
