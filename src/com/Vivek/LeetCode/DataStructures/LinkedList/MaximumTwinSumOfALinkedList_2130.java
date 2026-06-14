@@ -1,6 +1,6 @@
 package com.Vivek.LeetCode.DataStructures.LinkedList;
 
-public class Temp {
+public class MaximumTwinSumOfALinkedList_2130 {
     public static int[] valueArry(Node halfWayHead, int totalLength) {
         int[] tempArr = new int[totalLength];
         Node temp = halfWayHead;
