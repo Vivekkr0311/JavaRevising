@@ -52,6 +52,44 @@ public class MaximumTwinSumOfALinkedList_2130 {
         return pairSumHelper(head, halfLength, valueArry);
     }
 
+    private static Node findMiddle(Node head) {
+        Node fast = head;
+        Node slow = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+
+    private static Node reverseHalfList(Node slow){
+        Node curr = slow;
+        Node prev = null;
+
+        while(curr != null){
+            Node next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
+
+    private static int findTwinSum(Node head){
+        Node middle = findMiddle(head);
+        Node secondHalfHead = reverseHalfList(middle);
+        Node first = head;
+
+        int ans = Integer.MIN_VALUE;
+        while(secondHalfHead != null){
+            ans = Math.max(ans, first.data + secondHalfHead.data);
+            first = first.next;
+            secondHalfHead = secondHalfHead.next;
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
         LinkedList linkedList = new LinkedList();
         linkedList.insertEnd(4);
@@ -62,5 +100,6 @@ public class MaximumTwinSumOfALinkedList_2130 {
         Node head = linkedList.getHead();
 
         System.out.println(pairSum(head));
+        System.out.println(findTwinSum(head));
     }
 }
